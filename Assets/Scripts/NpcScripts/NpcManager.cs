@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FishNet.Object;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NpcManager : MonoBehaviour
+public class NpcManager : NetworkBehaviour
 {
   public static NpcManager instacia;  
   public string[] nameNpc;

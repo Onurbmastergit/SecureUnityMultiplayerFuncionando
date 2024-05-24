@@ -28,9 +28,9 @@ public class InputControllers : NetworkBehaviour
 
     build = Input.GetKeyDown(KeyCode.B);
 
-    Attack = Input.GetKey(KeyCode.Mouse1);
+    Attack = Input.GetKey(KeyCode.Mouse1)||Input.GetKey(KeyCode.JoystickButton5);
 
-    Run = Input.GetKey(KeyCode.LeftShift);
+    Run = Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.JoystickButton9);
 
   }
 

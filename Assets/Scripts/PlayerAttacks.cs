@@ -47,7 +47,7 @@ public class PlayerAttacks : NetworkBehaviour
         if (LevelManager.instance.isDay) return;
 
         // Shoot Input.
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1")||Input.GetKey(KeyCode.JoystickButton5))
         {
             if (lastTimeShot + fireRate <= Time.time)
             {

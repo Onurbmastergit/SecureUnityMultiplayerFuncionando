@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
 using UnityEngine;
 
-public class HudManager : MonoBehaviour
+public class HudManager : NetworkBehaviour
 {
    public static HudManager instance;
 
