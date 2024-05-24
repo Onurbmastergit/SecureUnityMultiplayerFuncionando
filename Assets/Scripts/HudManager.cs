@@ -7,6 +7,7 @@ public class HudManager : MonoBehaviour
    public static HudManager instance;
 
     public GameObject hudAlerta;
+    public bool active = true;
    void Awake()
    {
     instance = this;
@@ -14,9 +15,14 @@ public class HudManager : MonoBehaviour
 
    void Update()
    {
-    if(LevelManager.instance.currentHour == 23)
+    if(LevelManager.instance.currentHour == 23 && active == true)
     {
         hudAlerta.SetActive(true);
+        active = false;
+    }
+    if(LevelManager.instance.currentHour == 6)
+    {
+        active = true;
     }
    }
    public void DesativarAlerta()

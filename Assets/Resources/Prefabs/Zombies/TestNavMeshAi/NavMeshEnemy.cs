@@ -26,7 +26,7 @@ public class NavMeshEnemy : NetworkBehaviour
         if (enemyManager.buildOn.Attack == false && status.tomouDano == false && status.vidaAtual > 0 )
         {
             agent.enabled = true;
-            //agent.SetDestination(point.position);
+            agent.SetDestination(point.position);
         }
         else 
         {

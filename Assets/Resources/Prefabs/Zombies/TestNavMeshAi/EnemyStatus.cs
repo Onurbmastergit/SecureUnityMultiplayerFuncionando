@@ -39,7 +39,7 @@ public class EnemyStatus : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     public void ReceberDano(int dano) 
     {
-        animator.SetTrigger("Hit");
+        animator.SetBool("Hit", true);
         agent.enabled = false;
         tomouDano = true; 
         vidaAtual -= dano;
@@ -50,9 +50,10 @@ public class EnemyStatus : NetworkBehaviour
     {
         if (vidaAtual <= 0) 
         {
+            vidaAtual = 0;
+            animator.SetBool("Hit", false);
             agent.enabled = false;
             transform.GetComponent<CapsuleCollider>().enabled = false;
-            animator.SetInteger("Death",0);
         }
     }
     [ObserversRpc(BufferLast = true)]
@@ -62,6 +63,7 @@ public class EnemyStatus : NetworkBehaviour
     }
     public void DisableAnimation() 
     {
+         animator.SetBool("Hit", false);
         tomouDano = false;
         agent.enabled = true;
     }
