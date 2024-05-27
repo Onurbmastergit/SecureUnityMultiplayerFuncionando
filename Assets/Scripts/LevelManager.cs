@@ -19,6 +19,11 @@ public class LevelManager : NetworkBehaviour
     public TextMeshProUGUI metalCounter;
     public TextMeshProUGUI tecnologyCounter;
 
+    // Materiais coletados pelo GatherPopup.
+    public int woodGathered;
+    public int stoneGathered;
+    public int metalGathered;
+
     // Botoes da HUD do jogo.
     public GameObject buildButton;
     public GameObject radioButton;
