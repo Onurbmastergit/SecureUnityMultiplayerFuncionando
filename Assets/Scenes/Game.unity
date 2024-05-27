@@ -1537,6 +1537,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 934570884, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
+      propertyPath: _enableNetworkLod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7443408887813606049, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -33855,7 +33859,7 @@ MonoBehaviour:
   buildButton: {fileID: 150931157}
   radioButton: {fileID: 1604032700}
   currentDay: 1
-  currentHour: 19
+  currentHour: 1
   calendar: {fileID: 33883819}
   hourText: {fileID: 1721652154}
   isDay: 0
