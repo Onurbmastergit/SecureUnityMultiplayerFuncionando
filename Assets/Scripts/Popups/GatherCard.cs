@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class LocationCard : MonoBehaviour
+public class GatherCard : MonoBehaviour
 {
     #region Variables
 
@@ -18,16 +18,20 @@ public class LocationCard : MonoBehaviour
 
     #region Functions
 
+    /// <summary>
+    /// Select and saves the location that the materials are going to be gathered.
+    /// </summary>
     public void SelectLocation()
     {
-        LevelManager.instance.woodGathered = location.Wood;
-        LevelManager.instance.stoneGathered = location.Stone;
-        LevelManager.instance.metalGathered = location.Metal;
+        LevelManager.instance.selectedLocation = location;
     }
 
+    /// <summary>
+    /// Destroys the GatherPopup.
+    /// </summary>
     public void Close()
     {
-        GatherPopup.instance.Close();
+        Destroy(GameObject.Find("GatherPopup(Clone)"));
     }
 
     #endregion
@@ -35,12 +39,12 @@ public class LocationCard : MonoBehaviour
     #region Instatiation
 
     /// <summary>
-    /// Add collection card.
+    /// Add collection card inside parent.
     /// </summary>
-    public static LocationCard Add(Transform _parent, Location _location)
+    public static GatherCard Add(Transform _parent, Location _location)
     {
-        LocationCard reference = Resources.Load<LocationCard>("Prefabs/Popups/LocationCard");
-        LocationCard instance = Instantiate(reference, _parent);
+        GatherCard reference = Resources.Load<GatherCard>("Prefabs/Popups/GatherCard");
+        GatherCard instance = Instantiate(reference, _parent);
 
         instance.location = _location;
 

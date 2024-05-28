@@ -3,30 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 using FishNet.Object;
 
 public class LevelManager : NetworkBehaviour
 {
+    #region Variables
+
     // Contadores de Materiais no Menu.
     public float cureMeter = 0;
-    public int woodTotal = 99;
-    public int stoneTotal = 99;
-    public int metalTotal = 99;
+    public int woodTotal = 10;
+    public int stoneTotal = 5;
+    public int metalTotal = 0;
     public int tecnologyTotal = 1;
-    public TextMeshProUGUI woodCounter;
-    public TextMeshProUGUI stoneCounter;
-    public TextMeshProUGUI metalCounter;
-    public TextMeshProUGUI tecnologyCounter;
 
     // Materiais coletados pelo GatherPopup.
-    public int woodGathered;
-    public int stoneGathered;
-    public int metalGathered;
+    public Location selectedLocation;
 
     // Botoes da HUD do jogo.
     public GameObject buildButton;
     public GameObject radioButton;
+    public GameObject gatherButton;
 
     // Sistema de passagem de dias e horas dentro do jogo.
     public int currentDay = 1;
@@ -53,6 +49,10 @@ public class LevelManager : NetworkBehaviour
 
     public static LevelManager instance;
 
+    #endregion
+
+    #region Initialization
+
     void Awake()
     {
         if (instance == null)
@@ -64,11 +64,6 @@ public class LevelManager : NetworkBehaviour
     public override void OnStartServer()
     {
         base.OnStartServer();
-
-        woodCounter.text = woodTotal.ToString();
-        stoneCounter.text = stoneTotal.ToString();
-        metalCounter.text = metalTotal.ToString();
-        tecnologyCounter.text = "Lvl " + tecnologyTotal.ToString();
     }
 
     [Server]
@@ -78,7 +73,13 @@ public class LevelManager : NetworkBehaviour
         TimeSystem();
     }
 
-    // Comanda toda a passagem de Tempo dentro do jogo.
+    #endregion
+
+    #region TimePassing System
+
+    /// <summary>
+    /// Comanda toda a passagem de Tempo dentro do jogo.
+    /// </summary>
     [ObserversRpc(BufferLast = true)]
     void TimeSystem()
     {
@@ -108,7 +109,9 @@ public class LevelManager : NetworkBehaviour
         }
     }
 
-    // Gira o Sol em relacao ao horario do dia.
+    /// <summary>
+    /// Gira o Sol em relacao ao horario do dia.
+    /// </summary>
     void SunRotation()
     {
         sunRotationTimer = (isDay) ? sunRotationTimer + Time.deltaTime : sunRotationTimer + Time.deltaTime / 4;
@@ -116,7 +119,9 @@ public class LevelManager : NetworkBehaviour
         sun.rotation = Quaternion.Euler(currentRotation, -60, 0);
     }
 
-    // Trigga a cada hora.
+    /// <summary>
+    /// Trigga a cada hora.
+    /// </summary>
     [ObserversRpc(BufferLast = true)]
     void HourTick()
     {
@@ -137,36 +142,52 @@ public class LevelManager : NetworkBehaviour
         else NightHourTick();
     }
 
-    // Trigga a cada hora se for dia.
+    /// <summary>
+    /// Trigga a cada hora se for dia.
+    /// </summary>
     [ObserversRpc(BufferLast = true)]
-    public void DayHourTick()
+    void DayHourTick()
     {
         // Trigga apenas na primeira hora do dia.
         if (!dayStart)
         {
             dayStart = true;
             nightStart = false;
+
             buildButton.SetActive(true);
             radioButton.SetActive(true);
+            gatherButton.SetActive(true);
+
+            AddMaterials();
         }
         CureProgression();
     }
 
-    // Trigga a cada hora se for noite.
+    /// <summary>
+    /// Trigga a cada hora se for noite.
+    /// </summary>
     [ObserversRpc(BufferLast = true)]
-    public void NightHourTick()
+    void NightHourTick()
     {
         // Trigga apenas na primeira hora da noite.
         if (!nightStart)
         {
             nightStart = true;
             dayStart = false;
+
             radioButton.SetActive(false);
             buildButton.SetActive(false);
+            gatherButton.SetActive(false);
         }
     }
 
-    // Progressao da barra de Cura Research.
+    #endregion
+
+    #region CureResearch System
+
+    /// <summary>
+    /// Progressao da barra de Cura Research.
+    /// </summary>
     [ObserversRpc(BufferLast = true)]
     void CureProgression()
     {
@@ -174,4 +195,20 @@ public class LevelManager : NetworkBehaviour
         float preenchimentoNormalizado = cureMeter / 100f;
         cureMeterHud.fillAmount = preenchimentoNormalizado;
     }
+
+    #endregion
+
+    #region GatherMaterial System
+
+    /// <summary>
+    /// Adiciona os materias coletados no local selecionado para a base.
+    /// </summary>
+    void AddMaterials()
+    {
+        woodTotal += selectedLocation.Wood;
+        stoneTotal += selectedLocation.Stone;
+        metalTotal += selectedLocation.Metal;
+    }
+
+    #endregion
 }

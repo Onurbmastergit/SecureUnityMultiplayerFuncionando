@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5cd06e5d741e84e83dc23ae2c7d7cc, type: 3}
+  m_Name: 05 Faca
+  m_EditorClassIdentifier: 
+  title: Armamento Faca
+  description: Melhora seus ataques corpo a corpo
+  image: {fileID: 0}
+  WoodCost: 1
+  StoneCost: 1
+  MetalCost: 1
+  TecnologyCost: 1

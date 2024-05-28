@@ -165,9 +165,9 @@ public class BuildSystem : MonoBehaviour
                 LevelManager.instance.woodTotal -= buildList[buildIndex].woodCost;
                 LevelManager.instance.stoneTotal -= buildList[buildIndex].stoneCost;
                 LevelManager.instance.metalTotal -= buildList[buildIndex].metalCost;
-                LevelManager.instance.woodCounter.text = LevelManager.instance.woodTotal.ToString();
-                LevelManager.instance.stoneCounter.text = LevelManager.instance.stoneTotal.ToString();
-                LevelManager.instance.metalCounter.text = LevelManager.instance.metalTotal.ToString();
+                //LevelManager.instance.woodCounter.text = LevelManager.instance.woodTotal.ToString();
+                //LevelManager.instance.stoneCounter.text = LevelManager.instance.stoneTotal.ToString();
+                //LevelManager.instance.metalCounter.text = LevelManager.instance.metalTotal.ToString();
             }
         }
         yield return null;
@@ -195,9 +195,9 @@ public class BuildSystem : MonoBehaviour
                 LevelManager.instance.woodTotal -= buildList[buildIndex].woodCost;
                 LevelManager.instance.stoneTotal -= buildList[buildIndex].stoneCost;
                 LevelManager.instance.metalTotal -= buildList[buildIndex].metalCost;
-                LevelManager.instance.woodCounter.text = LevelManager.instance.woodTotal.ToString();
-                LevelManager.instance.stoneCounter.text = LevelManager.instance.stoneTotal.ToString();
-                LevelManager.instance.metalCounter.text = LevelManager.instance.metalTotal.ToString();
+                //LevelManager.instance.woodCounter.text = LevelManager.instance.woodTotal.ToString();
+                //LevelManager.instance.stoneCounter.text = LevelManager.instance.stoneTotal.ToString();
+                //LevelManager.instance.metalCounter.text = LevelManager.instance.metalTotal.ToString();
 
                 buildingPrefab.SetActive(false);
                 building = false;
