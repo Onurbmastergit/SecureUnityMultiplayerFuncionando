@@ -73,7 +73,7 @@ namespace FishNet.Transporting.Tugboat
         /// </summary>
         [Tooltip("Address to connect.")]
         [SerializeField]
-        private string _clientAddress = "localhost";
+        public string _clientAddress = "localhost";
         #endregion
 
         #region Private.
