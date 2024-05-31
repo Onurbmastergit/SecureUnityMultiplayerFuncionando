@@ -2,24 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Net;
+using FishNet.Transporting.Tugboat;
+using FishNet.Object;
+using UnityEngine.UI;
+using TMPro;
+using FishNet.Managing;
 
 public class GetIp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GetIp instaciate;
+    public  Tugboat tugboat;
+    private NetworkManager networkManager;
+    public TextMeshProUGUI ipNumber;
+    string ip ;
+    public TMP_InputField ipServer;
+    public GameObject painel;
+    public GameObject painelGeral;
+    public GameObject painelEntrar;
+    public GameObject painelSala;
+    public IPAddress[] ipAddresses;
+    void Awake()
     {
-    // Obtém o nome do host da máquina local
+        instaciate = this;
         string hostName = Dns.GetHostName();
-        // Obtém todos os endereços IP associados ao host
-        IPAddress[] ipAddresses = Dns.GetHostAddresses(hostName);
-
-        // Exibe o primeiro endereço IP associado à máquina local
-        
+        ipAddresses = Dns.GetHostAddresses(hostName);
+        if(tugboat == null) return;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        tugboat = transform.parent.GetComponent<Tugboat>();
+        ipNumber.text= $"IP : {tugboat._clientAddress}";
+    }
+    public void CretedServer()
+    {
+        ip = ipAddresses[3].ToString();
+        ipNumber.text= $"IP : {ip}";
+        InsertClientAdress(ip);
+    }
+    public void LoginServer()
+    {
+        ip = ipServer.text;
+        InsertClientAdress(ip);
+    }
+    void InsertClientAdress(string ipServer)
+    {
+        tugboat = transform.parent.GetComponent<Tugboat>();
+        tugboat._clientAddress = ipServer;
+    }
+    public void DesativarHud()
+    {
+        painel.SetActive(false);
+        if(tugboat._clientAddress == "localhost")
+        {
+           painelEntrar.SetActive(true); 
+        }
+        if(tugboat._clientAddress != "localhost")
+        {
+            painelEntrar.SetActive(false);
+            painelSala.SetActive(true);
+        }
+          
+    }
+    public void DesativarLogin()
+    {
+        painelGeral.SetActive(false);
     }
 }

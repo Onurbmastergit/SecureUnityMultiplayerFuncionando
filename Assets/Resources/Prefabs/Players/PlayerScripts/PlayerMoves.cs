@@ -18,6 +18,7 @@ public class PlayerMoves : NetworkBehaviour
     {
         base.OnStartClient();
         if(base.IsOwner == false) return;
+        GameObject.Find("RadomCamera").SetActive(false);
         controller = GetComponent<CharacterController>();
         inputController = GetComponent<InputControllers>();
     }

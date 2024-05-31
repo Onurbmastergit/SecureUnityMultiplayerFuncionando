@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using FishNet.Object;
+using TMPro;
 using UnityEngine;
 
-public class HudManager : NetworkBehaviour
+public class HudManager : MonoBehaviour
 {
    public static HudManager instance;
 
     public GameObject hudAlerta;
+    public GameObject loginHud;
     public bool active = true;
    void Awake()
    {
@@ -29,5 +31,9 @@ public class HudManager : NetworkBehaviour
    public void DesativarAlerta()
    {
     hudAlerta.SetActive(false);
+   }
+   public void DesativarLogin()
+   {
+    loginHud.SetActive(false);
    }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Zombie
   - HouseDefender
   - TransformCamera
+  - NetworkManager
   layers:
   - Default
   - TransparentFX
