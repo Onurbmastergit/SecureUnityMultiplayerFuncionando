@@ -45,5 +45,10 @@ public class Craft : ScriptableObject
     /// </summary>
     public int TecnologyCost;
 
+    /// <summary>
+    /// Prefab of the craft.
+    /// </summary>
+    public GameObject Prefab;
+
     #endregion
 }

@@ -19,6 +19,9 @@ public class LevelManager : NetworkBehaviour
     // Materiais coletados pelo GatherPopup.
     public Location selectedLocation;
 
+    // Construcao selecionada pelo CraftPopup.
+    public Craft selectedCraft;
+
     // Botoes da HUD do jogo.
     public GameObject buildButton;
     public GameObject radioButton;

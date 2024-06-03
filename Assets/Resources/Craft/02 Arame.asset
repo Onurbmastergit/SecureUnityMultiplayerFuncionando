@@ -19,3 +19,4 @@ MonoBehaviour:
   StoneCost: 1
   MetalCost: 1
   TecnologyCost: 1
+  Prefab: {fileID: 1214759714827697280, guid: 804ac8444e1f33f40b83ffbd00a49c69, type: 3}

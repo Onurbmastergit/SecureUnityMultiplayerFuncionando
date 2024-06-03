@@ -65,6 +65,6 @@ public class GetIp : MonoBehaviour
     }
     public void DesativarLogin()
     {
-        Destroy(gameObject);
+        painelGeral.SetActive(false);
     }
 }
