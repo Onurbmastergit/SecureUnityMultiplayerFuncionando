@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5cd06e5d741e84e83dc23ae2c7d7cc, type: 3}
   m_Name: 06 Rifle
   m_EditorClassIdentifier: 
+  id: 6
   title: Armamento Rifle
   description: Melhora seus ataques a distancia
   image: {fileID: 0}
@@ -19,3 +20,4 @@ MonoBehaviour:
   StoneCost: 1
   MetalCost: 1
   TecnologyCost: 1
+  Prefab: {fileID: 0}

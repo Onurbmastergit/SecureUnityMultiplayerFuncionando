@@ -208,6 +208,8 @@ public class LevelManager : NetworkBehaviour
     /// </summary>
     void AddMaterials()
     {
+        if (selectedLocation == null) return;
+
         woodTotal += selectedLocation.Wood;
         stoneTotal += selectedLocation.Stone;
         metalTotal += selectedLocation.Metal;

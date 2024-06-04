@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.ObjectChangeEventStream;
 
 public class CraftCard : MonoBehaviour
 {
@@ -16,16 +17,8 @@ public class CraftCard : MonoBehaviour
     [SerializeField] TextMeshProUGUI metalCost;
     [SerializeField] TextMeshProUGUI tecnologyCost;
 
-    GameObject buildingPrefab;
-
-    #endregion
-
-    #region Initialization
-
-    void Update()
-    {
-        CraftBuild();
-    }
+    [SerializeField] GameObject placeBuild;
+    [SerializeField] Transform placeContainer;
 
     #endregion
 
@@ -46,8 +39,8 @@ public class CraftCard : MonoBehaviour
             // Fecha Menu Build apos selecionar uma Build para construir
             if (craft.Title != "Armamento Faca" && craft.Title != "Armamento Rifle")
             {
-                buildingPrefab = Instantiate(craft.Prefab, Vector3.zero, Quaternion.identity);
-                Hide();
+                PlaceBuild.Create(placeContainer, craft);
+                Close();
             }
             else
             {
@@ -59,48 +52,6 @@ public class CraftCard : MonoBehaviour
 
         }
         else Debug.Log("Not enought Materials for this Craft.");
-    }
-
-    void CraftBuild()
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Vector3 mouseInWorld = Vector3.zero;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            // Arredonda a posição X e Z do ponto de colisão para o múltiplo de 4 mais próximo
-            mouseInWorld = new Vector3(Mathf.Round(hit.point.x / 4) * 4, 0, Mathf.Round(hit.point.z / 4) * 4);
-            buildingPrefab.transform.position = mouseInWorld;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            GameObject buildInstance = Instantiate(craft.Prefab, mouseInWorld, Quaternion.identity);
-
-            // Atualiza nova quantidade de Recursos apos instancia
-            LevelManager.instance.woodTotal -= craft.WoodCost;
-            LevelManager.instance.stoneTotal -= craft.StoneCost;
-            LevelManager.instance.metalTotal -= craft.MetalCost;
-
-            Destroy(buildingPrefab);
-            Close();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            Destroy(buildingPrefab);
-            Close();
-        }
-    }
-
-    /// <summary>
-    /// Destroys the GatherPopup.
-    /// </summary>
-    public void Hide()
-    {
-        GameObject CraftPopup = GameObject.Find("CraftPopup(Clone)");
-        CraftPopup.SetActive(false);
     }
 
     /// <summary>
@@ -118,12 +69,14 @@ public class CraftCard : MonoBehaviour
     /// <summary>
     /// Add collection card inside parent.
     /// </summary>
-    public static CraftCard Add(Transform _parent, Craft _craft)
+    public static CraftCard Add(Transform _parent, Craft _craft, Transform _buildContainer)
     {
         CraftCard reference = Resources.Load<CraftCard>("Prefabs/Popups/CraftCard");
         CraftCard instance = Instantiate(reference, _parent);
 
         instance.craft = _craft;
+
+        instance.placeContainer = _buildContainer;
 
         instance.craftName.text = _craft.Title;
         instance.description.text = _craft.Description;
@@ -131,9 +84,6 @@ public class CraftCard : MonoBehaviour
         instance.stoneCost.text = _craft.StoneCost.ToString();
         instance.metalCost.text = _craft.MetalCost.ToString();
         instance.tecnologyCost.text = _craft.TecnologyCost.ToString();
-
-        if (_craft.Prefab != null) instance.buildingPrefab = _craft.Prefab;
-        instance.buildingPrefab.SetActive(false);
 
         return instance;
     }

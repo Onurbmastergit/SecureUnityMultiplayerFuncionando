@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5cd06e5d741e84e83dc23ae2c7d7cc, type: 3}
   m_Name: 01 Barricada
   m_EditorClassIdentifier: 
+  id: 1
   title: Barricada
   description: Bloqueia a passagem de zumbis
   image: {fileID: 0}

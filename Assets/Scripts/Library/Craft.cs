@@ -8,6 +8,12 @@ public class Craft : ScriptableObject
     #region Variables
 
     /// <summary>
+    /// ID of the craft.
+    /// </summary>
+    public int Id => id;
+    [SerializeField] int id;
+
+    /// <summary>
     /// Title of the craft.
     /// </summary>
     public string Title => title;

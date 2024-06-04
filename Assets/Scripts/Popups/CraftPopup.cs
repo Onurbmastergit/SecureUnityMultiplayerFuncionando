@@ -16,6 +16,8 @@ public class CraftPopup : MonoBehaviour
 
     [SerializeField] Craft[] craftList;
 
+    Transform placeContainer;
+
     #endregion
 
     #region Initialization
@@ -37,7 +39,7 @@ public class CraftPopup : MonoBehaviour
     {
         foreach (var craft in craftList)
         {
-            CraftCard.Add(craftContainer, craft);
+            CraftCard.Add(craftContainer, craft, placeContainer);
         }
     }
 
@@ -56,10 +58,12 @@ public class CraftPopup : MonoBehaviour
     /// <summary>
     /// Instantiate Craft popup.
     /// </summary>
-    public static CraftPopup Show(Transform _parent)
+    public static CraftPopup Show(Transform _parent, Transform _buildContainer)
     {
         CraftPopup reference = Resources.Load<CraftPopup>("Prefabs/Popups/CraftPopup");
         CraftPopup instance = Instantiate(reference, _parent);
+
+        instance.placeContainer = _buildContainer;
 
         instance.wood.text = LevelManager.instance.woodTotal.ToString();
         instance.stone.text = LevelManager.instance.stoneTotal.ToString();

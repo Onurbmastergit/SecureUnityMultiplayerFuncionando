@@ -7,6 +7,7 @@ public class ButtonsUI : MonoBehaviour
     #region Variables
 
     [SerializeField] Transform popupContainer;
+    [SerializeField] Transform buildContainer;
 
     #endregion
 
@@ -14,7 +15,7 @@ public class ButtonsUI : MonoBehaviour
 
     public void OpenBuildPopup()
     {
-        CraftPopup.Show(popupContainer);
+        CraftPopup.Show(popupContainer, buildContainer);
     }
 
     public void OpenGatherPopup()
