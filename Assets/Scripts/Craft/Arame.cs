@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Arame : MonoBehaviour
 {
@@ -20,4 +22,17 @@ public class Arame : MonoBehaviour
     }
 
     #endregion
+
+    void OnTriggerStay(Collider collider)
+    {
+        if(collider.CompareTag("Zombie"))
+        {
+            collider.GetComponent<NavMeshAgent>().speed = 5 * 0.25f;
+            //transform.GetComponent<ObjectStatus>().ReceberDano(5);
+        }
+        else
+        {
+            collider.GetComponent<NavMeshAgent>().speed = 5;    
+        }
+    }
 }

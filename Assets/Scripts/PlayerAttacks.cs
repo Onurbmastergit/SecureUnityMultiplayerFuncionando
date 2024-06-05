@@ -68,7 +68,7 @@ public class PlayerAttacks : NetworkBehaviour
     }
 
     [ServerRpc]
-    void Shoot()
+    public void Shoot()
     {
         GameObject bulletInstance = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
         base.Spawn(bulletInstance);
