@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Arame : MonoBehaviour
+public class Arame : NetworkBehaviour
 {
+    public int zombiePassed;
     #region Instatiation
 
     /// <summary>
@@ -23,16 +25,28 @@ public class Arame : MonoBehaviour
 
     #endregion
 
+    void Update()
+    {
+        if(zombiePassed >= 5)
+        {
+            Destroy(gameObject);
+            Despawn(gameObject);
+        }
+    }
+
     void OnTriggerStay(Collider collider)
     {
         if(collider.CompareTag("Zombie"))
         {
             collider.GetComponent<NavMeshAgent>().speed = 5 * 0.25f;
-            //transform.GetComponent<ObjectStatus>().ReceberDano(5);
         }
-        else
+    }
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.CompareTag("Zombie"))
         {
-            collider.GetComponent<NavMeshAgent>().speed = 5;    
+            zombiePassed++;
+            collider.GetComponent<EnemyStatus>().ReceberDano(15);
         }
     }
 }
