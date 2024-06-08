@@ -1390,7 +1390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0c0f7e6983daa4c869a5fe7cdb8263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craft: {fileID: 0}
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   barricada: {fileID: 31056598767740459}
   arame: {fileID: 5322951138249170979}
   mina: {fileID: 3039075624624136101}

@@ -1,9 +1,13 @@
+using System.Buffers.Text;
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
 using UnityEngine;
 
-public class Torreta : MonoBehaviour
+public class Torreta : NetworkBehaviour
 {
+    
+
     #region Instatiation
 
     /// <summary>
@@ -13,12 +17,11 @@ public class Torreta : MonoBehaviour
     {
         Torreta reference = Resources.Load<Torreta>("Prefabs/Craft/BuildTorreta");
         Torreta instance = Instantiate(reference, _parent);
-
+        GameObject torreta = instance.gameObject;
         instance.transform.position = _position;
+        
 
         return instance;
     }
-
     #endregion
-    
 }

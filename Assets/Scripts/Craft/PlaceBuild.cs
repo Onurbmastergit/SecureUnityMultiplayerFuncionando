@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
 using UnityEngine;
 
 public class PlaceBuild : MonoBehaviour
@@ -18,7 +19,6 @@ public class PlaceBuild : MonoBehaviour
     #endregion
 
     #region Initialization
-
     void Update()
     {
         CraftBuild();
@@ -36,7 +36,7 @@ public class PlaceBuild : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // Arredonda a posição X e Z do ponto de colisão para o múltiplo de 4 mais próximo
+            // Arredonda a posiï¿½ï¿½o X e Z do ponto de colisï¿½o para o mï¿½ltiplo de 4 mais prï¿½ximo
             mouseInWorld = new Vector3(Mathf.Round(hit.point.x / 4) * 4, 0, Mathf.Round(hit.point.z / 4) * 4);
             transform.position = mouseInWorld;
         }
@@ -48,8 +48,10 @@ public class PlaceBuild : MonoBehaviour
             if (craft.Id == 1) Barricada.Create(placeContainer, mouseInWorld);
             else if (craft.Id == 2) Arame.Create(placeContainer, mouseInWorld);
             else if (craft.Id == 3) Mina.Create(placeContainer, mouseInWorld);
-            else if (craft.Id == 4) Torreta.Create(placeContainer, mouseInWorld);
-
+            else if (craft.Id == 4)
+            {
+                Torreta.Create(placeContainer, mouseInWorld);
+            } 
             // Atualiza nova quantidade de Recursos apos instancia
             LevelManager.instance.woodTotal -= craft.WoodCost;
             LevelManager.instance.stoneTotal -= craft.StoneCost;

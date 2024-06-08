@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
 using UnityEngine;
 
-public class Barricada : MonoBehaviour
+public class Barricada : NetworkBehaviour
 {
     #region Instatiation
 
