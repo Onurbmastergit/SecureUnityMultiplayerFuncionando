@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlaceBuild : MonoBehaviour
 {
@@ -43,15 +44,12 @@ public class PlaceBuild : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log(craft.Id);
             // Instancia a build selecionada na posicao do mouse
-            if (craft.Id == 1) Barricada.Create(placeContainer, mouseInWorld);
-            else if (craft.Id == 2) Arame.Create(placeContainer, mouseInWorld);
-            else if (craft.Id == 3) Mina.Create(placeContainer, mouseInWorld);
-            else if (craft.Id == 4)
-            {
-                Torreta.Create(placeContainer, mouseInWorld);
-            } 
+            if (craft.Id == 1) CreateBarricada(mouseInWorld);
+            else if (craft.Id == 2) CreateArame(mouseInWorld);
+            else if (craft.Id == 3) CreateMina(mouseInWorld);
+            else if (craft.Id == 4) CreateTorreta(mouseInWorld);
+
             // Atualiza nova quantidade de Recursos apos instancia
             LevelManager.instance.woodTotal -= craft.WoodCost;
             LevelManager.instance.stoneTotal -= craft.StoneCost;
@@ -64,6 +62,50 @@ public class PlaceBuild : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    /// <summary>
+    /// Instantiate prefab Barricada inside parent at position.
+    /// </summary>
+    void CreateBarricada(Vector3 position)
+    {
+        GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildBarricada");
+        GameObject instance = Instantiate(reference, placeContainer);
+
+        instance.transform.position = position;
+    }
+
+    /// <summary>
+    /// Instantiate prefab Arame inside parent at position.
+    /// </summary>
+    void CreateArame(Vector3 position)
+    {
+        GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildArame");
+        GameObject instance = Instantiate(reference, placeContainer);
+
+        instance.transform.position = position;
+    }
+
+    /// <summary>
+    /// Instantiate prefab Mina inside parent at position.
+    /// </summary>
+    void CreateMina(Vector3 position)
+    {
+        GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildMina");
+        GameObject instance = Instantiate(reference, placeContainer);
+
+        instance.transform.position = position;
+    }
+
+    /// <summary>
+    /// Instantiate prefab Torreta inside parent at position.
+    /// </summary>
+    void CreateTorreta(Vector3 position)
+    {
+        GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildTorreta");
+        GameObject instance = Instantiate(reference, placeContainer);
+
+        instance.transform.position = position;
     }
 
     #endregion
