@@ -4,16 +4,19 @@ using FishNet.Object;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlaceBuild : MonoBehaviour
+public class PlaceBuild : NetworkBehaviour
 {
     #region Variables
 
-    Craft craft;
+    public Craft craft;
 
     [SerializeField] GameObject barricada;
     [SerializeField] GameObject arame;
     [SerializeField] GameObject mina;
     [SerializeField] GameObject torreta;
+
+    public GameObject placebuild;
+    public static bool enableCreated = false;
 
     Transform placeContainer;
 
@@ -28,6 +31,14 @@ public class PlaceBuild : MonoBehaviour
     #endregion
 
     #region Functions
+
+    void SetPrefab()
+    {
+        barricada.SetActive(craft.Title == "Barricada");
+        arame.SetActive(craft.Title == "Arame Farpado");
+        mina.SetActive(craft.Title == "Mina Terrestre");
+        torreta.SetActive(craft.Title == "Torreta");
+    }
 
     void CraftBuild()
     {
@@ -55,11 +66,13 @@ public class PlaceBuild : MonoBehaviour
             LevelManager.instance.stoneTotal -= craft.StoneCost;
             LevelManager.instance.metalTotal -= craft.MetalCost;
 
+           
             Destroy(gameObject);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1))
         {
+            
             Destroy(gameObject);
         }
     }
@@ -67,68 +80,53 @@ public class PlaceBuild : MonoBehaviour
     /// <summary>
     /// Instantiate prefab Barricada inside parent at position.
     /// </summary>
+    [ServerRpc]
     void CreateBarricada(Vector3 position)
     {
         GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildBarricada");
         GameObject instance = Instantiate(reference, placeContainer);
 
         instance.transform.position = position;
+        base.Spawn(instance);
     }
 
     /// <summary>
     /// Instantiate prefab Arame inside parent at position.
     /// </summary>
+    [ServerRpc]
     void CreateArame(Vector3 position)
     {
         GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildArame");
         GameObject instance = Instantiate(reference, placeContainer);
 
         instance.transform.position = position;
+        base.Spawn(instance);
     }
 
     /// <summary>
     /// Instantiate prefab Mina inside parent at position.
     /// </summary>
+    [ServerRpc]
     void CreateMina(Vector3 position)
     {
         GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildMina");
         GameObject instance = Instantiate(reference, placeContainer);
 
         instance.transform.position = position;
+        base.Spawn(instance);
     }
 
     /// <summary>
     /// Instantiate prefab Torreta inside parent at position.
     /// </summary>
+    [ServerRpc]
     void CreateTorreta(Vector3 position)
     {
         GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/BuildTorreta");
         GameObject instance = Instantiate(reference, placeContainer);
 
         instance.transform.position = position;
-    }
-
-    #endregion
-
-    #region Instatiation
-
-    /// <summary>
-    /// Add collection card inside parent.
-    /// </summary>
-    public static PlaceBuild Create(Transform _parent, Craft _craft)
-    {
-        PlaceBuild reference = Resources.Load<PlaceBuild>("Prefabs/Craft/PlaceBuild");
-        PlaceBuild instance = Instantiate(reference, _parent);
-
-        instance.craft = _craft;
-        instance.placeContainer = _parent;
-
-        instance.barricada.SetActive(_craft.Title == "Barricada");
-        instance.arame.SetActive(_craft.Title == "Arame Farpado");
-        instance.mina.SetActive(_craft.Title == "Mina Terrestre");
-        instance.torreta.SetActive(_craft.Title == "Torreta");
-
-        return instance;
+        base.Spawn(instance);
     }
 
     #endregion

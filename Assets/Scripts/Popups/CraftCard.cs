@@ -1,7 +1,8 @@
+using FishNet.Object;
 using TMPro;
 using UnityEngine;
 
-public class CraftCard : MonoBehaviour
+public class CraftCard : NetworkBehaviour
 {
     #region Variables
 
@@ -24,6 +25,7 @@ public class CraftCard : MonoBehaviour
     /// <summary>
     /// Checks if there is enough material for the craft.
     /// </summary>
+    [ServerRpc]
     public void CheckMateral()
     {
         // Confere se o player tem materiais suficientes para construicao da Build
@@ -36,7 +38,11 @@ public class CraftCard : MonoBehaviour
             // Fecha Menu Build apos selecionar uma Build para construir
             if (craft.Title != "Armamento Faca" && craft.Title != "Armamento Rifle")
             {
-                PlaceBuild.Create(placeContainer, craft);
+                GameObject reference = Resources.Load<GameObject>("Prefabs/Craft/PlaceBuild");
+                GameObject instance = Instantiate(reference, placeContainer);
+                instance.GetComponent<PlaceBuild>().craft = craft;
+                base.Spawn(instance);
+                
                 Close();
             }
             else
