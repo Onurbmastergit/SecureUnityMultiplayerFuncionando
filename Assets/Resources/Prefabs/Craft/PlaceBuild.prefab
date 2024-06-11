@@ -1393,12 +1393,10 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 0}
   _networkObjectCache: {fileID: 0}
-  craft: {fileID: 0}
   barricada: {fileID: 31056598767740459}
   arame: {fileID: 5322951138249170979}
   mina: {fileID: 3039075624624136101}
   torreta: {fileID: 5650100419101770184}
-  placebuild: {fileID: 1636239962785093620}
 --- !u!1 &2053298678356776094
 GameObject:
   m_ObjectHideFlags: 0
