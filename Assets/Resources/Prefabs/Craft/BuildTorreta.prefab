@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40615b641ce2c62409e1c6923d8c1ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 4953285277697471681}
   _networkObjectCache: {fileID: 4953285277697471681}
   targetZombie: {fileID: 0}
@@ -985,6 +985,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a046fc9d2368f468f6e1e1b66bef7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 4953285277697471681}
+  _networkObjectCache: {fileID: 4953285277697471681}
 --- !u!54 &3771486079547355173
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1049,6 +1052,8 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
+  - {fileID: 2260224153905736266}
+  - {fileID: 8793416103728551021}
   - {fileID: 2013062380158904443}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
@@ -1070,7 +1075,7 @@ MonoBehaviour:
   _ownerInterpolation: 1
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 13
+  <PrefabId>k__BackingField: 15
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 774665742
   <SceneId>k__BackingField: 0
@@ -1117,9 +1122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 4953285277697471681}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 4953285277697471681}
   _componentConfiguration: 0
   _synchronizeParent: 0
   _packing:

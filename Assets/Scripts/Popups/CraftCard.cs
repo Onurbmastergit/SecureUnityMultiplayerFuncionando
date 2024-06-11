@@ -36,7 +36,7 @@ public class CraftCard : MonoBehaviour
             // Fecha Menu Build apos selecionar uma Build para construir
             if (craft.Title != "Armamento Faca" && craft.Title != "Armamento Rifle")
             {
-                PlaceBuild.Create(placeContainer, craft);
+                CreatePlaceBuild.Create(placeContainer, craft);
                 Close();
             }
             else
