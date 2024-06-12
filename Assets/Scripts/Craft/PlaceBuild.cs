@@ -1,5 +1,6 @@
 using System.Collections;
 using FishNet.Object;
+using FishNet.Connection;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -24,16 +25,15 @@ public class PlaceBuild : NetworkBehaviour
     #endregion
 
     #region Initialization
-
+    void Awake()
+    {
+        gameObject.SetActive(true);
+        InvokeRepeating("CraftBuild",0f,0.1f);
+    }
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if(base.IsOwner == false)return;
-    }
-
-    void Update()
-    {
-        CraftBuild();
+        InvokeRepeating("CraftBuild",0f,0.1f);
     }
 
     #endregion
@@ -51,10 +51,11 @@ public class PlaceBuild : NetworkBehaviour
         torretaHologram.SetActive(craft.Title == "Torreta");
     }
 
-    [ObserversRpc(BufferLast = true)]
+    //[ObserversRpc(BufferLast = true)]
     void CraftBuild()
     {
-        if (!base.IsOwner) return;
+        //if (!base.IsOwner) return;
+        Debug.Log("BuildOn");
 
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -89,7 +90,7 @@ public class PlaceBuild : NetworkBehaviour
     /// <summary>
     /// Instantiate Build in Mouse Position.
     /// </summary>
-    [ServerRpc]
+    //[ServerRpc]
     void InstantiateBuilds()
     {
         if (craft.Id == 1)
