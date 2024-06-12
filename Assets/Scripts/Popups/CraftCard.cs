@@ -79,6 +79,7 @@ public class CraftCard : MonoBehaviour
 
     public void ActivatePlaceBuild()
     {
+        if(GameObject.FindWithTag("CraftPlace") == null)return;
         GameObject.FindWithTag("CraftPlace").SetActive(true);
         GameObject.FindWithTag("CraftPlace").GetComponent<PlaceBuild>().craft = craft;
         GameObject.FindWithTag("CraftPlace").GetComponent<PlaceBuild>().UpdatePlaceBuild();

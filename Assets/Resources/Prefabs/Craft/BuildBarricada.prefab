@@ -117,9 +117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaAtual: 0
   vidaTotal: 100
-  vidaObject: {fileID: 0}
-  color: {fileID: 0}
-  colliderObj: {fileID: 0}
+  vidaObject: {fileID: 7793481307110020767}
+  color: {fileID: -7744261351769257008}
+  colliderObj: {fileID: 7302175810232279233}
 --- !u!114 &-7744261351769257008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb013477c8a6fb745b153c6e6c9de02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: {fileID: 0}
+  status: {fileID: 5182333897685975739}
 --- !u!114 &-5378665208319880497
 MonoBehaviour:
   m_ObjectHideFlags: 0
