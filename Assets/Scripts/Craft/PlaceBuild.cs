@@ -25,6 +25,12 @@ public class PlaceBuild : NetworkBehaviour
 
     #region Initialization
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if(base.IsOwner == false)return;
+    }
+
     void Update()
     {
         CraftBuild();
@@ -48,6 +54,8 @@ public class PlaceBuild : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void CraftBuild()
     {
+        if (!base.IsOwner) return;
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 mouseInWorld = Vector3.zero;

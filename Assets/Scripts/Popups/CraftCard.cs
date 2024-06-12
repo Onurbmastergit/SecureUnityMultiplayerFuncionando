@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
-public class CraftCard : NetworkBehaviour
+public class CraftCard : MonoBehaviour
 {
     #region Variables
 
@@ -17,6 +17,8 @@ public class CraftCard : NetworkBehaviour
     [SerializeField] TextMeshProUGUI tecnologyCost;
 
     [SerializeField] GameObject placeBuildPrefab;
+
+    [SerializeField] GameObject craftPopup;
 
     #endregion
 
@@ -47,7 +49,6 @@ public class CraftCard : NetworkBehaviour
     /// <summary>
     /// Checks if there is enough material for the craft.
     /// </summary>
-    [ObserversRpc(BufferLast = true)]
     public void CheckMateral()
     {
         // Confere se o player tem materiais suficientes para construicao da Build
@@ -61,6 +62,7 @@ public class CraftCard : NetworkBehaviour
             if (craft.Title != "Armamento Faca" && craft.Title != "Armamento Rifle")
             {
                 ActivatePlaceBuild();
+                CloseCraftPopup();
             }
             else
             {
@@ -68,6 +70,8 @@ public class CraftCard : NetworkBehaviour
                 LevelManager.instance.woodTotal -= craft.WoodCost;
                 LevelManager.instance.stoneTotal -= craft.StoneCost;
                 LevelManager.instance.metalTotal -= craft.MetalCost;
+
+                UpdateCard();
             }
         }
         else Debug.Log("Not enought Materials for this Craft.");
@@ -78,6 +82,11 @@ public class CraftCard : NetworkBehaviour
         placeBuildPrefab.SetActive(true);
         placeBuildPrefab.GetComponent<PlaceBuild>().craft = craft;
         placeBuildPrefab.GetComponent<PlaceBuild>().UpdatePlaceBuild();
+    }
+
+    void CloseCraftPopup()
+    {
+        craftPopup.SetActive(false);
     }
 
     #endregion
