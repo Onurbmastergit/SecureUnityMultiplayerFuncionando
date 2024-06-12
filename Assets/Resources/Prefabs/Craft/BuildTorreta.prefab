@@ -349,6 +349,7 @@ MonoBehaviour:
   targetZombie: {fileID: 0}
   lightGun: {fileID: 2984723510848889789}
   Gun: {fileID: 213010622771068634}
+  colldownBullets: 0.7
   firingPoint: {fileID: 4687579932660586614}
   projectilePrefab: {fileID: 1167688343123486047, guid: 85f13ca0525f0c848829bfb675d8d285, type: 3}
   velocity: 30
@@ -1058,7 +1059,7 @@ MonoBehaviour:
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 33.2}
+    Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
@@ -1077,7 +1078,7 @@ MonoBehaviour:
   _teleportThreshold: 1
   <PrefabId>k__BackingField: 15
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 774665742
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 15164615430337842940
 --- !u!114 &5904149024831692870

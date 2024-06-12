@@ -12,7 +12,15 @@ public class DetectionCollider : MonoBehaviour
     {
         if (other.CompareTag("Build") || other.CompareTag("Player"))
         { 
-            Attack = true;
+            if(transform.parent.GetComponent<EnemyStatus>().vidaAtual > 0)
+            {
+                Attack = true;
+            }
+            else
+            {
+                Attack = false;
+            }
+            
         }
     }
     void OnTriggerExit(Collider collider)

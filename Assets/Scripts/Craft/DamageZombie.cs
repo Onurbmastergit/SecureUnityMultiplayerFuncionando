@@ -8,6 +8,9 @@ public class DamageZombie : NetworkBehaviour
  public GameObject targetZombie;
  public SpriteRenderer lightGun;
  public GameObject Gun;
+ public float colldownBullets;
+ bool canShoot = true;
+ bool shootZombie =  true;
 [SerializeField] Transform firingPoint;
 [SerializeField] GameObject projectilePrefab;
  public float velocity;
@@ -23,7 +26,7 @@ public class DamageZombie : NetworkBehaviour
     }
     else 
     {
-        Shoot();
+          Shoot();   
     }
      
     
@@ -33,7 +36,8 @@ public class DamageZombie : NetworkBehaviour
     if(collider.CompareTag("Zombie"))
     {
         SelectionTarget();
-        Gun.transform.LookAt(targetZombie.transform);    
+        Gun.transform.LookAt(targetZombie.transform);
+        shootZombie = collider.GetComponent<EnemyStatus>().vidaAtual > 0;    
     }
     else
     {
@@ -68,8 +72,23 @@ public class DamageZombie : NetworkBehaviour
 
    public void Shoot()
     {
-        GameObject bulletInstance = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
+        if(canShoot && shootZombie)
+        {
+        GameObject bulletInstance = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation); 
         base.Spawn(bulletInstance);
+        canShoot = false;
+        }
+        else if(canShoot == false)
+        {
+            StartCoroutine(bulletsTime());
+        }
+       
+    }
+
+    IEnumerator bulletsTime()
+    {
+        yield return new WaitForSeconds(colldownBullets);
+        canShoot = true;
     }    
 
 }

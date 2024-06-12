@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FishNet.Connection;
 using FishNet.Object;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMoves : NetworkBehaviour
@@ -25,6 +26,10 @@ public class PlayerMoves : NetworkBehaviour
 
     void Update()
     {
+        Vector3 position = transform.position;
+        position.y = 0;
+        transform.position = position;
+        
         if(base.IsOwner == false) return;
         if(acessibilidade == false)
         {
