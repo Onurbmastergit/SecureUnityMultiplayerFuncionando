@@ -15,6 +15,7 @@ public class LevelManager : NetworkBehaviour
     public int stoneTotal = 5;
     public int metalTotal = 0;
     public int tecnologyTotal = 1;
+    public float scientistsHealth = 10;
 
     // Materiais coletados pelo GatherPopup.
     public Location selectedLocation;
@@ -52,6 +53,9 @@ public class LevelManager : NetworkBehaviour
 
     public static LevelManager instance;
 
+    // Endgame
+    [SerializeField] GameObject EndgamePopup;
+
     #endregion
 
     #region Initialization
@@ -74,6 +78,7 @@ public class LevelManager : NetworkBehaviour
     {
         if(base.ClientManager.Clients.Count == 0) return; 
         TimeSystem();
+        EndgameSystem();
     }
 
     #endregion
@@ -213,6 +218,36 @@ public class LevelManager : NetworkBehaviour
         woodTotal += selectedLocation.Wood;
         stoneTotal += selectedLocation.Stone;
         metalTotal += selectedLocation.Metal;
+    }
+
+    #endregion
+
+    #region EndGame System
+
+    /// <summary>
+    /// Verifica se as condicoes de Fim de jogo ocorrerem.
+    /// </summary>
+    void EndgameSystem()
+    {
+        if (cureMeter >= 100)
+        {
+            Endgame();
+            EndgamePopup.GetComponent<EndgamePopup>().UpdateEndgamePopup(true);
+        }
+
+        if (scientistsHealth <= 0)
+        {
+            Endgame();
+            EndgamePopup.GetComponent<EndgamePopup>().UpdateEndgamePopup(false);
+        }
+    }
+
+    /// <summary>
+    /// Todas as funcoes que devem ocorrer ao Fim do jogo.
+    /// </summary>
+    void Endgame()
+    {
+        EndgamePopup.SetActive(true);
     }
 
     #endregion

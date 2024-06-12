@@ -966,14 +966,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2b7d14df15c114d871e0465dc50265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
+  craft: {fileID: 0}
   craftName: {fileID: 5236093700777071910}
   description: {fileID: 6876149560890145043}
   woodCost: {fileID: 2293531436208878240}
   stoneCost: {fileID: 5688707948344458918}
   metalCost: {fileID: 5258226340521016608}
   tecnologyCost: {fileID: 1229099541788816846}
-  placeBuild: {fileID: 1636239962785093620, guid: 1c05686441d641a4c8c77d8486cbe2eb, type: 3}
-  placeContainer: {fileID: 0}
+  placeBuildPrefab: {fileID: 0}
 --- !u!114 &1934516173274757043
 MonoBehaviour:
   m_ObjectHideFlags: 0

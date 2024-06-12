@@ -1,33 +1,29 @@
 using System.Collections;
-using System.Collections.Generic;
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlaceBuild : MonoBehaviour
+public class PlaceBuild : NetworkBehaviour
 {
     #region Variables
 
     public Craft craft;
 
-    [SerializeField] GameObject barricada;
-    [SerializeField] GameObject arame;
-    [SerializeField] GameObject mina;
-    [SerializeField] GameObject torreta;
+    [SerializeField] GameObject barricadaHologram;
+    [SerializeField] GameObject arameHologram;
+    [SerializeField] GameObject minaHologram;
+    [SerializeField] GameObject torretaHologram;
+
+    [SerializeField] GameObject barricadaPrefab;
+    [SerializeField] GameObject aramePrefab;
+    [SerializeField] GameObject minaPrefab;
+    [SerializeField] GameObject torretaPrefab;
 
     public Transform placeContainer;
 
     #endregion
 
     #region Initialization
-
-    void Start()
-    {
-        barricada.SetActive(craft.Title == "Barricada");
-        arame.SetActive(craft.Title == "Arame Farpado");
-        mina.SetActive(craft.Title == "Mina Terrestre");
-        torreta.SetActive(craft.Title == "Torreta");
-    }
 
     void Update()
     {
@@ -38,6 +34,18 @@ public class PlaceBuild : MonoBehaviour
 
     #region Functions
 
+    /// <summary>
+    /// Update PlaceBuild Informations.
+    /// </summary>
+    public void UpdatePlaceBuild()
+    {
+        barricadaHologram.SetActive(craft.Title == "Barricada");
+        arameHologram.SetActive(craft.Title == "Arame Farpado");
+        minaHologram.SetActive(craft.Title == "Mina Terrestre");
+        torretaHologram.SetActive(craft.Title == "Torreta");
+    }
+
+    [ObserversRpc(BufferLast = true)]
     void CraftBuild()
     {
         RaycastHit hit;
@@ -53,8 +61,8 @@ public class PlaceBuild : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            // Instancia a build selecionada na posicao do mouse
-            //transform.GetComponent<CraftSpawner>().Spawn(craft, placeContainer);
+            // Instancia a Build selecionada no mouseInWorld position.
+            InstantiateBuilds();
 
             // Atualiza nova quantidade de Recursos apos instancia
             LevelManager.instance.woodTotal -= craft.WoodCost;
@@ -67,6 +75,42 @@ public class PlaceBuild : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1))
         {
             Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Instantiate Build in Mouse Position.
+    /// </summary>
+    [ServerRpc]
+    void InstantiateBuilds()
+    {
+        if (craft.Id == 1)
+        {
+            GameObject barricadaInstance = Instantiate(barricadaPrefab, placeContainer);
+            base.Spawn(barricadaInstance);
+
+            barricadaInstance.transform.position = transform.position;
+        }
+        if (craft.Id == 2)
+        {
+            GameObject arameInstance = Instantiate(aramePrefab, placeContainer);
+            base.Spawn(arameInstance);
+
+            arameInstance.transform.position = transform.position;
+        }
+        if (craft.Id == 3)
+        {
+            GameObject minaInstance = Instantiate(minaPrefab, placeContainer);
+            base.Spawn(minaInstance);
+
+            minaInstance.transform.position = transform.position;
+        }
+        if (craft.Id == 4)
+        {
+            GameObject torretaInstance = Instantiate(torretaPrefab, placeContainer);
+            base.Spawn(torretaInstance);
+
+            torretaInstance.transform.position = transform.position;
         }
     }
 

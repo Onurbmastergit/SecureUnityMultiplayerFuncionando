@@ -12,38 +12,23 @@ public class EndgamePopup : MonoBehaviour
 
     #endregion
 
-    #region Initialization
-
-    void Start()
-    {
-        
-    }
-
-    #endregion
-
     #region Funtions
 
+    /// <summary>
+    /// Updates Endgame popup informations.
+    /// </summary>
+    public void UpdateEndgamePopup(bool _victory)
+    {
+        victoryCard.SetActive(_victory);
+        defeatCard.SetActive(!_victory);
+    }
+
+    /// <summary>
+    /// Return to MainMenu Scene.
+    /// </summary>
     public void Return()
     {
         SceneManager.LoadScene("MainMenu");
-    }
-
-    #endregion
-
-    #region Instatiation
-
-    /// <summary>
-    /// Instantiate Endgame popup.
-    /// </summary>
-    public static EndgamePopup Show(Transform _parent, bool _victory)
-    {
-        EndgamePopup reference = Resources.Load<EndgamePopup>("Prefabs/Popups/EndgamePopup");
-        EndgamePopup instance = Instantiate(reference, _parent);
-
-        instance.victoryCard.SetActive(_victory);
-        instance.defeatCard.SetActive(!_victory);
-
-        return instance;
     }
 
     #endregion

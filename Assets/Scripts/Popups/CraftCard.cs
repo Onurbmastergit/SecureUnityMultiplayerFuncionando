@@ -1,11 +1,13 @@
+using FishNet.Object;
 using TMPro;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
-public class CraftCard : MonoBehaviour
+public class CraftCard : NetworkBehaviour
 {
     #region Variables
 
-    Craft craft;
+    [SerializeField] Craft craft;
 
     [SerializeField] TextMeshProUGUI craftName;
     [SerializeField] TextMeshProUGUI description;
@@ -14,16 +16,38 @@ public class CraftCard : MonoBehaviour
     [SerializeField] TextMeshProUGUI metalCost;
     [SerializeField] TextMeshProUGUI tecnologyCost;
 
-    [SerializeField] GameObject placeBuild;
-    [SerializeField] Transform placeContainer;
+    [SerializeField] GameObject placeBuildPrefab;
+
+    #endregion
+
+    #region Initialization
+
+    void Start()
+    {
+        UpdateCard();
+    }
 
     #endregion
 
     #region Functions
 
     /// <summary>
+    /// Update CraftCard Informations.
+    /// </summary>
+    public void UpdateCard()
+    {
+        craftName.text = craft.Title;
+        description.text = craft.Description;
+        woodCost.text = craft.WoodCost.ToString();
+        stoneCost.text = craft.StoneCost.ToString();
+        metalCost.text = craft.MetalCost.ToString();
+        tecnologyCost.text = craft.TecnologyCost.ToString();
+    }
+
+    /// <summary>
     /// Checks if there is enough material for the craft.
     /// </summary>
+    [ObserversRpc(BufferLast = true)]
     public void CheckMateral()
     {
         // Confere se o player tem materiais suficientes para construicao da Build
@@ -36,8 +60,7 @@ public class CraftCard : MonoBehaviour
             // Fecha Menu Build apos selecionar uma Build para construir
             if (craft.Title != "Armamento Faca" && craft.Title != "Armamento Rifle")
             {
-                CreatePlaceBuild.Create(placeContainer, craft);
-                Close();
+                ActivatePlaceBuild();
             }
             else
             {
@@ -46,43 +69,15 @@ public class CraftCard : MonoBehaviour
                 LevelManager.instance.stoneTotal -= craft.StoneCost;
                 LevelManager.instance.metalTotal -= craft.MetalCost;
             }
-
         }
         else Debug.Log("Not enought Materials for this Craft.");
     }
 
-    /// <summary>
-    /// Destroys the GatherPopup.
-    /// </summary>
-    public void Close()
+    public void ActivatePlaceBuild()
     {
-        Destroy(GameObject.Find("CraftPopup(Clone)"));
-    }
-
-    #endregion
-
-    #region Instatiation
-
-    /// <summary>
-    /// Add collection card inside parent.
-    /// </summary>
-    public static CraftCard Add(Transform _parent, Craft _craft, Transform _buildContainer)
-    {
-        CraftCard reference = Resources.Load<CraftCard>("Prefabs/Popups/CraftCard");
-        CraftCard instance = Instantiate(reference, _parent);
-
-        instance.craft = _craft;
-
-        instance.placeContainer = _buildContainer;
-
-        instance.craftName.text = _craft.Title;
-        instance.description.text = _craft.Description;
-        instance.woodCost.text = _craft.WoodCost.ToString();
-        instance.stoneCost.text = _craft.StoneCost.ToString();
-        instance.metalCost.text = _craft.MetalCost.ToString();
-        instance.tecnologyCost.text = _craft.TecnologyCost.ToString();
-
-        return instance;
+        placeBuildPrefab.SetActive(true);
+        placeBuildPrefab.GetComponent<PlaceBuild>().craft = craft;
+        placeBuildPrefab.GetComponent<PlaceBuild>().UpdatePlaceBuild();
     }
 
     #endregion

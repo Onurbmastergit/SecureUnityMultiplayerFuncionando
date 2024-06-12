@@ -7,15 +7,15 @@ public class ButtonsUI : MonoBehaviour
     #region Variables
 
     [SerializeField] Transform popupContainer;
-    [SerializeField] Transform buildContainer;
+    [SerializeField] GameObject craftPopup;
 
     #endregion
 
     #region Functions
 
-    public void OpenBuildPopup()
+    public void OpenCraftPopup()
     {
-        CraftPopup.Show(popupContainer, buildContainer);
+        craftPopup.SetActive(true);
     }
 
     public void OpenGatherPopup()

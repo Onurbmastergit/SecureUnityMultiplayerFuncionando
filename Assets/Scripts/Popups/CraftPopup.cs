@@ -7,16 +7,10 @@ public class CraftPopup : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] Transform craftContainer;
-
     [SerializeField] TextMeshProUGUI wood;
     [SerializeField] TextMeshProUGUI stone;
     [SerializeField] TextMeshProUGUI metal;
     [SerializeField] TextMeshProUGUI tecnology;
-
-    [SerializeField] Craft[] craftList;
-
-    Transform placeContainer;
 
     #endregion
 
@@ -24,8 +18,7 @@ public class CraftPopup : MonoBehaviour
 
     void Start()
     {
-        if (craftList != null) InstantiateCraftCards();
-        else Debug.Log("O vetor locationList dentro do GatherPopup é null.");
+        UpdateMaterials();
     }
 
     #endregion
@@ -33,44 +26,22 @@ public class CraftPopup : MonoBehaviour
     #region Functions
 
     /// <summary>
-    /// Instantiate CraftCards inside the CraftPopup.
+    /// Update amount of Materials in CraftPopup HUD.
     /// </summary>
-    void InstantiateCraftCards()
+    public void UpdateMaterials()
     {
-        foreach (var craft in craftList)
-        {
-            CraftCard.Add(craftContainer, craft, placeContainer);
-        }
+        wood.text = LevelManager.instance.woodTotal.ToString();
+        stone.text = LevelManager.instance.stoneTotal.ToString();
+        metal.text = LevelManager.instance.metalTotal.ToString();
+        tecnology.text = LevelManager.instance.tecnologyTotal.ToString();
     }
 
     /// <summary>
-    /// Destroys the Popup.
+    /// Closes CraftPopup.
     /// </summary>
     public void Close()
     {
-        Destroy(gameObject);
-    }
-
-    #endregion
-
-    #region Instatiation
-
-    /// <summary>
-    /// Instantiate Craft popup.
-    /// </summary>
-    public static CraftPopup Show(Transform _parent, Transform _buildContainer)
-    {
-        CraftPopup reference = Resources.Load<CraftPopup>("Prefabs/Popups/CraftPopup");
-        CraftPopup instance = Instantiate(reference, _parent);
-
-        instance.placeContainer = _buildContainer;
-
-        instance.wood.text = LevelManager.instance.woodTotal.ToString();
-        instance.stone.text = LevelManager.instance.stoneTotal.ToString();
-        instance.metal.text = LevelManager.instance.metalTotal.ToString();
-        instance.tecnology.text = LevelManager.instance.tecnologyTotal.ToString();
-
-        return instance;
+        gameObject.SetActive(false);
     }
 
     #endregion
