@@ -33,7 +33,12 @@ public class PlaceBuild : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        InvokeRepeating("CraftBuild",0f,0.1f);
+        //InvokeRepeating("CraftBuild",0f,0.1f);
+    }
+    
+    void Update()
+    {
+        CraftBuild();
     }
 
     #endregion
@@ -51,12 +56,8 @@ public class PlaceBuild : NetworkBehaviour
         torretaHologram.SetActive(craft.Title == "Torreta");
     }
 
-    //[ObserversRpc(BufferLast = true)]
     void CraftBuild()
     {
-        //if (!base.IsOwner) return;
-        Debug.Log("BuildOn");
-
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 mouseInWorld = Vector3.zero;
@@ -78,12 +79,12 @@ public class PlaceBuild : NetworkBehaviour
             LevelManager.instance.stoneTotal -= craft.StoneCost;
             LevelManager.instance.metalTotal -= craft.MetalCost;
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -91,6 +92,7 @@ public class PlaceBuild : NetworkBehaviour
     /// Instantiate Build in Mouse Position.
     /// </summary>
     //[ServerRpc]
+    [ObserversRpc(BufferLast = true)]
     void InstantiateBuilds()
     {
         if (craft.Id == 1)

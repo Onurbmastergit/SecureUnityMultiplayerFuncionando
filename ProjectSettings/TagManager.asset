@@ -9,6 +9,8 @@ TagManager:
   - HouseDefender
   - TransformCamera
   - NetworkManager
+  - PlaceBuild
+  - CraftPlace
   layers:
   - Default
   - TransparentFX

@@ -79,9 +79,9 @@ public class CraftCard : MonoBehaviour
 
     public void ActivatePlaceBuild()
     {
-        placeBuildPrefab.SetActive(true);
-        placeBuildPrefab.GetComponent<PlaceBuild>().craft = craft;
-        placeBuildPrefab.GetComponent<PlaceBuild>().UpdatePlaceBuild();
+        GameObject.FindWithTag("CraftPlace").SetActive(true);
+        GameObject.FindWithTag("CraftPlace").GetComponent<PlaceBuild>().craft = craft;
+        GameObject.FindWithTag("CraftPlace").GetComponent<PlaceBuild>().UpdatePlaceBuild();
     }
 
     void CloseCraftPopup()
