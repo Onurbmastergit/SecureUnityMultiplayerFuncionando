@@ -20,6 +20,7 @@ public class PlayerMoves : NetworkBehaviour
     {
         base.OnStartClient();
         if(base.IsOwner == false) return;
+        transform.GetComponent<PlayerStatus>().vidaAtual = transform.GetComponent<PlayerStatus>().vidaTotal;
         GameObject.Find("RadomCamera").SetActive(false);
         controller = GetComponent<CharacterController>();
         inputController = GetComponent<InputControllers>();

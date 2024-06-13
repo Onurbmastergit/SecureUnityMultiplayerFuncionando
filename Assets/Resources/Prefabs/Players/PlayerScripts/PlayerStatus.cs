@@ -11,32 +11,27 @@ public class PlayerStatus : MonoBehaviour
 
     public Image BarLifeStatus;
      public float fillAmount;
-
+    
     void Start()
     {
+        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
         vidaAtual = vidaTotal;
-        StartCoroutine("SetBarLife");
+        Invoke("SetBarLife",2f);
         
     }
 
     void Update()
     {
         fillAmount = (float)vidaAtual/vidaTotal;
-
+        BarLifeStatus = GameObject.Find("HealthBar Fill").GetComponent<Image>();
         if (BarLifeStatus == null) return;
         BarLifeStatus.fillAmount = fillAmount;
     }
 
-    IEnumerator SetBarLife()
+    void SetBarLife()
     {
-        while (BarLifeStatus == null)
-        {
-            // Aguarda um frame antes de verificar novamente
-            yield return null;
-
-            // Atualiza a referência do objeto
-            BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
-        }
+        Debug.Log("PegouAVida");
+        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
     }
     
     public void ReceberDano(int valor, NetworkConnection connection)
@@ -48,7 +43,8 @@ public class PlayerStatus : MonoBehaviour
     {
         if(vidaAtual == 0)
         {
-            Debug.Log("Morreu");
+           transform.GetComponent<PlayerMoves>().enabled = false;
+           transform.GetComponent<PlayerAttacks>().enabled = false;
         }
     }
 }
