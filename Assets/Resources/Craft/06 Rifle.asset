@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Armamento Rifle
   description: Melhora seus ataques a distancia
   image: {fileID: 0}
-  WoodCost: 1
-  StoneCost: 1
-  MetalCost: 1
+  WoodCost: 99
+  StoneCost: 99
+  MetalCost: 99
   TecnologyCost: 1
   Prefab: {fileID: 0}

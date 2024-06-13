@@ -12898,9 +12898,9 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1403144802}
   _networkObjectCache: {fileID: 1403144802}
   cureMeter: 0
-  woodTotal: 99
-  stoneTotal: 99
-  metalTotal: 99
+  woodTotal: 5
+  stoneTotal: 5
+  metalTotal: 5
   tecnologyTotal: 1
   scientistsHealth: 10
   selectedLocation: {fileID: 0}
@@ -12909,7 +12909,7 @@ MonoBehaviour:
   radioButton: {fileID: 1604032700}
   gatherButton: {fileID: 1345990302}
   currentDay: 1
-  currentHour: 19
+  currentHour: 6
   calendar: {fileID: 33883819}
   hourText: {fileID: 1721652154}
   isDay: 0

@@ -36,7 +36,7 @@ public class LevelManager : NetworkBehaviour
     public bool isDay = true;
     public bool dayStart;
     public bool nightStart;
-    float hourDurationDay = 7.5f; // Duracao de cada hora do dia em segundos.
+    float hourDurationDay = 5f; // Duracao de cada hora do dia em segundos.
     float hourDurationNight = 30.0f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
 
@@ -73,7 +73,7 @@ public class LevelManager : NetworkBehaviour
         base.OnStartServer();
     }
 
-    [Server]
+    [ObserversRpc(BufferLast = true)]
     void Update()
     {
         if(base.ClientManager.Clients.Count == 0) return; 
@@ -120,6 +120,7 @@ public class LevelManager : NetworkBehaviour
     /// <summary>
     /// Gira o Sol em relacao ao horario do dia.
     /// </summary>
+    [ObserversRpc(BufferLast = true)]
     void SunRotation()
     {
         sunRotationTimer = (isDay) ? sunRotationTimer + Time.deltaTime : sunRotationTimer + Time.deltaTime / 4;
@@ -163,7 +164,7 @@ public class LevelManager : NetworkBehaviour
             nightStart = false;
 
             buildButton.SetActive(true);
-            radioButton.SetActive(true);
+            //radioButton.SetActive(true);
             gatherButton.SetActive(true);
 
             AddMaterials();

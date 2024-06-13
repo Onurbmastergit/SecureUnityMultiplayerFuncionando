@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Armamento Faca
   description: Melhora seus ataques corpo a corpo
   image: {fileID: 0}
-  WoodCost: 1
-  StoneCost: 1
-  MetalCost: 1
+  WoodCost: 99
+  StoneCost: 99
+  MetalCost: 99
   TecnologyCost: 1
   Prefab: {fileID: 0}

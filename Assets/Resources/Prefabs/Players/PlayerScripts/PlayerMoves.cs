@@ -50,7 +50,7 @@ public class PlayerMoves : NetworkBehaviour
         float moveVertical = inputController.movimentoVertical;
 
         // Calcular a direção de movimento
-        movement = new Vector3(moveHorizontal, -1f, moveVertical);
+        movement = new Vector3(moveHorizontal, -0.5f, moveVertical);
         movement = transform.TransformDirection(movement); // Converter para coordenadas locais
         movement *= moveSpeed * Time.deltaTime;
        

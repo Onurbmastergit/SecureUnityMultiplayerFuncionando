@@ -9,7 +9,8 @@ public class Arame : NetworkBehaviour
 {
     #region Variables
 
-    public int zombiePassed;
+    int zombiePassed;
+    [SerializeField] int durability = 15;
 
     #endregion
 
@@ -24,7 +25,7 @@ public class Arame : NetworkBehaviour
             collider.GetComponent<NavMeshAgent>().speed = 5 * 0.25f;
 
             // Se auto-destroi apos certa quantidade de usos.
-            if (zombiePassed >= 5)
+            if (zombiePassed >= durability)
             {
                 Destroy(gameObject);
                 Despawn(gameObject);

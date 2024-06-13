@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Barricada
   description: Bloqueia a passagem de zumbis
   image: {fileID: 0}
-  WoodCost: 1
+  WoodCost: 2
   StoneCost: 1
-  MetalCost: 1
+  MetalCost: 0
   TecnologyCost: 1
   Prefab: {fileID: 1214759714827697280, guid: d8a16904fae8dae4fbe41fff0d40850a, type: 3}

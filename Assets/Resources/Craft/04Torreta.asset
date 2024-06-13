@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Torreta
   description: Atira em inimigos automaticamente. Precisa ser recarregada
   image: {fileID: 0}
-  WoodCost: 1
-  StoneCost: 1
-  MetalCost: 1
+  WoodCost: 0
+  StoneCost: 2
+  MetalCost: 3
   TecnologyCost: 1
   Prefab: {fileID: 1214759714827697280, guid: 3108f165f5c22334d9860b30a18ba3ac, type: 3}
