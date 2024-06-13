@@ -36,7 +36,7 @@ public class LevelManager : NetworkBehaviour
     public bool isDay = true;
     public bool dayStart;
     public bool nightStart;
-    float hourDurationDay = 5f; // Duracao de cada hora do dia em segundos.
+    float hourDurationDay = 6f; // Duracao de cada hora do dia em segundos.
     float hourDurationNight = 30.0f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
 
@@ -123,7 +123,7 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void SunRotation()
     {
-        sunRotationTimer = (isDay) ? sunRotationTimer + Time.deltaTime : sunRotationTimer + Time.deltaTime / 4;
+        sunRotationTimer = (isDay) ? sunRotationTimer + Time.deltaTime : sunRotationTimer + Time.deltaTime / 5;
         float currentRotation = sunRotationSpeed * sunRotationTimer;
         sun.rotation = Quaternion.Euler(currentRotation, -60, 0);
     }
