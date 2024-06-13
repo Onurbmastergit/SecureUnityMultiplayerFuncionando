@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 3381172763768670499}
   - component: {fileID: 1934516173274757043}
   - component: {fileID: 8465868245471542557}
+  - component: {fileID: -3972739348308933391}
   m_Layer: 5
   m_Name: CraftCard
   m_TagString: Untagged
@@ -967,8 +968,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 0}
+  _addedNetworkObject: {fileID: -3972739348308933391}
+  _networkObjectCache: {fileID: -3972739348308933391}
   craft: {fileID: 0}
   craftName: {fileID: 5236093700777071910}
   description: {fileID: 6876149560890145043}
@@ -976,7 +977,8 @@ MonoBehaviour:
   stoneCost: {fileID: 5688707948344458918}
   metalCost: {fileID: 5258226340521016608}
   tecnologyCost: {fileID: 1229099541788816846}
-  placeBuildPrefab: {fileID: 0}
+  placeBuildPrefab: {fileID: 1636239962785093620, guid: 1c05686441d641a4c8c77d8486cbe2eb, type: 3}
+  craftPopup: {fileID: 0}
 --- !u!114 &1934516173274757043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,6 +1065,48 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-3972739348308933391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820809402677684276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  _networkBehaviours:
+  - {fileID: 3381172763768670499}
+  <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
+  <NestedRootNetworkBehaviours>k__BackingField: []
+  SerializedTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 0}
+    LocalScale: {x: 0, y: 0, z: 0}
+  _isNetworked: 1
+  _isSpawnable: 1
+  _isGlobal: 0
+  _initializeOrder: 0
+  _defaultDespawnType: 0
+  NetworkObserver: {fileID: 0}
+  _enablePrediction: 0
+  _predictionType: 0
+  _graphicalObject: {fileID: 0}
+  _enableStateForwarding: 1
+  _networkTransform: {fileID: 0}
+  _ownerInterpolation: 1
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  <PrefabId>k__BackingField: 0
+  <SpawnableCollectionId>k__BackingField: 0
+  _scenePathHash: 0
+  <SceneId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 1159504747664100459
 --- !u!1 &7676842710067869292
 GameObject:
   m_ObjectHideFlags: 0

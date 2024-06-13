@@ -12,6 +12,10 @@ TagManager:
   - PlaceBuild
   - CraftPlace
   - Health
+  - CraftContainer
+  - HUD
+  - PlayerHealth
+  - CraftPopup
   layers:
   - Default
   - TransparentFX

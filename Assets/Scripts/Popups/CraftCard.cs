@@ -1,13 +1,12 @@
 using FishNet.Object;
 using TMPro;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
-public class CraftCard : MonoBehaviour
+public class CraftCard : NetworkBehaviour
 {
     #region Variables
 
-    [SerializeField] Craft craft;
+    public Craft craft;
 
     [SerializeField] TextMeshProUGUI craftName;
     [SerializeField] TextMeshProUGUI description;
@@ -18,14 +17,19 @@ public class CraftCard : MonoBehaviour
 
     [SerializeField] GameObject placeBuildPrefab;
 
-    [SerializeField] GameObject craftPopup;
+    [SerializeField] Transform craftPopup;
+
+    Transform buildsContainer;
 
     #endregion
 
     #region Initialization
 
-    void Start()
+    public override void OnStartClient()
     {
+        base.OnStartClient();
+
+        buildsContainer = GameObject.FindWithTag("PlaceBuild").transform;
         UpdateCard();
     }
 
@@ -61,7 +65,7 @@ public class CraftCard : MonoBehaviour
             // Fecha Menu Build apos selecionar uma Build para construir
             if (craft.Title != "Armamento Faca" && craft.Title != "Armamento Rifle")
             {
-                ActivatePlaceBuild();
+                CreatePlaceBuild();
                 CloseCraftPopup();
             }
             else
@@ -71,23 +75,30 @@ public class CraftCard : MonoBehaviour
                 LevelManager.instance.stoneTotal -= craft.StoneCost;
                 LevelManager.instance.metalTotal -= craft.MetalCost;
 
-                UpdateCard();
+                UpdateCraftPopup();
             }
         }
         else Debug.Log("Not enought Materials for this Craft.");
     }
 
-    public void ActivatePlaceBuild()
+    [ObserversRpc(BufferLast = true)]
+    public void CreatePlaceBuild()
     {
-        if(GameObject.FindWithTag("CraftPlace") == null)return;
-        GameObject.FindWithTag("CraftPlace").SetActive(true);
-        GameObject.FindWithTag("CraftPlace").GetComponent<PlaceBuild>().craft = craft;
-        GameObject.FindWithTag("CraftPlace").GetComponent<PlaceBuild>().UpdatePlaceBuild();
+        GameObject placeBuild = Instantiate(placeBuildPrefab, buildsContainer);
+        placeBuild.GetComponent<PlaceBuild>().craft = craft;
+        base.Spawn(placeBuild);
+    }
+
+    void UpdateCraftPopup()
+    {
+        craftPopup = GameObject.FindWithTag("CraftPopup").transform;
+        craftPopup.GetComponent<CraftPopup>().UpdateMaterials();
     }
 
     void CloseCraftPopup()
     {
-        craftPopup.SetActive(false);
+        craftPopup = GameObject.FindWithTag("CraftPopup").transform;
+        craftPopup.gameObject.SetActive(false);
     }
 
     #endregion

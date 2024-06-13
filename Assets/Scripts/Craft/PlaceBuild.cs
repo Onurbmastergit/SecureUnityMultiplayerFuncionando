@@ -20,22 +20,20 @@ public class PlaceBuild : NetworkBehaviour
     [SerializeField] GameObject minaPrefab;
     [SerializeField] GameObject torretaPrefab;
 
-    public Transform placeContainer;
+    Transform placeContainer;
 
     #endregion
 
     #region Initialization
-    void Awake()
-    {
-        gameObject.SetActive(true);
-        InvokeRepeating("CraftBuild",0f,0.1f);
-    }
+
     public override void OnStartClient()
     {
         base.OnStartClient();
-        //InvokeRepeating("CraftBuild",0f,0.1f);
+
+        placeContainer = GameObject.FindWithTag("PlaceBuild").transform;
+        UpdatePlaceBuild();
     }
-    
+
     void Update()
     {
         CraftBuild();
@@ -50,10 +48,10 @@ public class PlaceBuild : NetworkBehaviour
     /// </summary>
     public void UpdatePlaceBuild()
     {
-        barricadaHologram.SetActive(craft.Title == "Barricada");
-        arameHologram.SetActive(craft.Title == "Arame Farpado");
-        minaHologram.SetActive(craft.Title == "Mina Terrestre");
-        torretaHologram.SetActive(craft.Title == "Torreta");
+        barricadaHologram.SetActive(craft.Id == 1);
+        arameHologram.SetActive(craft.Id == 2);
+        minaHologram.SetActive(craft.Id == 3);
+        torretaHologram.SetActive(craft.Id == 4);
     }
 
     void CraftBuild()
@@ -79,20 +77,19 @@ public class PlaceBuild : NetworkBehaviour
             LevelManager.instance.stoneTotal -= craft.StoneCost;
             LevelManager.instance.metalTotal -= craft.MetalCost;
 
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1))
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
     /// <summary>
     /// Instantiate Build in Mouse Position.
     /// </summary>
-    //[ServerRpc]
-    [ObserversRpc(BufferLast = true)]
+    //[ObserversRpc(BufferLast = true)]
     void InstantiateBuilds()
     {
         if (craft.Id == 1)

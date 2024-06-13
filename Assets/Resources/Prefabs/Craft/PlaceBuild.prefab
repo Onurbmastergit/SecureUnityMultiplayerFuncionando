@@ -1350,9 +1350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3635628352790422314}
-  - component: {fileID: -8019273823265838451}
   - component: {fileID: -7809676431605028545}
-  - component: {fileID: 1618641829677930473}
   - component: {fileID: 8332489093351882082}
   m_Layer: 0
   m_Name: PlaceBuild
@@ -1381,18 +1379,6 @@ Transform:
   - {fileID: 4119225817990458724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8019273823265838451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636239962785093620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db092419b7c39a944992324c6f4b60fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-7809676431605028545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1405,31 +1391,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0c0f7e6983daa4c869a5fe7cdb8263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craft: {fileID: 0}
-  barricada: {fileID: 31056598767740459}
-  arame: {fileID: 5322951138249170979}
-  mina: {fileID: 3039075624624136101}
-  torreta: {fileID: 5650100419101770184}
-  placeContainer: {fileID: 0}
---- !u!114 &1618641829677930473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636239962785093620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0c392a2aebf194ab53cd067ab6ad48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8332489093351882082}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8332489093351882082}
+  craft: {fileID: 0}
+  barricadaHologram: {fileID: 31056598767740459}
+  arameHologram: {fileID: 5322951138249170979}
+  minaHologram: {fileID: 3039075624624136101}
+  torretaHologram: {fileID: 5650100419101770184}
   barricadaPrefab: {fileID: 1214759714827697280, guid: d8a16904fae8dae4fbe41fff0d40850a, type: 3}
   aramePrefab: {fileID: 1214759714827697280, guid: 804ac8444e1f33f40b83ffbd00a49c69, type: 3}
   minaPrefab: {fileID: 1214759714827697280, guid: b33349b0b18c24c4aaa9f48bb1473fe5, type: 3}
   torretaPrefab: {fileID: 1214759714827697280, guid: 3108f165f5c22334d9860b30a18ba3ac, type: 3}
+  placeContainer: {fileID: 0}
 --- !u!114 &8332489093351882082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,13 +1419,14 @@ MonoBehaviour:
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
-  _networkBehaviours: []
+  _networkBehaviours:
+  - {fileID: -7809676431605028545}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    LocalScale: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isSpawnable: 1
   _isGlobal: 0

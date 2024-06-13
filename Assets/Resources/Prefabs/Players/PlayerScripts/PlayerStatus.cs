@@ -9,13 +9,13 @@ public class PlayerStatus : MonoBehaviour
     public int vidaTotal = 100;
     public int vidaAtual;
 
-    public UnityEngine.UI.Image BarLifeStatus;
+    public Image BarLifeStatus;
      public float fillAmount;
 
     void Start()
     {
         vidaAtual = vidaTotal;
-        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<UnityEngine.UI.Image>();
+        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
     }
     void Update()
     {

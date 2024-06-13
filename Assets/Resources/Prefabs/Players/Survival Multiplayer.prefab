@@ -1584,6 +1584,9 @@ PrefabInstance:
       addedObject: {fileID: 388991352381228454}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -6108603722501338036}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -3517283853821610259}
   m_SourcePrefab: {fileID: 100100000, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
 --- !u!1 &1267103991687658199 stripped
@@ -1691,7 +1694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
+  outlineMode: 4
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineWidth: 3.5
   precomputeOutline: 0
@@ -1845,6 +1848,7 @@ MonoBehaviour:
   - {fileID: 9156149357807395689}
   - {fileID: 8052742240168083030}
   - {fileID: 388991352381228454}
+  - {fileID: -6108603722501338036}
   - {fileID: -3517283853821610259}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
@@ -1866,7 +1870,7 @@ MonoBehaviour:
   _ownerInterpolation: 1
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 7
+  <PrefabId>k__BackingField: 10
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
@@ -1887,11 +1891,31 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   prefabCamera: {fileID: 7297650762122623893, guid: 363dcc842b4cfe04caec7ccea37060b2, type: 3}
-  prefabPlaceBuild: {fileID: 5793005796430080956, guid: a45c4e58a8b0a4a4c9126fab60954ba1, type: 3}
   prefabVidaStatus: {fileID: 9005175459174750927, guid: 6312522fa44392b46805ea2c265ca03c, type: 3}
   cameraTransform: {fileID: 0}
-  buildTransform: {fileID: 0}
   hudTransform: {fileID: 0}
+--- !u!114 &-6108603722501338036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267103991687658199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c64b1c39f0f8f4ea96dc6a3b16df47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 6
+  _addedNetworkObject: {fileID: 256025884089164188}
+  _networkObjectCache: {fileID: 256025884089164188}
+  craftcardPrefab: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+  barricada: {fileID: 11400000, guid: 6afbc863da2fd07468a7f23ca0ae0de7, type: 2}
+  arame: {fileID: 11400000, guid: ea7edbaa4dba5654c85d3f57ddbb0577, type: 2}
+  mina: {fileID: 11400000, guid: 7832439095ca765499abb2e20c23a222, type: 2}
+  torreta: {fileID: 11400000, guid: bb62b3f0f8067514aa009f0215a65172, type: 2}
+  faca: {fileID: 11400000, guid: a87b57de42b74aa49be52ecf57d91121, type: 2}
+  rifle: {fileID: 11400000, guid: 70eb6c3fda1c51d4d80427ff26e66010, type: 2}
 --- !u!114 &-3517283853821610259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,7 +1928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   IgnoredParameters: []
