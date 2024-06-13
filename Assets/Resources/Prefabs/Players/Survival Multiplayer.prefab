@@ -199,11 +199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -877,6 +877,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.1865518
       objectReference: {fileID: 0}
+    - target: {fileID: 404460482048994369, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404460482048994369, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404460482048994369, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 608321761475470972, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000000014901161
@@ -1211,43 +1223,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.012306213
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6044493
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.03182602
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.929454
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.03717882
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.36688104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.011461842
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -4.5820723
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 43.114048
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.3425956
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
       propertyPath: m_Enabled
@@ -1837,7 +1849,7 @@ MonoBehaviour:
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: -18.5}
+    Position: {x: 0, y: -0.15, z: 0}
     Rotation: {x: -0, y: -0, z: -0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1

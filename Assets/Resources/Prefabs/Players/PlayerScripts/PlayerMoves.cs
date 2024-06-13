@@ -10,6 +10,7 @@ public class PlayerMoves : NetworkBehaviour
     public float moveSpeed = 10f; // Velocidade de movimento do jogador
     public float rotationSpeed = 10f; // Velocidade de rotação do jogador
     Vector3 movement;
+     Vector3 positionPlayer;
     public bool acessibilidade;
 
     private CharacterController controller; // Componente CharacterController do jogador
@@ -22,14 +23,15 @@ public class PlayerMoves : NetworkBehaviour
         GameObject.Find("RadomCamera").SetActive(false);
         controller = GetComponent<CharacterController>();
         inputController = GetComponent<InputControllers>();
+        Vector3 positionPlayer = transform.position;
+        positionPlayer.y = 0;
+        transform.position = positionPlayer;
     }
 
     void Update()
     {
-        Vector3 position = transform.position;
-        position.y = 0;
-        transform.position = position;
-        
+
+
         if(base.IsOwner == false) return;
         if(acessibilidade == false)
         {
@@ -47,7 +49,7 @@ public class PlayerMoves : NetworkBehaviour
         float moveVertical = inputController.movimentoVertical;
 
         // Calcular a direção de movimento
-        movement = new Vector3(moveHorizontal, 0f, moveVertical);
+        movement = new Vector3(moveHorizontal, positionPlayer.y, moveVertical);
         movement = transform.TransformDirection(movement); // Converter para coordenadas locais
         movement *= moveSpeed * Time.deltaTime;
        
