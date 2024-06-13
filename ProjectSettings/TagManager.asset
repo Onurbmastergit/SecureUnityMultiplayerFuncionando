@@ -11,6 +11,7 @@ TagManager:
   - NetworkManager
   - PlaceBuild
   - CraftPlace
+  - Health
   layers:
   - Default
   - TransparentFX

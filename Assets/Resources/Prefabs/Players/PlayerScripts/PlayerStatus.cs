@@ -15,11 +15,12 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         vidaAtual = vidaTotal;
+        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<UnityEngine.UI.Image>();
     }
     void Update()
     {
         fillAmount = (float)vidaAtual/vidaTotal;
-        //BarLifeStatus.fillAmount = fillAmount;
+        BarLifeStatus.fillAmount = fillAmount;
     }
     
     public void ReceberDano(int valor, NetworkConnection connection)

@@ -1147,6 +1147,10 @@ PrefabInstance:
       value: NetworkManager
       objectReference: {fileID: 0}
     - target: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_TagString
       value: NetworkManager
       objectReference: {fileID: 0}
@@ -2611,7 +2615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: e7f0762174fffdb40aa64d04d0499dd7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7088,7 +7092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: e7f0762174fffdb40aa64d04d0499dd7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -17364,7 +17368,7 @@ PrefabInstance:
     - target: {fileID: 5152587658234505808, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b0b4de3bd6e976e4f8b3adc6e72377ed, type: 2}
+      objectReference: {fileID: 2100000, guid: b322189cd03d3f54a8f4c763da69f651, type: 2}
     - target: {fileID: 5302712530156483839, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -21252,12 +21256,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3220016148303385239, guid: d89fde5ab3147b145b24fd330fc561e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -433
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158355042115302309, guid: d89fde5ab3147b145b24fd330fc561e3, type: 3}
+      propertyPath: m_TagString
+      value: Health
+      objectReference: {fileID: 0}
     - target: {fileID: 9073482647698836764, guid: d89fde5ab3147b145b24fd330fc561e3, type: 3}
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3135080541495440365, guid: d89fde5ab3147b145b24fd330fc561e3, type: 3}
+    - {fileID: 7110933241029908287, guid: d89fde5ab3147b145b24fd330fc561e3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9073482647698836764, guid: d89fde5ab3147b145b24fd330fc561e3, type: 3}

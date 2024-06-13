@@ -1888,8 +1888,10 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 256025884089164188}
   prefabCamera: {fileID: 7297650762122623893, guid: 363dcc842b4cfe04caec7ccea37060b2, type: 3}
   prefabPlaceBuild: {fileID: 5793005796430080956, guid: a45c4e58a8b0a4a4c9126fab60954ba1, type: 3}
+  prefabVidaStatus: {fileID: 9005175459174750927, guid: 6312522fa44392b46805ea2c265ca03c, type: 3}
   cameraTransform: {fileID: 0}
   buildTransform: {fileID: 0}
+  hudTransform: {fileID: 0}
 --- !u!114 &-3517283853821610259
 MonoBehaviour:
   m_ObjectHideFlags: 0
