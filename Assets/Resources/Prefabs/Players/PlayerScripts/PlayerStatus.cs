@@ -15,12 +15,28 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         vidaAtual = vidaTotal;
-        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
+        StartCoroutine("SetBarLife");
+        
     }
+
     void Update()
     {
         fillAmount = (float)vidaAtual/vidaTotal;
+
+        if (BarLifeStatus == null) return;
         BarLifeStatus.fillAmount = fillAmount;
+    }
+
+    IEnumerator SetBarLife()
+    {
+        while (BarLifeStatus == null)
+        {
+            // Aguarda um frame antes de verificar novamente
+            yield return null;
+
+            // Atualiza a referência do objeto
+            BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
+        }
     }
     
     public void ReceberDano(int valor, NetworkConnection connection)

@@ -16,7 +16,7 @@ public class SpawnCamera :NetworkBehaviour
         base.OnStartClient();
         if (base.IsOwner)
         {
-            hudTransform = GameObject.Find("HUD").transform;
+            hudTransform = GameObject.FindWithTag("PlayerHealth").transform;
             cameraTransform = GameObject.FindWithTag("TransformCamera").transform;
             Instantiate(prefabCamera, cameraTransform);
             Instantiate(prefabVidaStatus, hudTransform);

@@ -199,7 +199,7 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void CureProgression()
     {
-        cureMeter += 0.5f;
+        cureMeter += 1.5f;
         float preenchimentoNormalizado = cureMeter / 100f;
         cureMeterHud.fillAmount = preenchimentoNormalizado;
     }
