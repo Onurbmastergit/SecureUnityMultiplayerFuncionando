@@ -21,6 +21,7 @@ public class AttackScript : NetworkBehaviour
             if(collider.CompareTag("Build"))
             {
                 collider.GetComponent<ObjectStatus>().ReceberDano(dano);
+
             }
             else
             {
@@ -29,6 +30,10 @@ public class AttackScript : NetworkBehaviour
         }
         if(player)
         {
+            if(collider.CompareTag("HouseDefender"))
+            {
+                    collider.GetComponent<LabStatus>().ReceberDano(dano);
+            }
             if(collider.CompareTag("Player"))
             {
                 NetworkConnection connection = collider.GetComponent<PlayerMoves>().Owner;

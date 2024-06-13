@@ -10,7 +10,7 @@ public class DetectionCollider : MonoBehaviour
     
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Build") || other.CompareTag("Player"))
+        if (other.CompareTag("Build") || other.CompareTag("Player")|| other.CompareTag("HouseDefender"))
         { 
             if(transform.parent.GetComponent<EnemyStatus>().vidaAtual > 0)
             {
