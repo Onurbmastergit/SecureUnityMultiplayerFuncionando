@@ -46,6 +46,11 @@ public class LevelManager : NetworkBehaviour
 
     // HUD de Cure Research.
     public Image cureMeterHud;
+    public TextMeshProUGUI porcentagemCure;
+
+    //Hud da base
+    public GameObject hudLifeBase;
+    public GameObject hudActionsBase;
 
     public int numSurvivorsGatherer;
     public int numSurvivorsScientist;
@@ -162,6 +167,8 @@ public class LevelManager : NetworkBehaviour
         {
             dayStart = true;
             nightStart = false;
+            hudActionsBase.SetActive(true);
+            hudLifeBase.SetActive(false);
 
             gatherButton.SetActive(true);
 
@@ -181,6 +188,8 @@ public class LevelManager : NetworkBehaviour
         {
             nightStart = true;
             dayStart = false;
+            hudActionsBase.SetActive(false);
+            hudLifeBase.SetActive(true);
 
             gatherButton.SetActive(false);
         }
@@ -198,6 +207,7 @@ public class LevelManager : NetworkBehaviour
     {
         cureMeter += 1.25f;
         float preenchimentoNormalizado = cureMeter / 100f;
+        porcentagemCure.text = ((int)cureMeter)+"%".ToString();
         cureMeterHud.fillAmount = preenchimentoNormalizado;
     }
 

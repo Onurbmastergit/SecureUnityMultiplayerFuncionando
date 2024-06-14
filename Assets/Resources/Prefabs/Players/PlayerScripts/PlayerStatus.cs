@@ -1,42 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using FishNet.Connection;
+using FishNet.Object;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatus : MonoBehaviour
+public class PlayerStatus : NetworkBehaviour
 {
     public int vidaTotal = 100;
     public int vidaAtual;
-
-    public Image BarLifeStatus;
-     public float fillAmount;
     
-    void Start()
+    public Image BarLifeStatus;
+    public float fillAmount;
+    public VfxColor color;
+    
+    public override void OnStartClient()
     {
-        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
+        base.OnStartClient();
+        if(!base.IsOwner)return;
         vidaAtual = vidaTotal;
-        Invoke("SetBarLife",2f);
-        
     }
 
     void Update()
     {
         fillAmount = (float)vidaAtual/vidaTotal;
-        BarLifeStatus = GameObject.Find("HealthBar Fill").GetComponent<Image>();
         if (BarLifeStatus == null) return;
         BarLifeStatus.fillAmount = fillAmount;
-    }
-
-    void SetBarLife()
-    {
-        Debug.Log("PegouAVida");
-        BarLifeStatus = GameObject.FindWithTag("Health").GetComponent<Image>();
     }
     
     public void ReceberDano(int valor, NetworkConnection connection)
     {
         vidaAtual -= valor;
+        color.ChangeColor();
         VerificarMorte();
     }
     void VerificarMorte()

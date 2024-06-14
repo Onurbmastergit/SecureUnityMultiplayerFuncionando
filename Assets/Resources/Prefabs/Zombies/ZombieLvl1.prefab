@@ -1780,6 +1780,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7364108826491079064}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -623912231982328323}
   m_SourcePrefab: {fileID: 100100000, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
 --- !u!1 &3932941383580300374 stripped
 GameObject:
@@ -1857,6 +1860,7 @@ MonoBehaviour:
   vidaBase: 100
   LifeBar: {fileID: 8608926753648983680}
   tomouDano: 0
+  color: {fileID: -623912231982328323}
 --- !u!54 &4453722863154593883
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2051,6 +2055,21 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-623912231982328323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3932941383580300374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb013477c8a6fb745b153c6e6c9de02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 0}
+  enemyStatus: {fileID: 580357256683184654}
+  playerStatus: {fileID: 0}
 --- !u!4 &4458367872125431532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}

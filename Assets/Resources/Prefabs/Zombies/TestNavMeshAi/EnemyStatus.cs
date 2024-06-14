@@ -14,6 +14,7 @@ public class EnemyStatus : NetworkBehaviour
     private Animator animator;
     private NavMeshAgent agent;
     public bool tomouDano;
+    public VfxColor color;
     private Rigidbody rb;
 
     void Start() 
@@ -46,7 +47,7 @@ public class EnemyStatus : NetworkBehaviour
         tomouDano = true; 
         vidaAtual -= dano;
         }
-        
+        color.ChangeColor();
         VerificarMorte();
     }
     [ServerRpc]
