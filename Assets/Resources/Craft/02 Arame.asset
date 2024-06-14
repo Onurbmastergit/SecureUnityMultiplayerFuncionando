@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 2
   title: Arame Farpado
   description: Diminui a mobilidade e da dano ao atravessar
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 9ec691f24f3f0a24b9d4bc2dc63c7569, type: 3}
   WoodCost: 0
   StoneCost: 0
   MetalCost: 1

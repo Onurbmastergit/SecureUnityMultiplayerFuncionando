@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using FishNet.Object;
+using static UnityEngine.GraphicsBuffer;
 
 public class LevelManager : NetworkBehaviour
 {
@@ -24,8 +25,6 @@ public class LevelManager : NetworkBehaviour
     public Craft selectedCraft;
 
     // Botoes da HUD do jogo.
-    public GameObject buildButton;
-    public GameObject radioButton;
     public GameObject gatherButton;
 
     // Sistema de passagem de dias e horas dentro do jogo.
@@ -36,8 +35,8 @@ public class LevelManager : NetworkBehaviour
     public bool isDay = true;
     public bool dayStart;
     public bool nightStart;
-    float hourDurationDay = 6f; // Duracao de cada hora do dia em segundos.
-    float hourDurationNight = 30.0f; // Duracao de cada hora da noite em segundos.
+    float hourDurationDay = 3f; // Duracao de cada hora do dia em segundos.
+    float hourDurationNight = 20f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
 
     // Rotacao do sun durante as horas.
@@ -123,8 +122,9 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void SunRotation()
     {
-        sunRotationTimer = (isDay) ? sunRotationTimer + Time.deltaTime : sunRotationTimer + Time.deltaTime / 5;
-        float currentRotation = sunRotationSpeed * sunRotationTimer;
+        sunRotationTimer = (isDay) ? timer / hourDurationDay : timer / hourDurationNight;
+        float currentRotation = ((currentHour - 6) + sunRotationTimer) * 15;
+        if (sunRotationTimer <= 10*Time.deltaTime) return;
         sun.rotation = Quaternion.Euler(currentRotation, -60, 0);
     }
 
@@ -163,8 +163,6 @@ public class LevelManager : NetworkBehaviour
             dayStart = true;
             nightStart = false;
 
-            buildButton.SetActive(true);
-            //radioButton.SetActive(true);
             gatherButton.SetActive(true);
 
             AddMaterials();
@@ -184,8 +182,6 @@ public class LevelManager : NetworkBehaviour
             nightStart = true;
             dayStart = false;
 
-            radioButton.SetActive(false);
-            buildButton.SetActive(false);
             gatherButton.SetActive(false);
         }
     }
@@ -200,7 +196,7 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void CureProgression()
     {
-        cureMeter += 1.5f;
+        cureMeter += 1.25f;
         float preenchimentoNormalizado = cureMeter / 100f;
         cureMeterHud.fillAmount = preenchimentoNormalizado;
     }

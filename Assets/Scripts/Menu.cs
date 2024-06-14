@@ -70,12 +70,6 @@ public class Menu : MonoBehaviour
             menuSettings.SetActive(true);
             menuCredits.SetActive(false);
         }
-
-        if (menuRadio != null && menuRadio.activeSelf && Input.anyKey)
-        {
-            menuRadio.SetActive(false);
-            LevelManager.instance.buildButton.SetActive(true);
-        }
     }
     public void ButtonPlay()
     {
@@ -113,14 +107,6 @@ public class Menu : MonoBehaviour
         if (menuMain != null) menuMain.SetActive(true);
         if (menuPause != null) menuPause.SetActive(true);
         menuSettings.SetActive(false);
-    }
-
-    public void ButtonRadio()
-    {
-        menuRadio.SetActive(true);
-        menuBuild.SetActive(false);
-        LevelManager.instance.radioButton.SetActive(false);
-        LevelManager.instance.buildButton.SetActive(false);
     }
 
     public void ButtonBuild()

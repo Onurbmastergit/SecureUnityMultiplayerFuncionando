@@ -34,9 +34,9 @@ public class Projectile : NetworkBehaviour
         if(collider.CompareTag("Zombie"))
         {
             collider.GetComponent<EnemyStatus>().ReceberDano(10);
-        }
 
-        Destroy(gameObject);
-        base.Despawn(gameObject);
+            Destroy(gameObject);
+            base.Despawn(gameObject);
+        }
     }
 }

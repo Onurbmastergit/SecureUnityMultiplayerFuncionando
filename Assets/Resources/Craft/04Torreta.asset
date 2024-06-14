@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   title: Torreta
-  description: Atira em inimigos automaticamente. Precisa ser recarregada
-  image: {fileID: 0}
+  description: Atira em inimigos automaticamente.
+  image: {fileID: 21300000, guid: 4783fdf7fb0ed5b4391807ccd561835a, type: 3}
   WoodCost: 0
   StoneCost: 2
   MetalCost: 3

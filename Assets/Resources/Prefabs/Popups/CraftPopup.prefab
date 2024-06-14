@@ -599,18 +599,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f99aaebb38a95d4d8290dd5d13139f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craftContainer: {fileID: 7174989090937125131}
   wood: {fileID: 6254508275953308732}
   stone: {fileID: 1768945041772049544}
   metal: {fileID: 5056801457514636221}
   tecnology: {fileID: 5215572644041971805}
-  craftList:
-  - {fileID: 11400000, guid: 6afbc863da2fd07468a7f23ca0ae0de7, type: 2}
-  - {fileID: 11400000, guid: ea7edbaa4dba5654c85d3f57ddbb0577, type: 2}
-  - {fileID: 11400000, guid: 7832439095ca765499abb2e20c23a222, type: 2}
-  - {fileID: 11400000, guid: bb62b3f0f8067514aa009f0215a65172, type: 2}
-  - {fileID: 11400000, guid: a87b57de42b74aa49be52ecf57d91121, type: 2}
-  - {fileID: 11400000, guid: 70eb6c3fda1c51d4d80427ff26e66010, type: 2}
 --- !u!114 &8085737201683996461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,6 +641,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 303992285651559003}
     m_Modifications:
+    - target: {fileID: 3226758526456837848, guid: d0ed018e1c77cdc4e81b2cb7f0ce5179, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226758526456837848, guid: d0ed018e1c77cdc4e81b2cb7f0ce5179, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226758526456837848, guid: d0ed018e1c77cdc4e81b2cb7f0ce5179, type: 3}
+      propertyPath: m_Color.g
+      value: 0.53565204
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226758526456837848, guid: d0ed018e1c77cdc4e81b2cb7f0ce5179, type: 3}
+      propertyPath: m_Color.r
+      value: 0.20999996
+      objectReference: {fileID: 0}
     - target: {fileID: 3907571574664023609, guid: d0ed018e1c77cdc4e81b2cb7f0ce5179, type: 3}
       propertyPath: m_Name
       value: Metal Material
@@ -762,6 +770,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 303992285651559003}
     m_Modifications:
+    - target: {fileID: 68179742822448819, guid: d3ede4aa0416ece4186ce878e70fd2dd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68179742822448819, guid: d3ede4aa0416ece4186ce878e70fd2dd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2434783
+      objectReference: {fileID: 0}
+    - target: {fileID: 68179742822448819, guid: d3ede4aa0416ece4186ce878e70fd2dd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5217392
+      objectReference: {fileID: 0}
+    - target: {fileID: 68179742822448819, guid: d3ede4aa0416ece4186ce878e70fd2dd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1739010989168101093, guid: d3ede4aa0416ece4186ce878e70fd2dd, type: 3}
       propertyPath: m_Name
       value: Wood Material
@@ -955,6 +979,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 993312118843520064, guid: 130473919ec0e5b46bd96032b7a3b950, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 993312118843520064, guid: 130473919ec0e5b46bd96032b7a3b950, type: 3}
+      propertyPath: m_Color.b
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 993312118843520064, guid: 130473919ec0e5b46bd96032b7a3b950, type: 3}
+      propertyPath: m_Color.g
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 993312118843520064, guid: 130473919ec0e5b46bd96032b7a3b950, type: 3}
+      propertyPath: m_Color.r
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5432867727260832770, guid: 130473919ec0e5b46bd96032b7a3b950, type: 3}
       propertyPath: m_Name
       value: Stone Material
@@ -1083,6 +1123,22 @@ PrefabInstance:
     - target: {fileID: 1189557796273018476, guid: 97879d2c8b9723143bfe1d7b195751f8, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225054278799223893, guid: 97879d2c8b9723143bfe1d7b195751f8, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225054278799223893, guid: 97879d2c8b9723143bfe1d7b195751f8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225054278799223893, guid: 97879d2c8b9723143bfe1d7b195751f8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225054278799223893, guid: 97879d2c8b9723143bfe1d7b195751f8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.616913
       objectReference: {fileID: 0}
     - target: {fileID: 4325522845385133985, guid: 97879d2c8b9723143bfe1d7b195751f8, type: 3}
       propertyPath: m_Name

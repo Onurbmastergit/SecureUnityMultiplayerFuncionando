@@ -1,6 +1,7 @@
 using FishNet.Object;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftCard : NetworkBehaviour
 {
@@ -14,6 +15,8 @@ public class CraftCard : NetworkBehaviour
     [SerializeField] TextMeshProUGUI stoneCost;
     [SerializeField] TextMeshProUGUI metalCost;
     [SerializeField] TextMeshProUGUI tecnologyCost;
+
+    [SerializeField] Image image;
 
     [SerializeField] GameObject placeBuildPrefab;
 
@@ -48,6 +51,7 @@ public class CraftCard : NetworkBehaviour
         stoneCost.text = craft.StoneCost.ToString();
         metalCost.text = craft.MetalCost.ToString();
         tecnologyCost.text = craft.TecnologyCost.ToString();
+        image.sprite = craft.Image;
     }
 
     /// <summary>
