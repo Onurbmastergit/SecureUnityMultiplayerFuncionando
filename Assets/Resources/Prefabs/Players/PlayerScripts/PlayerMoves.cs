@@ -9,6 +9,7 @@ public class PlayerMoves : NetworkBehaviour
 {
     public float moveSpeed = 10f; // Velocidade de movimento do jogador
     public float rotationSpeed = 10f; // Velocidade de rotação do jogador
+     public float rotationCorrection = 0f;
     Vector3 movement;
      Vector3 positionPlayer;
     public bool acessibilidade;
@@ -72,18 +73,22 @@ public class PlayerMoves : NetworkBehaviour
     void RotatePlayer(NetworkConnection connection)
     {
        // Obter a posição do mouse na tela
-    Vector3 mousePosition = Input.mousePosition;
+         Vector3 mousePosition = Input.mousePosition;
 
-    // Converter a posição do mouse de pixels para coordenadas do mundo
-    mousePosition = GameObject.Find("Main Camera").GetComponent<Camera>().ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, GameObject.Find("Main Camera").GetComponent<Camera>().transform.position.y - transform.position.y));
+        // Converter a posição do mouse de pixels para coordenadas do mundo
+        Camera mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, mainCamera.transform.position.y - transform.position.y));
 
-    // Calcular a direção para a qual o jogador deve se orientar
-    Vector3 lookDirection = mousePosition - transform.position;
-    lookDirection.y = 0f; // Garantir que o jogador não rotacione no eixo Y
+        // Calcular a direção para a qual o jogador deve se orientar
+        Vector3 lookDirection = mousePosition - transform.position;
+        lookDirection.y = 0f; // Garantir que o jogador não rotacione no eixo Y
 
-    // Rotacionar o jogador diretamente em direção à direção calculada sem suavização
-    Quaternion rotation = Quaternion.LookRotation(lookDirection);
-    transform.rotation = rotation;
+        // Rotacionar o jogador diretamente em direção à direção calculada sem suavização
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+
+        // Aplicar a correção de rotação
+        Quaternion correctionRotation = Quaternion.Euler(0f, rotationCorrection, 0f);
+        transform.rotation = targetRotation * correctionRotation;
     }
 
     void MoveAcess()
