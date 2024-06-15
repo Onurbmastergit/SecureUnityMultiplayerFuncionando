@@ -5,7 +5,7 @@ using FishNet.Object;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatus : NetworkBehaviour
+public class PlayerStatus : MonoBehaviour
 {
     public int vidaTotal = 100;
     public int vidaAtual;
@@ -14,13 +14,12 @@ public class PlayerStatus : NetworkBehaviour
     public float fillAmount;
     public VfxColor color;
     
-    public override void OnStartClient()
+     void Start()
     {
-        base.OnStartClient();
-        if(!base.IsOwner)return;
         vidaAtual = vidaTotal;
     }
 
+    
     void Update()
     {
         fillAmount = (float)vidaAtual/vidaTotal;

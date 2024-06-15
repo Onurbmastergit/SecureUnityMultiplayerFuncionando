@@ -2229,9 +2229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddde27aa2a7b744da0b81b0b5d4078d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
-  _addedNetworkObject: {fileID: 256025884089164188}
-  _networkObjectCache: {fileID: 256025884089164188}
   vidaTotal: 100
   vidaAtual: 0
   BarLifeStatus: {fileID: 4538205517417076554}
@@ -2249,7 +2246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958f4d3098ae16041a63c1178b88566d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   firingPoint: {fileID: 5666063431738876277}
@@ -2266,7 +2263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 5
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   _componentConfiguration: 0
@@ -2318,14 +2315,14 @@ MonoBehaviour:
   - {fileID: 2280101967296703313}
   - {fileID: 7323392351451520839}
   - {fileID: 5795727283732782910}
-  - {fileID: 6394330091730276086}
   - {fileID: 9156149357807395689}
   - {fileID: 8052742240168083030}
   - {fileID: 388991352381228454}
   - {fileID: -6108603722501338036}
   - {fileID: -3517283853821610259}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
-  <NestedRootNetworkBehaviours>k__BackingField: []
+  <NestedRootNetworkBehaviours>k__BackingField:
+  - {fileID: 0}
   SerializedTransformProperties:
     Position: {x: -60.710754, y: 0, z: 19.47644}
     Rotation: {x: -0, y: -0, z: -0, w: 1}
@@ -2361,7 +2358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307f14fad78d3284ea29737d03b65a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   prefabCamera: {fileID: 7297650762122623893, guid: 363dcc842b4cfe04caec7ccea37060b2, type: 3}
@@ -2378,7 +2375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c64b1c39f0f8f4ea96dc6a3b16df47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   craftcardPrefab: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
@@ -2400,7 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   IgnoredParameters: []
@@ -2424,6 +2421,7 @@ MonoBehaviour:
   status: {fileID: 0}
   enemyStatus: {fileID: 0}
   playerStatus: {fileID: 6394330091730276086}
+  labStatus: {fileID: 0}
 --- !u!4 &1747444948567119849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 366175167995203695, guid: 1a9dd059f7024584d8e36ff5df9c5f25, type: 3}
