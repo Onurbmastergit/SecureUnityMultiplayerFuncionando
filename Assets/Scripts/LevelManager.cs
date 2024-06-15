@@ -17,6 +17,7 @@ public class LevelManager : NetworkBehaviour
     public int metalTotal = 0;
     public int tecnologyTotal = 1;
     public float scientistsHealth = 10;
+    float tecno;
 
     // Materiais coletados pelo GatherPopup.
     public Location selectedLocation;
@@ -35,6 +36,7 @@ public class LevelManager : NetworkBehaviour
     public bool isDay = true;
     public bool dayStart;
     public bool nightStart;
+    public bool cureResearch = true;
     float hourDurationDay = 3f; // Duracao de cada hora do dia em segundos.
     float hourDurationNight = 20f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
@@ -48,9 +50,19 @@ public class LevelManager : NetworkBehaviour
     public Image cureMeterHud;
     public TextMeshProUGUI porcentagemCure;
 
+    //HUD de Tecnologia
+    public Image tecnoCureMeterHud;
+    public TextMeshProUGUI porcentagemTecno; 
+
     //Hud da base
     public GameObject hudLifeBase;
     public GameObject hudActionsBase;
+
+    // Selection Effects
+    public Canvas hudCure;
+    public Canvas hudTecnology;
+    public GameObject blackOutCure;
+    public GameObject blackOutTecnology;    
 
     public int numSurvivorsGatherer;
     public int numSurvivorsScientist;
@@ -174,7 +186,9 @@ public class LevelManager : NetworkBehaviour
 
             AddMaterials();
         }
-        CureProgression();
+        if(cureResearch == true)CureProgression();    
+        if(cureResearch == false)TecnoProgression();
+        
     }
 
     /// <summary>
@@ -205,10 +219,31 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void CureProgression()
     {
+        blackOutCure.SetActive(false);
+        blackOutTecnology.SetActive(true);
+        hudCure.sortingOrder = 1;
+        hudTecnology.sortingOrder = 0;
         cureMeter += 1.25f;
         float preenchimentoNormalizado = cureMeter / 100f;
         porcentagemCure.text = ((int)cureMeter)+"%".ToString();
         cureMeterHud.fillAmount = preenchimentoNormalizado;
+    }
+    [ObserversRpc(BufferLast = true)]
+    void TecnoProgression()
+    {
+        blackOutCure.SetActive(true);
+        blackOutTecnology.SetActive(false);
+        hudCure.sortingOrder = 0;
+        hudTecnology.sortingOrder = 1;
+         tecno += 1.25f;
+         float fillAmount = tecno/100f;
+         porcentagemTecno.text = ((int)tecnologyTotal).ToString();
+         tecnoCureMeterHud.fillAmount = fillAmount;
+         if(tecno >= 100f)
+         {
+            tecnologyTotal++;
+            tecno = 0;
+         }
     }
 
     #endregion
