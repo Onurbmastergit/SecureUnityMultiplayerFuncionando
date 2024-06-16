@@ -32,7 +32,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        inputControllers = GameObject.FindWithTag("Player").GetComponent<InputControllers>();
+        if (GameObject.FindWithTag("Player") != null) inputControllers = GameObject.FindWithTag("Player").GetComponent<InputControllers>();
         if (menuMain != null) menuMain.SetActive(true);
         if (menuPause != null) menuPause.SetActive(false);
         menuSettings.SetActive(false);

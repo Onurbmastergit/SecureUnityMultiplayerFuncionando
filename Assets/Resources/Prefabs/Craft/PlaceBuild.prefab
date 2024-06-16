@@ -1352,6 +1352,7 @@ GameObject:
   - component: {fileID: 3635628352790422314}
   - component: {fileID: -7809676431605028545}
   - component: {fileID: 8332489093351882082}
+  - component: {fileID: 7460336742899755544}
   m_Layer: 0
   m_Name: PlaceBuild
   m_TagString: Untagged
@@ -1403,7 +1404,6 @@ MonoBehaviour:
   aramePrefab: {fileID: 1214759714827697280, guid: 804ac8444e1f33f40b83ffbd00a49c69, type: 3}
   minaPrefab: {fileID: 1214759714827697280, guid: b33349b0b18c24c4aaa9f48bb1473fe5, type: 3}
   torretaPrefab: {fileID: 1214759714827697280, guid: 3108f165f5c22334d9860b30a18ba3ac, type: 3}
-  placeContainer: {fileID: 0}
 --- !u!114 &8332489093351882082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,6 +1446,24 @@ MonoBehaviour:
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5223134857325480732
+--- !u!114 &7460336742899755544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636239962785093620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 4
+  outlineColor: {r: 0, g: 1, b: 1, a: 0.2509804}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2053298678356776094
 GameObject:
   m_ObjectHideFlags: 0
