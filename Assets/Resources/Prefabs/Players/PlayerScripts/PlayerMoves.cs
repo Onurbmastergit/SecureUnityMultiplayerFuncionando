@@ -32,15 +32,17 @@ public class PlayerMoves : NetworkBehaviour
 
     void Update()
     {
-
-
         if(base.IsOwner == false) return;
+
         if(acessibilidade == false)
         {
-        MovePlayer(transform.GetComponent<PlayerMoves>().Owner); // Movimentar o jogador
-        RotatePlayer(transform.GetComponent<PlayerMoves>().Owner); // Rotacionar o jogador em direção ao cursor
+            MovePlayer(transform.GetComponent<PlayerMoves>().Owner); // Movimentar o jogador
+            RotatePlayer(transform.GetComponent<PlayerMoves>().Owner); // Rotacionar o jogador em direção ao cursor
         }
-         MoveAcess();
+        
+        MoveAcess();
+        
+        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
     }
 
     void MovePlayer(NetworkConnection connection)
@@ -51,7 +53,7 @@ public class PlayerMoves : NetworkBehaviour
         float moveVertical = inputController.movimentoVertical;
 
         // Calcular a direção de movimento
-        movement = new Vector3(moveHorizontal, -0.5f, moveVertical);
+        movement = new Vector3(moveHorizontal, 0, moveVertical);
         movement = transform.TransformDirection(movement); // Converter para coordenadas locais
         movement *= moveSpeed * Time.deltaTime;
        

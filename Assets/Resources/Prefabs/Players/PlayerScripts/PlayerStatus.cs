@@ -25,6 +25,8 @@ public class PlayerStatus : MonoBehaviour
         fillAmount = (float)vidaAtual/vidaTotal;
         if (BarLifeStatus == null) return;
         BarLifeStatus.fillAmount = fillAmount;
+
+        Respawn();
     }
     
     public void ReceberDano(int valor, NetworkConnection connection)
@@ -33,12 +35,27 @@ public class PlayerStatus : MonoBehaviour
         color.ChangeColor();
         VerificarMorte();
     }
+
     void VerificarMorte()
     {
         if(vidaAtual == 0)
         {
-           transform.GetComponent<PlayerMoves>().enabled = false;
-           transform.GetComponent<PlayerAttacks>().enabled = false;
+            transform.GetComponent<PlayerMoves>().enabled = false;
+            transform.GetComponent<PlayerAttacks>().enabled = false;
+            transform.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+    void Respawn()
+    {
+        if (LevelManager.instance.currentHour == 7)
+        {
+            vidaAtual = vidaTotal;
+            color.ChangeColor();
+
+            transform.GetComponent<PlayerMoves>().enabled = true;
+            transform.GetComponent<PlayerAttacks>().enabled = true;
+            transform.GetComponent<BoxCollider>().enabled = true;
         }
     }
 }

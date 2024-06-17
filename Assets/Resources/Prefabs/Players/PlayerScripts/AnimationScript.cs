@@ -5,20 +5,17 @@ using UnityEngine;
 
 public class AnimationScript : NetworkBehaviour
 {
-    [SerializeField]
-    private GameObject attackCollider;
-    [SerializeField]
-    private Animator animator;
-    [SerializeField]
-    private PlayerMoves playerMoves;
-    [SerializeField]
-    private InputControllers inputControllers;
-    private PlayerStatus status;
+    [SerializeField] GameObject attackCollider;
+    [SerializeField] Animator animator;
+    [SerializeField] PlayerMoves playerMoves;
+    [SerializeField] InputControllers inputControllers;
+    PlayerStatus status;
+
     public bool walk;
     public bool attack;
     public bool run;
     public bool talk;
-    private int injuriedLayerIndex;
+    int injuriedLayerIndex;
     public float smoothingSpeed;
     float healthPercentage;
 
