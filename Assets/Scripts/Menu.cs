@@ -37,7 +37,7 @@ public class Menu : MonoBehaviour
         if (menuPause != null) menuPause.SetActive(false);
         menuSettings.SetActive(false);
         menuCredits.SetActive(false);
-        if (menuBuild != null) menuBuild.SetActive(false);
+        if (menuBuild != null) menuBuild.SetActive(true);
         if (menuRadio != null) menuRadio.SetActive(false);
     }
 
