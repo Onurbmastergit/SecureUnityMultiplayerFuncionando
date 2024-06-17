@@ -27,7 +27,7 @@ public class SpawnSelection : NetworkBehaviour
    [Server]
     void Update_Server()
     {
-        if(LevelManager.instance.currentHour == 20)
+        if(LevelManager.instance.currentHour == 8)
         {
             RandomizarNumero();
         }
@@ -41,6 +41,7 @@ public class SpawnSelection : NetworkBehaviour
                 spawns[i].GetComponent<SpawnSystem>().enableSpawn = false;
             }           
         }
+        
     }
     
   [Server]  

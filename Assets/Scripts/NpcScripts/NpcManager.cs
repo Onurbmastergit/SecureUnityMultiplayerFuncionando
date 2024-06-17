@@ -13,6 +13,7 @@ public class NpcManager : NetworkBehaviour
   int numberName;  
   public GameObject npcAlert;
   public GameObject outSinalTexture;
+  public bool showDirectionInMap;
   public GameObject radioButton;
   void Awake()
   {
@@ -20,7 +21,7 @@ public class NpcManager : NetworkBehaviour
   }
   void Update()
   {
-    if(LevelManager.instance.currentHour <= 20)
+    if(LevelManager.instance.currentHour <= 8)
     {
       radioButton.SetActive(true);
     }
@@ -37,6 +38,7 @@ public class NpcManager : NetworkBehaviour
     NpcDialogues.instacia.ShowTextAlert();
     RandomizarNome();
     outSinalTexture.SetActive(false);
+    showDirectionInMap = true;
     }     
     
   }
