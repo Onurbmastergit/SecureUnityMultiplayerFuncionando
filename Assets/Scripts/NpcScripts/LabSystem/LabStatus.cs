@@ -11,6 +11,7 @@ public class LabStatus : NetworkBehaviour
     public Image lifeBaseStatus;
     public Image bgIconLifeStatus;
     public Image imageRachaduras;
+    public Image neoBgLifeHud;
     public Image handsZombies;
     public VfxColor color;
     void Awake()

@@ -34,17 +34,20 @@ public class VfxColor : MonoBehaviour
             
             labStatus.lifeBaseStatus.color = corVermelho;
             labStatus.bgIconLifeStatus.color = corVermelho;
+            labStatus.neoBgLifeHud.color = corVermelho;
         }
         else if (labStatus.vidaAtual >= labStatus.vidaBase * 0.8f) // Mais de 80% de vida (Verde)
         {
             labStatus.lifeBaseStatus.color = corVerde;
             labStatus.bgIconLifeStatus.color = corVerde;
+            labStatus.neoBgLifeHud.color = corVerde;
         }
         else // Entre 20% e 80% de vida (Amarelo)
         {
             
             labStatus.lifeBaseStatus.color = corAmarelo;
             labStatus.bgIconLifeStatus.color = corAmarelo;
+            labStatus.neoBgLifeHud.color = corAmarelo;
         }   
     }
     void Player()

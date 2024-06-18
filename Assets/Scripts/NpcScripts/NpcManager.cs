@@ -21,11 +21,11 @@ public class NpcManager : NetworkBehaviour
   }
   void Update()
   {
-    if(LevelManager.instance.currentHour <= 8)
+    if(LevelManager.instance.currentHour >= 8 && LevelManager.instance.isDay == true)
     {
       radioButton.SetActive(true);
     }
-    else if(LevelManager.instance.currentHour > 20)
+    else if(LevelManager.instance.currentHour > 20|| LevelManager.instance.isDay == false)
     {
       radioButton.SetActive(false);
     }
