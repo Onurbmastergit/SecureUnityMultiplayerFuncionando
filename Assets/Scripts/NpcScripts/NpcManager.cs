@@ -8,73 +8,97 @@ using UnityEngine.UI;
 
 public class NpcManager : NetworkBehaviour
 {
-  public static NpcManager instacia;  
-  public string[] nameNpc;
-  int numberName;  
-  public GameObject npcAlert;
-  public GameObject outSinalTexture;
-  public bool showDirectionInMap;
-  public GameObject radioButton;
-  void Awake()
-  {
-    instacia = this;
-  }
-  void Update()
-  {
-    if(LevelManager.instance.currentHour >= 8 && LevelManager.instance.isDay == true)
-    {
-      radioButton.SetActive(true);
-    }
-    else if(LevelManager.instance.currentHour > 20|| LevelManager.instance.isDay == false)
-    {
-      radioButton.SetActive(false);
-    }
-  }  
-  public void Alert()
-  {
-    if(SpawnSelection.instacia.spawnDirecao != null)
-    {
-    npcAlert.SetActive(true);
-    NpcDialogues.instacia.ShowTextAlert();
-    RandomizarNome();
-    outSinalTexture.SetActive(false);
-    showDirectionInMap = true;
-    }     
-    
-  }
-  void Outsinal()
-  {
-    TextEffect.instacia.nameNpcShow = "INTERFERENCIA";
-    outSinalTexture.SetActive(true);
-    npcAlert.SetActive(true);
-    NpcDialogues.instacia.ShowTextOutsinal();
-  }
+    #region Variables
 
-  void SelecionarNome()
-  {
-    for(int i = 0; i < nameNpc.Length; i++)
+    public static NpcManager instacia;
+    public string[] nameNpc;
+    int numberName;
+    public GameObject npcAlert;
+    public GameObject outSinalTexture;
+    public bool showDirectionInMap;
+    public GameObject radioButton;
+
+    bool ligarBotao;
+
+    #endregion
+
+    #region Initialization
+
+    void Awake()
     {
-        if(i == numberName)
+        instacia = this;
+    }
+
+    void Start()
+    {
+        ligarBotao = true;
+    }
+
+    void Update()
+    {
+        if (LevelManager.instance.isDay == true && ligarBotao)
         {
-           if(nameNpc[i] != TextEffect.instacia.nameNpcShow)
-           {
-            TextEffect.instacia.nameNpcShow = nameNpc[i];
-           }
-           else if(nameNpc[i] == TextEffect.instacia.nameNpcShow)
-           {
-            RandomizarNome();
-           }
+            radioButton.SetActive(true);
+            ligarBotao = false;
+        }
+        else if (LevelManager.instance.isDay == false)
+        {
+            radioButton.SetActive(false);
+            ligarBotao = true;
         }
     }
-  }
 
-  void RandomizarNome()
-  {
-    if(nameNpc != null)
+    #endregion
+
+    #region Funtions
+
+    public void Alert()
     {
-    numberName = UnityEngine.Random.Range(0, nameNpc.Length+1);
-    SelecionarNome();
+        if (SpawnSelection.instacia.spawnDirecao != null)
+        {
+            npcAlert.SetActive(true);
+            NpcDialogues.instacia.ShowTextAlert();
+            outSinalTexture.SetActive(false);
+            showDirectionInMap = true;
+            radioButton.SetActive(false);
+        }
     }
-    return;
-  }
+
+    void Outsinal()
+    {
+        TextEffect.instacia.nameNpcShow = "INTERFERENCIA";
+        outSinalTexture.SetActive(true);
+        npcAlert.SetActive(true);
+        NpcDialogues.instacia.ShowTextOutsinal();
+    }
+
+    void SelecionarNome()
+    {
+        for (int i = 0; i < nameNpc.Length; i++)
+        {
+            if (i == numberName)
+            {
+                if (nameNpc[i] != TextEffect.instacia.nameNpcShow)
+                {
+                    TextEffect.instacia.nameNpcShow = nameNpc[i];
+                }
+                else if (nameNpc[i] == TextEffect.instacia.nameNpcShow)
+                {
+                    RandomizarNome();
+                }
+            }
+        }
+    }
+
+    void RandomizarNome()
+    {
+        if (nameNpc != null)
+        {
+            numberName = UnityEngine.Random.Range(0, nameNpc.Length + 1);
+            SelecionarNome();
+        }
+        return;
+    }
+
+    #endregion
 }

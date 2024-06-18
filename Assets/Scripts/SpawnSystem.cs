@@ -7,32 +7,37 @@ public class SpawnSystem : NetworkBehaviour
 {
     public GameObject enemyPrefab;
     public Transform spawnPoint;
-    public bool enableSpawn ;
+    public bool enableSpawn;
     public string direcaoSpawn;
     public override void OnStartServer()
     {
         base.OnStartServer();
-        
-        InvokeRepeating("SpawnEnemy" , 3, 3);
-        
+
+        InvokeRepeating("SpawnEnemy", 3, 3);
+
     }
 
     [Server]
     void SpawnEnemy()
     {
-        if(base.ClientManager.Clients.Count > 0)
+        if (base.ClientManager.Clients.Count > 0)
         {
-            if(LevelManager.instance.nightStart && enableSpawn)
+            if (LevelManager.instance.nightStart && enableSpawn)
             {
-             // Obtém a posição aleatória dentro da área de spawn
-             Vector3 randomPosition = GetRandomSpawnPositionWithinBounds(spawnPoint.position, spawnPoint.localScale);
+                float quantidadeZumbis = LevelManager.instance.currentDay / 2;
 
-             // Instancia o inimigo na posição aleatória
-            GameObject enemyInstatiate = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
-            base.Spawn(enemyInstatiate);
+                // Aumenta a quantidade de zumbis spawnados quanto mais dias se passarem.
+                for (float i = 0; i < quantidadeZumbis; i++)
+                {
+                    // Obtém a posição aleatória dentro da área de spawn.
+                    Vector3 randomPosition = GetRandomSpawnPositionWithinBounds(spawnPoint.position, spawnPoint.localScale);
+
+                    // Instancia o inimigo na posição aleatória.
+                    GameObject enemyInstatiate = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+                    base.Spawn(enemyInstatiate);
+                }
             }
         }
-       
     }
 
     Vector3 GetRandomSpawnPositionWithinBounds(Vector3 center, Vector3 size)
