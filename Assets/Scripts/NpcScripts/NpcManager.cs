@@ -16,6 +16,7 @@ public class NpcManager : NetworkBehaviour
     public GameObject npcAlert;
     public GameObject outSinalTexture;
     public bool showDirectionInMap;
+    public bool enableAlertRecursos = true;
     public GameObject radioButton;
 
     bool ligarBotao;
@@ -36,6 +37,10 @@ public class NpcManager : NetworkBehaviour
 
     void Update()
     {
+        if(LevelManager.instance.currentHour == 6 && LevelManager.instance.selectedLocation != null)
+        {
+            if(enableAlertRecursos)RecursosColetados();
+        }
         if (LevelManager.instance.isDay == true && ligarBotao)
         {
             radioButton.SetActive(true);
@@ -45,6 +50,11 @@ public class NpcManager : NetworkBehaviour
         {
             radioButton.SetActive(false);
             ligarBotao = true;
+        }
+
+        if(LevelManager.instance.currentHour == 5)
+        {
+            enableAlertRecursos = true;
         }
     }
 
@@ -64,11 +74,11 @@ public class NpcManager : NetworkBehaviour
         }
     }
 
-    void Outsinal()
+    void RecursosColetados()
     {
-        TextEffect.instacia.nameNpcShow = "INTERFERENCIA";
-        outSinalTexture.SetActive(true);
+        enableAlertRecursos = false;
         npcAlert.SetActive(true);
+        RandomizarNome();
         NpcDialogues.instacia.ShowTextOutsinal();
     }
 

@@ -18,9 +18,14 @@ public class NpcDialogues : MonoBehaviour
         StartCoroutine(TextEffect.instacia.ShowText(dialogueAlert));
     }
 
-    public void ShowTextOutsinal()
+    public  void ShowTextOutsinal()
     {
-        string dialogueOutsinal = $"............................................................ SEM SINAL";
+    
+        string dialogueOutsinal = $"Olá sobrevivente aqui está o relatório da coleta \n{LevelManager.instance.selectedLocation.Title}\nMadeira: +{LevelManager.instance.selectedLocation.Wood}\nPedra: +{LevelManager.instance.selectedLocation.Stone}\nMetal: +{LevelManager.instance.selectedLocation.Metal}";
+        StartFunctions(dialogueOutsinal);
+    }
+    public void StartFunctions(string dialogueOutsinal)
+    {
         StartCoroutine(TextEffect.instacia.ShowText(dialogueOutsinal));
     }
 }
