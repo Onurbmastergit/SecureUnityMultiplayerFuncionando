@@ -64,7 +64,7 @@ public class NpcManager : NetworkBehaviour
 
     public void Alert()
     {
-        if (SpawnSelection.instacia.spawnDirecao != null)
+        if (SpawnSelection.instacia.spawnDirecao != null )
         {
             npcAlert.SetActive(true);
             NpcDialogues.instacia.ShowTextAlert();

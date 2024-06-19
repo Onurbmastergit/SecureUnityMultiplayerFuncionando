@@ -22,7 +22,7 @@ public class SelectionLocation : MonoBehaviour
    public TextMeshProUGUI wood;
     void Update()
     {
-        
+       
           for(int i = 0; i < locationList.Count(); i++)
           {
             if(nameLocation == locationList[i].Title)

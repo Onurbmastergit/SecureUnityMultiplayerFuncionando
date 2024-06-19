@@ -83,7 +83,10 @@ public class LevelManager : NetworkBehaviour
             instance = this;
         }
     }
-    
+    public void MudarPesquisa()
+    {
+        cureResearch = !cureResearch;
+    }
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -235,7 +238,7 @@ public class LevelManager : NetworkBehaviour
         blackOutTecnology.SetActive(false);
         hudCure.sortingOrder = 0;
         hudTecnology.sortingOrder = 1;
-         tecno += 1.25f;
+         tecno += 10.25f;
          float fillAmount = tecno/100f;
          porcentagemTecno.text = ((int)tecnologyTotal).ToString();
          tecnoCureMeterHud.fillAmount = fillAmount;
