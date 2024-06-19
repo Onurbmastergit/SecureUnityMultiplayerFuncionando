@@ -14,6 +14,7 @@ public class LabStatus : NetworkBehaviour
     public Image neoBgLifeHud;
     public Image handsZombies;
     public VfxColor color;
+    public GameObject labIcon;
     void Awake()
     {
        vidaAtual = vidaBase;     
@@ -44,6 +45,7 @@ public class LabStatus : NetworkBehaviour
     public void ReceberDano(int damage)
     {
         vidaAtual -= damage;
+        labIcon.GetComponent<Animator>().SetTrigger("Dano");
     }
 
 

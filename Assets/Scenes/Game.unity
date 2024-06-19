@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311295, g: 0.38073754, b: 0.35873604, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731128, g: 0.38073748, b: 0.35873577, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1232,11 +1232,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4393252309867130426, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4393252310051871674, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4393252310584637057, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_IsActive
@@ -6428,6 +6428,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2587433048374876072, guid: 3aeeefc4b9611694aadd0fa3e2e33913, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587433048374876072, guid: 3aeeefc4b9611694aadd0fa3e2e33913, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3865252953611137077, guid: 3aeeefc4b9611694aadd0fa3e2e33913, type: 3}
       propertyPath: m_FillAmount
       value: 0
@@ -6450,7 +6458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5942353601762115006, guid: 3aeeefc4b9611694aadd0fa3e2e33913, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 5942353601762115006, guid: 3aeeefc4b9611694aadd0fa3e2e33913, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7518,6 +7526,7 @@ MonoBehaviour:
   neoBgLifeHud: {fileID: 1750103608}
   handsZombies: {fileID: 2031413745}
   color: {fileID: 572628400}
+  labIcon: {fileID: 1296242097}
 --- !u!54 &572628398
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10640,7 +10649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &811517042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12809,16 +12818,16 @@ RectTransform:
   m_GameObject: {fileID: 1122559250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 0.45592707, y: 0.45592707, z: 0.45592707}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1674212350}
   - {fileID: 2031413744}
-  m_Father: {fileID: 1676273154}
+  m_Father: {fileID: 1750103606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0.000045776367}
+  m_AnchoredPosition: {x: 3.484811, y: 1.0182295}
   m_SizeDelta: {x: 105, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1122559252
@@ -14402,6 +14411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1296242098}
   - component: {fileID: 1296242099}
+  - component: {fileID: 1296242100}
   m_Layer: 6
   m_Name: Lab Icon
   m_TagString: Untagged
@@ -14418,9 +14428,9 @@ Transform:
   m_GameObject: {fileID: 1296242097}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.33, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1092465218}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -14476,6 +14486,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1296242100
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296242097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78601f9313f160e45b87bd4a08a109a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1302579460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1509366331550400845, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
@@ -18867,7 +18898,6 @@ RectTransform:
   m_Children:
   - {fileID: 1750103606}
   - {fileID: 63242895}
-  - {fileID: 1122559251}
   m_Father: {fileID: 129809845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -19416,7 +19446,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.58, y: 6.58, z: 6.58}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1122559251}
   m_Father: {fileID: 1676273154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
