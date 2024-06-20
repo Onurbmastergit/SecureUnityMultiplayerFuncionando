@@ -17,6 +17,7 @@ public class CraftCard : NetworkBehaviour
     [SerializeField] TextMeshProUGUI tecnologyCost;
 
     [SerializeField] Image image;
+    [SerializeField] Image background;
 
     [SerializeField] GameObject placeBuildPrefab;
 
@@ -36,6 +37,18 @@ public class CraftCard : NetworkBehaviour
         buildsContainer = GameObject.FindWithTag("PlaceBuild").transform;
         UpdateCard();
         popup.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (LevelManager.instance.woodTotal < craft.WoodCost ||
+            LevelManager.instance.stoneTotal < craft.StoneCost ||
+            LevelManager.instance.metalTotal < craft.MetalCost ||
+            LevelManager.instance.tecnologyTotal < craft.TecnologyCost)
+        {
+            background.color = Color.gray;
+        }
+        else background.color = Color.white;
     }
 
     #endregion
@@ -87,7 +100,7 @@ public class CraftCard : NetworkBehaviour
         else Debug.Log("Not enought Materials for this Craft.");
     }
 
-    [ObserversRpc(BufferLast = true)]
+    //[ObserversRpc(BufferLast = true)]
     public void CreatePlaceBuild()
     {
         GameObject placeBuild = Instantiate(placeBuildPrefab, buildsContainer);

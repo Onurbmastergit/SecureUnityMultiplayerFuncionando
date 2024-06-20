@@ -20,6 +20,7 @@ TagManager:
   - Green
   - Red
   - Environment
+  - LevelManager
   layers:
   - Default
   - TransparentFX

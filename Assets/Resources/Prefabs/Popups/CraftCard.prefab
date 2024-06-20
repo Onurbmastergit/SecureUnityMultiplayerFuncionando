@@ -1053,8 +1053,10 @@ MonoBehaviour:
   metalCost: {fileID: 5258226340521016608}
   tecnologyCost: {fileID: 1229099541788816846}
   image: {fileID: 2125646301732973642}
+  background: {fileID: 1934516173274757043}
   placeBuildPrefab: {fileID: 1636239962785093620, guid: 1c05686441d641a4c8c77d8486cbe2eb, type: 3}
   craftPopup: {fileID: 8692469230748659561}
+  popup: {fileID: 0}
 --- !u!114 &1934516173274757043
 MonoBehaviour:
   m_ObjectHideFlags: 0

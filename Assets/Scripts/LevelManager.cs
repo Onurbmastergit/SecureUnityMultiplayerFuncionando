@@ -15,7 +15,7 @@ public class LevelManager : NetworkBehaviour
     public int woodTotal = 10;
     public int stoneTotal = 5;
     public int metalTotal = 0;
-    public int tecnologyTotal = 1;
+    public int tecnologyTotal = 0;
     public float scientistsHealth = 10;
     float tecno;
 
@@ -32,6 +32,7 @@ public class LevelManager : NetworkBehaviour
     // Sistema de passagem de dias e horas dentro do jogo.
     public int currentDay = 1;
     public int currentHour = 6;
+    int lastHour;
     public TextMeshProUGUI calendar;
     public TextMeshProUGUI hourText;
     public bool isDay = true;
@@ -41,6 +42,7 @@ public class LevelManager : NetworkBehaviour
     float hourDurationDay = 3f; // Duracao de cada hora do dia em segundos.
     float hourDurationNight = 15f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
+    float sunTimer;
 
     // Rotacao do sun durante as horas.
     public Transform sun;
@@ -88,8 +90,7 @@ public class LevelManager : NetworkBehaviour
     {
         base.OnStartClient();
 
-        currentDay = base.GetComponent<LevelManager>().currentDay;
-        currentHour = base.GetComponent<LevelManager>().currentHour;
+        lastHour = currentHour;
     }
 
     [Server]
@@ -115,7 +116,6 @@ public class LevelManager : NetworkBehaviour
         
         // Conta os Segundos em float.
         timer += Time.deltaTime;
-        SunRotation();
 
         isDay = (currentHour > 5) ? true : false;
         // Caso seja dia, o tempo passa mais rapido.
@@ -136,6 +136,8 @@ public class LevelManager : NetworkBehaviour
                 timer = 0;
             }
         }
+
+        SunRotation();
     }
 
     /// <summary>
@@ -144,9 +146,18 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void SunRotation()
     {
-        sunRotationTimer = (isDay) ? timer / hourDurationDay : timer / hourDurationNight;
+        sunTimer += Time.deltaTime;
+
+        if (lastHour < currentHour)
+        {
+            lastHour = currentHour;
+            sunTimer = 0;
+        }
+
+        sunRotationTimer = (isDay) ? sunTimer / hourDurationDay : sunTimer / hourDurationNight;
+
         float currentRotation = ((currentHour - 6) + sunRotationTimer) * 15;
-        if (sunRotationTimer <= 10*Time.deltaTime) return;
+
         sun.rotation = Quaternion.Euler(currentRotation, -60, 0);
     }
 
@@ -156,12 +167,12 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void HourTick()
     {
-        currentHour++;
+        ++currentHour;
 
         // Muda o contador de dias caso passe da meia-noite e reseta a hora.
         if (currentHour == 24)
         {
-            currentDay++;
+            ++currentDay;
             calendar.text = $"Day {currentDay}";
             currentHour = 0;
             isDay = false;
@@ -192,9 +203,9 @@ public class LevelManager : NetworkBehaviour
 
             AddMaterials();
         }
-        if(cureResearch == true)CureProgression();    
-        if(cureResearch == false)TecnoProgression();
-        
+
+        if(cureResearch == true) CureProgression();    
+        else TecnoProgression();
     }
 
     /// <summary>
@@ -232,14 +243,17 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void TecnoProgression()
     {
-        
-
-        tecno += 10.25f;
+        tecno += 10f;
 
         if (tecno >= 100f)
         {
             tecnologyTotal++;
             tecno = 0;
+        }
+
+        if (tecnologyTotal >= 3)
+        {
+            cureResearch = true;
         }
     }
 
