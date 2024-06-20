@@ -15,6 +15,8 @@ public class PlayerAttacks : NetworkBehaviour
     [SerializeField] static float slashRate = 0.5f;
     float lastTimeSlash = 0;
 
+    [SerializeField] ParticleSystem muzzleFlash;
+
     #endregion
 
     #region Initialization
@@ -72,6 +74,8 @@ public class PlayerAttacks : NetworkBehaviour
     {
         GameObject bulletInstance = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
         base.Spawn(bulletInstance);
+
+        muzzleFlash.Play();
     }
 
     void Slash()

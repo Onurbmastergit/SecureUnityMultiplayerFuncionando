@@ -4,7 +4,7 @@ using FishNet.Object;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SpawnCamera :NetworkBehaviour
+public class SpawnCamera : NetworkBehaviour
 {
     public GameObject prefabCamera;
     public Transform cameraTransform;

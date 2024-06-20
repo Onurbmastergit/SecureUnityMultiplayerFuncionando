@@ -26,7 +26,8 @@ public class LevelManager : NetworkBehaviour
     public Craft selectedCraft;
 
     // Botoes da HUD do jogo.
-    public GameObject gatherButton;
+    [SerializeField] GameObject researchButton;
+    [SerializeField] GameObject gatherButton;
 
     // Sistema de passagem de dias e horas dentro do jogo.
     public int currentDay = 1;
@@ -38,12 +39,11 @@ public class LevelManager : NetworkBehaviour
     public bool nightStart;
     public bool cureResearch = true;
     float hourDurationDay = 3f; // Duracao de cada hora do dia em segundos.
-    float hourDurationNight = 20f; // Duracao de cada hora da noite em segundos.
+    float hourDurationNight = 15f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
 
     // Rotacao do sun durante as horas.
     public Transform sun;
-    float sunRotationSpeed = 360.0f / 180.0f;
     float sunRotationTimer;
 
     // HUD de Cure Research.
@@ -83,20 +83,22 @@ public class LevelManager : NetworkBehaviour
             instance = this;
         }
     }
-    public void MudarPesquisa()
+    
+    public override void OnStartClient()
     {
-        cureResearch = !cureResearch;
-    }
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
+        base.OnStartClient();
+
+        currentDay = base.GetComponent<LevelManager>().currentDay;
+        currentHour = base.GetComponent<LevelManager>().currentHour;
     }
 
+    [Server]
     [ObserversRpc(BufferLast = true)]
     void Update()
     {
         if(base.ClientManager.Clients.Count == 0) return; 
         TimeSystem();
+        UpdateHUD();
         EndgameSystem();
     }
 
@@ -185,6 +187,7 @@ public class LevelManager : NetworkBehaviour
             hudActionsBase.SetActive(true);
             hudLifeBase.SetActive(false);
 
+            researchButton.SetActive(true);
             gatherButton.SetActive(true);
 
             AddMaterials();
@@ -208,6 +211,7 @@ public class LevelManager : NetworkBehaviour
             hudActionsBase.SetActive(false);
             hudLifeBase.SetActive(true);
 
+            researchButton.SetActive(false);
             gatherButton.SetActive(false);
         }
     }
@@ -222,31 +226,57 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void CureProgression()
     {
-        blackOutCure.SetActive(false);
-        blackOutTecnology.SetActive(true);
-        hudCure.sortingOrder = 1;
-        hudTecnology.sortingOrder = 0;
         cureMeter += 1.25f;
-        float preenchimentoNormalizado = cureMeter / 100f;
-        porcentagemCure.text = ((int)cureMeter)+"%".ToString();
-        cureMeterHud.fillAmount = preenchimentoNormalizado;
     }
+
     [ObserversRpc(BufferLast = true)]
     void TecnoProgression()
     {
-        blackOutCure.SetActive(true);
-        blackOutTecnology.SetActive(false);
-        hudCure.sortingOrder = 0;
-        hudTecnology.sortingOrder = 1;
-         tecno += 10.25f;
-         float fillAmount = tecno/100f;
-         porcentagemTecno.text = ((int)tecnologyTotal).ToString();
-         tecnoCureMeterHud.fillAmount = fillAmount;
-         if(tecno >= 100f)
-         {
+        
+
+        tecno += 10.25f;
+
+        if (tecno >= 100f)
+        {
             tecnologyTotal++;
             tecno = 0;
-         }
+        }
+    }
+
+    [ObserversRpc(BufferLast = true)]
+    public void MudarPesquisa()
+    {
+        cureResearch = !cureResearch;
+    }
+
+    void UpdateHUD()
+    {
+        // Atualiza HUD % Cura
+        float preenchimentoNormalizado = cureMeter / 100f;
+        porcentagemCure.text = ((int)cureMeter) + "%".ToString();
+        cureMeterHud.fillAmount = preenchimentoNormalizado;
+
+        // Atualiza HUD % Tecnologia
+        float fillAmount = tecno / 100f;
+        porcentagemTecno.text = ((int)tecnologyTotal).ToString();
+        tecnoCureMeterHud.fillAmount = fillAmount;
+
+        if (cureResearch)
+        {
+            // Atualiza HUD Cura
+            blackOutCure.SetActive(false);
+            blackOutTecnology.SetActive(true);
+            hudCure.sortingOrder = 1;
+            hudTecnology.sortingOrder = 0;
+        }
+        else
+        {
+            // Atualiza HUD Tecnologia
+            blackOutCure.SetActive(true);
+            blackOutTecnology.SetActive(false);
+            hudCure.sortingOrder = 0;
+            hudTecnology.sortingOrder = 1;
+        }
     }
 
     #endregion

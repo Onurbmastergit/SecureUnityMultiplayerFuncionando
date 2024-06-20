@@ -38,5 +38,11 @@ public class Projectile : NetworkBehaviour
             Destroy(gameObject);
             base.Despawn(gameObject);
         }
+
+        if (collider.transform.CompareTag("Environment"))
+        {
+            Destroy(gameObject);
+            base.Despawn(gameObject);
+        }
     }
 }

@@ -21,6 +21,7 @@ public class CraftCard : NetworkBehaviour
     [SerializeField] GameObject placeBuildPrefab;
 
     [SerializeField] Transform craftPopup;
+    [SerializeField] GameObject popup;
 
     Transform buildsContainer;
 
@@ -34,6 +35,7 @@ public class CraftCard : NetworkBehaviour
 
         buildsContainer = GameObject.FindWithTag("PlaceBuild").transform;
         UpdateCard();
+        popup.SetActive(false);
     }
 
     #endregion

@@ -19,6 +19,7 @@ TagManager:
   - Blue
   - Green
   - Red
+  - Environment
   layers:
   - Default
   - TransparentFX
