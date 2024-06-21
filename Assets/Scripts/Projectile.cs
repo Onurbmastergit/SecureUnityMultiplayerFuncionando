@@ -29,10 +29,14 @@ public class Projectile : NetworkBehaviour
 
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
     }
+
     void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Zombie"))
         {
+            BoxCollider boxCollider = GetComponent<BoxCollider>();
+            boxCollider.size *= 2.0f;
+
             collider.GetComponent<EnemyStatus>().ReceberDano(10);
 
             Destroy(gameObject);

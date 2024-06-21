@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class EnemyStatus : NetworkBehaviour
 {
+    #region Variables
+
     public int vidaAtual = 100;
     public int vidaBase = 100;
 
@@ -17,7 +19,11 @@ public class EnemyStatus : NetworkBehaviour
     public VfxColor color;
     private Rigidbody rb;
 
-    void Start() 
+    #endregion
+
+    #region Initialization
+
+    void Start()
     {
         vidaAtual = vidaBase;
         rb = GetComponent<Rigidbody>();
@@ -26,50 +32,61 @@ public class EnemyStatus : NetworkBehaviour
         vidaAtual = vidaBase;
         animator.SetInteger("Death", vidaAtual);
     }
+
     [ObserversRpc(BufferLast = true)]
     private void Update()
     {
-        float fillAmount = (float)vidaAtual/vidaBase;
+        float fillAmount = (float)vidaAtual / vidaBase;
         LifeBar.fillAmount = fillAmount;
         animator.SetInteger("Death", vidaAtual);
-        if(LevelManager.instance.dayStart)
+        if (LevelManager.instance.currentHour > 5)
         {
             vidaAtual = 0;
         }
     }
+
+    #endregion
+
+    #region Funtions
+
     [ObserversRpc(BufferLast = true)]
-    public void ReceberDano(int dano) 
+    public void ReceberDano(int dano)
     {
-        if(vidaAtual > 0)
+        if (vidaAtual > 0)
         {
-        animator.SetBool("Hit", true);
-        agent.enabled = false;
-        tomouDano = true; 
-        vidaAtual -= dano;
+            animator.SetBool("Hit", true);
+            agent.enabled = false;
+            tomouDano = true;
+            vidaAtual -= dano;
         }
         color.ChangeColor();
         VerificarMorte();
     }
+
     [ServerRpc]
-    void VerificarMorte() 
+    void VerificarMorte()
     {
-        if (vidaAtual <= 0) 
+        if (vidaAtual <= 0)
         {
             vidaAtual = 0;
             Destroy(rb);
             agent.enabled = false;
-            transform.GetComponent<Collider>().enabled = false;
+            transform.GetComponent<BoxCollider>().enabled = false;
         }
     }
+
     [ObserversRpc(BufferLast = true)]
     public void Morte()
     {
         base.Despawn(gameObject);
     }
-    public void DisableAnimation() 
+
+    public void DisableAnimation()
     {
-         animator.SetBool("Hit", false);
+        animator.SetBool("Hit", false);
         tomouDano = false;
         agent.enabled = true;
     }
+
+    #endregion
 }

@@ -41,7 +41,7 @@ public class NpcManager : NetworkBehaviour
         {
             if(enableAlertRecursos)RecursosColetados();
         }
-        if (LevelManager.instance.isDay == true && ligarBotao)
+        if (LevelManager.instance.currentHour >= 8 && ligarBotao)
         {
             radioButton.SetActive(true);
             ligarBotao = false;
@@ -62,6 +62,7 @@ public class NpcManager : NetworkBehaviour
 
     #region Funtions
 
+    [ObserversRpc(BufferLast = true)]
     public void Alert()
     {
         if (SpawnSelection.instacia.spawnDirecao != null )
@@ -74,6 +75,7 @@ public class NpcManager : NetworkBehaviour
         }
     }
 
+    [ObserversRpc(BufferLast = true)]
     void RecursosColetados()
     {
         enableAlertRecursos = false;
@@ -82,6 +84,7 @@ public class NpcManager : NetworkBehaviour
         NpcDialogues.instacia.ShowTextOutsinal();
     }
 
+    [ObserversRpc(BufferLast = true)]
     void SelecionarNome()
     {
         for (int i = 0; i < nameNpc.Length; i++)

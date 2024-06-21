@@ -56,7 +56,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8553920215933368745}
   _networkObjectCache: {fileID: 8553920215933368745}
-  durability: 15
+  durability: 20
 --- !u!65 &7302175810232279233
 BoxCollider:
   m_ObjectHideFlags: 0

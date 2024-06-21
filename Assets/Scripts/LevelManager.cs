@@ -32,7 +32,6 @@ public class LevelManager : NetworkBehaviour
     // Sistema de passagem de dias e horas dentro do jogo.
     public int currentDay = 1;
     public int currentHour = 6;
-    int lastHour;
     public TextMeshProUGUI calendar;
     public TextMeshProUGUI hourText;
     public bool isDay = true;
@@ -46,7 +45,6 @@ public class LevelManager : NetworkBehaviour
 
     // Rotacao do sun durante as horas.
     public Transform sun;
-    float sunRotationTimer;
 
     // HUD de Cure Research.
     public Image cureMeterHud;
@@ -89,8 +87,6 @@ public class LevelManager : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-
-        lastHour = currentHour;
     }
 
     [Server]
@@ -146,19 +142,13 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void SunRotation()
     {
-        sunTimer += Time.deltaTime;
+        if (sunTimer < 54) sunTimer += Time.deltaTime;
+        else if (currentHour == 5) sunTimer += Time.deltaTime;
+        else if (currentHour == 6) sunTimer = 0;
 
-        if (lastHour < currentHour)
-        {
-            lastHour = currentHour;
-            sunTimer = 0;
-        }
+        float anguloRotacao = 5f * sunTimer;
 
-        sunRotationTimer = (isDay) ? sunTimer / hourDurationDay : sunTimer / hourDurationNight;
-
-        float currentRotation = ((currentHour - 6) + sunRotationTimer) * 15;
-
-        sun.rotation = Quaternion.Euler(currentRotation, -60, 0);
+        sun.rotation = Quaternion.Euler(anguloRotacao, -60, 0);
     }
 
     /// <summary>

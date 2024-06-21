@@ -5,37 +5,51 @@ using UnityEngine;
 
 public class SpawnSystem : NetworkBehaviour
 {
+    #region Variables
+
     public GameObject enemyPrefab;
     public Transform spawnPoint;
     public bool enableSpawn;
     public string direcaoSpawn;
+
+    int counter = 0;
+    float difficulty;
+
+    #endregion
+
+    #region Initialization
+
     public override void OnStartServer()
     {
         base.OnStartServer();
 
-        InvokeRepeating("SpawnEnemy", 3, 3);
-
+        InvokeRepeating("SpawnEnemy", 0, 0.25f);
     }
+
+    #endregion
+
+    #region Functions
 
     [Server]
     void SpawnEnemy()
     {
+        if (!LevelManager.instance.nightStart || !enableSpawn) return;
+
         if (base.ClientManager.Clients.Count > 0)
         {
-            if (LevelManager.instance.nightStart && enableSpawn)
+            counter++;
+            difficulty = 10 + LevelManager.instance.currentDay / LevelManager.instance.currentDay;
+
+            if (counter >= difficulty)
             {
-                float quantidadeZumbis = LevelManager.instance.currentDay / 2;
+                // Obtém a posição aleatória dentro da área de spawn.
+                Vector3 randomPosition = GetRandomSpawnPositionWithinBounds(spawnPoint.position, spawnPoint.localScale);
 
-                // Aumenta a quantidade de zumbis spawnados quanto mais dias se passarem.
-                for (float i = 0; i < quantidadeZumbis; i++)
-                {
-                    // Obtém a posição aleatória dentro da área de spawn.
-                    Vector3 randomPosition = GetRandomSpawnPositionWithinBounds(spawnPoint.position, spawnPoint.localScale);
+                // Instancia o inimigo na posição aleatória.
+                GameObject enemyInstatiate = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+                base.Spawn(enemyInstatiate);
 
-                    // Instancia o inimigo na posição aleatória.
-                    GameObject enemyInstatiate = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
-                    base.Spawn(enemyInstatiate);
-                }
+                counter = 0;
             }
         }
     }
@@ -49,5 +63,7 @@ public class SpawnSystem : NetworkBehaviour
 
         return new Vector3(randomX, randomY, randomZ);
     }
+
+    #endregion
 }
 

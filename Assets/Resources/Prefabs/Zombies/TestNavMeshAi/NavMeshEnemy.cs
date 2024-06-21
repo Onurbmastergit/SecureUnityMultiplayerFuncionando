@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class NavMeshEnemy : NetworkBehaviour
 {
     private EnemyManager enemyManager;
-    private Transform point;
+    public Transform point;
     private NavMeshAgent agent;
     private EnemyStatus status;
     
@@ -32,6 +32,5 @@ public class NavMeshEnemy : NetworkBehaviour
         {
             agent.enabled = false;
         }
-        
     }
 }
