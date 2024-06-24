@@ -37,7 +37,7 @@ public class TextEffect : MonoBehaviour
         viewerAlert[selectionNumber].text += ctr[count];
         count++;
      }
-     Invoke("DisbleAlert", 2.5f);  
+     Invoke("DisbleAlert", 3.5f);  
    }
    void DisbleAlert()
    {
