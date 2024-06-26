@@ -48,7 +48,7 @@ public class PlayerStatus : MonoBehaviour
 
     void Respawn()
     {
-        if (LevelManager.instance.currentHour == 7)
+        if (LevelManager.instance.currentHour.Value == 7)
         {
             vidaAtual = vidaTotal;
             color.ChangeColor();

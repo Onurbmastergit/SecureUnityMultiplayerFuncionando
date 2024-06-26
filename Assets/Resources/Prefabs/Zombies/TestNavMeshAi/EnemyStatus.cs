@@ -39,7 +39,7 @@ public class EnemyStatus : NetworkBehaviour
         float fillAmount = (float)vidaAtual / vidaBase;
         LifeBar.fillAmount = fillAmount;
         animator.SetInteger("Death", vidaAtual);
-        if (LevelManager.instance.currentHour > 5)
+        if (LevelManager.instance.currentHour.Value > 5)
         {
             vidaAtual = 0;
         }

@@ -18,12 +18,12 @@ public class HudManager : MonoBehaviour
 
    void Update()
    {
-    if(LevelManager.instance.currentHour == 23 && active == true)
+    if(LevelManager.instance.currentHour.Value == 23 && active == true)
     {
         hudAlerta.SetActive(true);
         active = false;
     }
-    if(LevelManager.instance.currentHour == 6)
+    if(LevelManager.instance.currentHour.Value == 6)
     {
         active = true;
     }

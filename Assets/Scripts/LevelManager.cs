@@ -1,9 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
+using FishNet.Transporting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using FishNet.Object;
 using static UnityEngine.GraphicsBuffer;
 
 public class LevelManager : NetworkBehaviour
@@ -31,7 +32,10 @@ public class LevelManager : NetworkBehaviour
 
     // Sistema de passagem de dias e horas dentro do jogo.
     public int currentDay = 1;
-    public int currentHour = 6;
+
+    public readonly SyncVar<int> currentHour = new SyncVar<int>();
+    private void SetHour(int value) => currentHour.Value = value;
+
     public TextMeshProUGUI calendar;
     public TextMeshProUGUI hourText;
     public bool isDay = true;
@@ -84,20 +88,25 @@ public class LevelManager : NetworkBehaviour
         }
     }
     
-    public override void OnStartClient()
+    public override void OnStartServer()
     {
-        base.OnStartClient();
+        base.OnStartServer();
+
+        SetHour(6);
     }
 
-    [Server]
-    [ObserversRpc(BufferLast = true)]
     void Update()
     {
+        if (!base.IsServerInitialized) return;
+
         if(base.ClientManager.Clients.Count == 0) return; 
+
         TimeSystem();
         UpdateHUD();
         EndgameSystem();
     }
+
+
 
     #endregion
 
@@ -113,7 +122,7 @@ public class LevelManager : NetworkBehaviour
         // Conta os Segundos em float.
         timer += Time.deltaTime;
 
-        isDay = (currentHour > 5) ? true : false;
+        isDay = (currentHour.Value > 5) ? true : false;
         // Caso seja dia, o tempo passa mais rapido.
         if (isDay)
         {
@@ -143,8 +152,8 @@ public class LevelManager : NetworkBehaviour
     void SunRotation()
     {
         if (sunTimer < 54) sunTimer += Time.deltaTime;
-        else if (currentHour == 5) sunTimer += Time.deltaTime;
-        else if (currentHour == 6) sunTimer = 0;
+        else if (currentHour.Value == 5) sunTimer += Time.deltaTime;
+        else if (currentHour.Value == 6) sunTimer = 0;
 
         float anguloRotacao = 5f * sunTimer;
 
@@ -157,18 +166,18 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void HourTick()
     {
-        ++currentHour;
+        SetHour(++currentHour.Value);
 
         // Muda o contador de dias caso passe da meia-noite e reseta a hora.
-        if (currentHour == 24)
+        if (currentHour.Value == 24)
         {
             ++currentDay;
             calendar.text = $"Day {currentDay}";
-            currentHour = 0;
+            SetHour(0);
             isDay = false;
         }
         // Atualiza o horario na HUD.
-        hourText.text = $"{currentHour}:00";
+        hourText.text = $"{currentHour.Value}:00";
 
         if (isDay) DayHourTick();
         else NightHourTick();
@@ -224,7 +233,6 @@ public class LevelManager : NetworkBehaviour
     /// <summary>
     /// Progressao da barra de Cura Research.
     /// </summary>
-    [ObserversRpc(BufferLast = true)]
     void CureProgression()
     {
         cureMeter += 1.25f;

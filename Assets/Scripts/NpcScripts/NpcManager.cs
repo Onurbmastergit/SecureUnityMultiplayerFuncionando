@@ -37,11 +37,11 @@ public class NpcManager : NetworkBehaviour
 
     void Update()
     {
-        if(LevelManager.instance.currentHour == 6 && LevelManager.instance.selectedLocation != null)
+        if(LevelManager.instance.currentHour.Value == 6 && LevelManager.instance.selectedLocation != null)
         {
             if(enableAlertRecursos)RecursosColetados();
         }
-        if (LevelManager.instance.currentHour >= 8 && ligarBotao)
+        if (LevelManager.instance.currentHour.Value >= 8 && ligarBotao)
         {
             radioButton.SetActive(true);
             ligarBotao = false;
@@ -52,7 +52,7 @@ public class NpcManager : NetworkBehaviour
             ligarBotao = true;
         }
 
-        if(LevelManager.instance.currentHour == 5)
+        if(LevelManager.instance.currentHour.Value == 5)
         {
             enableAlertRecursos = true;
         }

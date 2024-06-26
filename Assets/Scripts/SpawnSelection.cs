@@ -32,11 +32,11 @@ public class SpawnSelection : NetworkBehaviour
     [Server]
     void Update_Server()
     {
-        if (LevelManager.instance.currentHour == 8)
+        if (LevelManager.instance.currentHour.Value == 8)
         {
             RandomizarNumero();
         }
-        if (LevelManager.instance.currentHour == 6)
+        if (LevelManager.instance.currentHour.Value == 6)
         {
             spawnDirecao = null;
             enableRandom = true;

@@ -22,6 +22,6 @@ public class DirectionsChangeColor : MonoBehaviour
         }
         else transform.GetComponent<UnityEngine.UI.Image>().color = corBranca;
 
-        if (LevelManager.instance.currentHour == 6) NpcManager.instacia.showDirectionInMap = false;
+        if (LevelManager.instance.currentHour.Value == 6) NpcManager.instacia.showDirectionInMap = false;
     }
 }
