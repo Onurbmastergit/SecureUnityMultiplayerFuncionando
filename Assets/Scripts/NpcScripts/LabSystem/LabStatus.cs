@@ -46,6 +46,7 @@ public class LabStatus : NetworkBehaviour
     {
         vidaAtual -= damage;
         labIcon.GetComponent<Animator>().SetTrigger("Dano");
+        SirenScript.instance.SirenAlert();
     }
 
 
