@@ -15,6 +15,9 @@ public class LabStatus : NetworkBehaviour
     public Image handsZombies;
     public VfxColor color;
     public GameObject labIcon;
+
+    public GameObject[] sirenArray;
+
     void Awake()
     {
        vidaAtual = vidaBase;     
@@ -46,8 +49,10 @@ public class LabStatus : NetworkBehaviour
     {
         vidaAtual -= damage;
         labIcon.GetComponent<Animator>().SetTrigger("Dano");
-        SirenScript.instance.SirenAlert();
+
+        foreach (GameObject siren in sirenArray)
+        {
+            siren.GetComponent<SirenScript>().SirenAlert();
+        }
     }
-
-
 }
