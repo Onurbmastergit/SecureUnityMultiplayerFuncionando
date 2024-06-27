@@ -4,7 +4,7 @@ using FishNet.Object;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectStatus : MonoBehaviour
+public class ObjectStatus : NetworkBehaviour
 {   
     public int vidaAtual;
     float fillAmount;
@@ -48,5 +48,6 @@ public class ObjectStatus : MonoBehaviour
    void Morte()
    {
     Destroy(gameObject);
+    base.Despawn(gameObject);
    }
 }
