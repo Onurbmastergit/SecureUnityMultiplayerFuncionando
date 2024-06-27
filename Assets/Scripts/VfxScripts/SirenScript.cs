@@ -13,15 +13,11 @@ public class SirenScript : MonoBehaviour
 
     void Update()
     {
+        if (!alert) return;
+
         if (LevelManager.instance.currentHour.Value >= 6)
         {
             DisableAlert();
-            return;
-        }
-
-        if (!alert)
-        {
-            EffectsSiren.SetActive(false);
             return;
         }
 
@@ -37,6 +33,7 @@ public class SirenScript : MonoBehaviour
 
     public void DisableAlert()
     {
+        EffectsSiren.SetActive(false);
         alert = false;
     }
 }
