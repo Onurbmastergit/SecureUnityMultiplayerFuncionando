@@ -636,7 +636,7 @@ MonoBehaviour:
   build: 1
   player: 1
   zombie: 0
-  dano: 10
+  dano: 50
   collider1: {fileID: 5291724102354201909}
 --- !u!1 &7710040411430295188
 GameObject:
