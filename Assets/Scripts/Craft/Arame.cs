@@ -22,7 +22,7 @@ public class Arame : NetworkBehaviour
         {
             zombiePassed++;
             collider.GetComponent<EnemyStatus>().ReceberDano(30);
-            collider.GetComponent<NavMeshAgent>().speed = 5 * 0.25f;
+            collider.GetComponent<NavMeshAgent>().speed *= 0.25f;
 
             // Se auto-destroi apos certa quantidade de usos.
             if (zombiePassed >= durability)
@@ -37,7 +37,7 @@ public class Arame : NetworkBehaviour
     {
         if (collider.CompareTag("Zombie"))
         {
-            collider.GetComponent<NavMeshAgent>().speed = 5;
+            collider.GetComponent<NavMeshAgent>().speed *= 4;
         }
     }
 

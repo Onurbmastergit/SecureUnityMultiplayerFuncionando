@@ -15,18 +15,18 @@ public class EnemyManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        
     }
+
     private void Update()
     {
-
         animator.SetBool("Attack", buildOn.Attack);
-
     }
+
     public void EnableCollider()
     {
         areaAttack.enabled = true;
     }
+
     public void DisableCollider()
     {
         areaAttack.enabled = false;

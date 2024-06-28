@@ -21,13 +21,15 @@ public class EnemyStatus : NetworkBehaviour
     Rigidbody rb;
     [SerializeField] GameObject minimapIcon;
 
+    [SerializeField] bool isBulker;
+
     #endregion
 
     #region Initialization
 
     void Start()
     {
-        vidaAtual = vidaBase;
+        if (isBulker) vidaBase *= base.ClientManager.Clients.Count;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();

@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class DamageZombie : NetworkBehaviour
 {
-    public GameObject targetZombie;
+    GameObject targetZombie;
     public SpriteRenderer lightGun;
     public GameObject Gun;
     public float colldownBullets;
     bool canShoot = true;
-    bool shootZombie = true;
     [SerializeField] Transform firingPoint;
     [SerializeField] GameObject projectilePrefab;
     public float velocity;
@@ -24,61 +23,42 @@ public class DamageZombie : NetworkBehaviour
             Gun.transform.Rotate(0, velocity * Time.deltaTime, 0);
             lightGun.color = corVerde;
         }
-        else
+        else if (canShoot)
         {
+            canShoot = false;
             Shoot();
         }
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
         if (collider.CompareTag("Zombie"))
         {
-            SelectionTarget();
-            Gun.transform.LookAt(targetZombie.transform);
-            shootZombie = collider.GetComponent<EnemyStatus>().vidaAtual > 0;
-        }
-        else
-        {
-            targetZombie = null;
+            if (collider.GetComponent<EnemyStatus>().vidaAtual <= 0)
+            {
+                targetZombie = null;
+                return;
+            }
+
+            lightGun.color = corVermelho;
+            Gun.transform.LookAt(collider.transform);
+            targetZombie = collider.gameObject;
         }
     }
 
-    void SelectionTarget()
+    void OnTriggerExit(Collider collider)
     {
-        lightGun.color = corVermelho;
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Zombie");
-        if (targets == null)
+        if (collider.CompareTag("Zombie"))
         {
             targetZombie = null;
-            return;
-        }
-        targetZombie = targets[0];
-
-        foreach (GameObject target in targets)
-        {
-            //O jOGADOR QUE O INIMIGO ESTA SEGUINDO ESTÁ MAIS LONGE DO QUE O ALVO DO LOOP
-            if (Vector3.Distance(transform.position, targetZombie.transform.position)
-                > Vector3.Distance(transform.position, target.transform.position))
-            {
-                //SE ESTIVER TROCA O JOGADOR QUE O INIMIGO ESTÁ SEGUINDO PELO NOVO ALVO
-                targetZombie = target;
-            }
         }
     }
 
     public void Shoot()
     {
-        if (canShoot && shootZombie)
-        {
-            GameObject bulletInstance = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
-            base.Spawn(bulletInstance);
-            canShoot = false;
-        }
-        else if (canShoot == false)
-        {
-            StartCoroutine(bulletsTime());
-        }
+        GameObject bulletInstance = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
+        base.Spawn(bulletInstance);
+        StartCoroutine(bulletsTime());
     }
 
     IEnumerator bulletsTime()

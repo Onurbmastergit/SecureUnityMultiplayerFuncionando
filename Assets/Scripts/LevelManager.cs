@@ -124,7 +124,7 @@ public class LevelManager : NetworkBehaviour
         // Conta os Segundos em float.
         timer += Time.deltaTime;
 
-        isDay = (currentHour.Value > 5) ? true : false;
+        isDay = (currentHour.Value >= 6) ? true : false;
         // Caso seja dia, o tempo passa mais rapido.
         if (isDay)
         {
@@ -199,7 +199,7 @@ public class LevelManager : NetworkBehaviour
             hudActionsBase.SetActive(true);
             hudLifeBase.SetActive(false);
 
-            researchButton.SetActive(true);
+            if (tecnologyTotal < 3) researchButton.SetActive(true);
             gatherButton.SetActive(true);
 
             if (currentDay != 1) AddMaterials();
@@ -256,6 +256,7 @@ public class LevelManager : NetworkBehaviour
 
         if (tecnologyTotal >= 3)
         {
+            researchButton.SetActive(false);
             cureResearch = true;
         }
     }

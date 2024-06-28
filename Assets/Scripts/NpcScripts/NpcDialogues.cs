@@ -29,7 +29,7 @@ public class NpcDialogues : MonoBehaviour
 
     public void ShowTextOutsinal()
     {
-        string dialogueOutsinal = $"Olá sobrevivente, aqui está o relatório da coleta d{LevelManager.instance.selectedLocation.Artigo} {LevelManager.instance.selectedLocation.Title.ToUpper()}\n+{LevelManager.instance.selectedLocation.Wood} Madeira\n+{LevelManager.instance.selectedLocation.Stone} Pedra\n+{LevelManager.instance.selectedLocation.Metal} Metais";
+        string dialogueOutsinal = $"Olá sobrevivente, aqui está o relatório da coleta d{LevelManager.instance.selectedLocation.Artigo} {LevelManager.instance.selectedLocation.Title.ToUpper()}\n+{LevelManager.instance.selectedLocation.Wood} Madeira   +{LevelManager.instance.selectedLocation.Stone} Pedra   +{LevelManager.instance.selectedLocation.Metal} Metais";
         StartFunctions(dialogueOutsinal);
     }
 

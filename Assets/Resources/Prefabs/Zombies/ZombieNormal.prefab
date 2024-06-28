@@ -1346,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
       propertyPath: m_Name
-      value: ZombieLvl1
+      value: ZombieNormal
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
       propertyPath: m_TagString
@@ -2138,7 +2138,7 @@ MonoBehaviour:
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 6232722745141641711
+  <AssetPathHash>k__BackingField: 2070864426484580563
 --- !u!114 &-7379381286461601694
 MonoBehaviour:
   m_ObjectHideFlags: 0

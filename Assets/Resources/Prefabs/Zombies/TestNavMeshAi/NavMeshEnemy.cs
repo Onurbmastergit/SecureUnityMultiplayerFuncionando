@@ -16,7 +16,8 @@ public class NavMeshEnemy : NetworkBehaviour
         enemyManager = GetComponent<EnemyManager>();
         agent = GetComponent<NavMeshAgent>();
         status = GetComponent<EnemyStatus>();
-        point = GameObject.FindWithTag("HouseDefender").transform;
+
+        if (point == null) point = GameObject.FindWithTag("HouseDefender").transform;
         agent.SetDestination(point.position);
     }
 

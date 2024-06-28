@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpawnSystem : NetworkBehaviour
 {
     #region Variables
 
-    public GameObject enemyPrefab;
+    [SerializeField] GameObject zombiePrefab;
+    [SerializeField] GameObject sprinterPrefab;
+    [SerializeField] GameObject bulkerPrefab;
     public Transform spawnPoint;
     public bool enableSpawn;
     public string direcaoSpawn;
+
+    bool bulkerEnable = true;
 
     int counter = 0;
     float difficulty;
@@ -23,7 +28,7 @@ public class SpawnSystem : NetworkBehaviour
     {
         base.OnStartServer();
 
-        InvokeRepeating("SpawnEnemy", 0, 0.25f);
+        InvokeRepeating("SpawnEnemy", 0, 0.75f);
     }
 
     #endregion
@@ -38,20 +43,37 @@ public class SpawnSystem : NetworkBehaviour
         if (base.ClientManager.Clients.Count > 0)
         {
             counter++;
-            difficulty = 10 + LevelManager.instance.currentDay / LevelManager.instance.currentDay;
+            difficulty = (10 + LevelManager.instance.currentDay) / LevelManager.instance.currentDay;
 
             if (counter >= difficulty)
             {
-                // Obtém a posição aleatória dentro da área de spawn.
-                Vector3 randomPosition = GetRandomSpawnPositionWithinBounds(spawnPoint.position, spawnPoint.localScale);
+                for (int i = 0; i < base.ClientManager.Clients.Count; i++)
+                {
+                    // Obtém a posição aleatória dentro da área de spawn.
+                    Vector3 randomPosition = GetRandomSpawnPositionWithinBounds(spawnPoint.position, spawnPoint.localScale);
 
-                // Instancia o inimigo na posição aleatória.
-                GameObject enemyInstatiate = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
-                base.Spawn(enemyInstatiate);
+                    // Seleciona diferentes zumbis para spawnar dependendo da dificuldade.
+                    if (LevelManager.instance.cureMeter > 70 && bulkerEnable)
+                    {
+                        SpawnEnemy(bulkerPrefab, randomPosition);
+                        bulkerEnable = false;
+                        counter = 0;
+                        return;
+                    }
+
+                    if (Random.Range(0f, 9f) < difficulty * 2) SpawnEnemy(zombiePrefab, randomPosition);
+                    else SpawnEnemy(sprinterPrefab, randomPosition);
+                }
 
                 counter = 0;
             }
         }
+    }
+
+    void SpawnEnemy(GameObject enemy, Vector3 position)
+    {
+        GameObject enemyInstatiate = Instantiate(enemy, position, Quaternion.identity);
+        base.Spawn(enemyInstatiate);
     }
 
     Vector3 GetRandomSpawnPositionWithinBounds(Vector3 center, Vector3 size)
