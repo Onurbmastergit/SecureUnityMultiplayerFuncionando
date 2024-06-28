@@ -369,9 +369,8 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
-  moveSpeed: 8
   rotationSpeed: 0
-  rotationCorrection: -8.3
+  rotationCorrection: -9.5
   acessibilidade: 0
   rotacao: {fileID: 3416684417182032394}
 --- !u!114 &248205076845335741
@@ -563,7 +562,7 @@ MonoBehaviour:
   _ownerInterpolation: 1
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 8
+  <PrefabId>k__BackingField: 10
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
