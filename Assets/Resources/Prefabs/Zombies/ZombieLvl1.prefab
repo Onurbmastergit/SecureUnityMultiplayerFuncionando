@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5291724102354201909}
   m_Layer: 0
   m_Name: AreaDetectao
-  m_TagString: Zombie
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +153,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2832766812730381157}
-  - {fileID: 3848362124164581691}
   m_Father: {fileID: 4458367872125431532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -303,16 +302,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3603856912631346006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1788306252700080485}
+  m_Father: {fileID: 2832766812730381157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0108, y: -2.7148}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 4.9427, y: 1.0229}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5190777468321198671
@@ -382,7 +381,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3848362124164581691}
   m_Father: {fileID: 1788306252700080485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2013,9 +2013,10 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 2209629728953986969}
   _networkObjectCache: {fileID: 2209629728953986969}
-  vidaAtual: 0
+  vidaAtual: 100
   vidaBase: 100
   LifeBar: {fileID: 8608926753648983680}
+  lifeBarObject: {fileID: 6393400415824040394}
   tomouDano: 0
   color: {fileID: -623912231982328323}
 --- !u!54 &4453722863154593883

@@ -17,7 +17,10 @@ public class LevelManager : NetworkBehaviour
     public int stoneTotal = 5;
     public int metalTotal = 0;
     public int tecnologyTotal = 0;
-    public float scientistsHealth = 10;
+
+    public readonly SyncVar<float> labHealth = new SyncVar<float>();
+    public void SetLabHealth(float value) => labHealth.Value = value;
+
     float tecno;
 
     // Materiais coletados pelo GatherPopup.
@@ -74,6 +77,7 @@ public class LevelManager : NetworkBehaviour
     public static LevelManager instance;
 
     // Endgame
+    bool endgame;
     [SerializeField] GameObject EndgamePopup;
 
     #endregion
@@ -99,7 +103,9 @@ public class LevelManager : NetworkBehaviour
     {
         if (!base.IsServerInitialized) return;
 
-        if(base.ClientManager.Clients.Count == 0) return; 
+        if(base.ClientManager.Clients.Count == 0) return;
+
+        if (endgame) return;
 
         TimeSystem();
         UpdateHUD();
@@ -118,7 +124,6 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void TimeSystem()
     {
-        
         // Conta os Segundos em float.
         timer += Time.deltaTime;
 
@@ -236,6 +241,9 @@ public class LevelManager : NetworkBehaviour
     void CureProgression()
     {
         cureMeter += 1.25f;
+
+        // Impede o medidor de cura ultrapassar 100%
+        if (cureMeter > 100) cureMeter = 100;
     }
 
     [ObserversRpc(BufferLast = true)]
@@ -322,7 +330,7 @@ public class LevelManager : NetworkBehaviour
             EndgamePopup.GetComponent<EndgamePopup>().UpdateEndgamePopup(true);
         }
 
-        if (scientistsHealth <= 0)
+        if (labHealth.Value <= 0)
         {
             Endgame();
             EndgamePopup.GetComponent<EndgamePopup>().UpdateEndgamePopup(false);
@@ -334,6 +342,7 @@ public class LevelManager : NetworkBehaviour
     /// </summary>
     void Endgame()
     {
+        endgame = true;
         EndgamePopup.SetActive(true);
     }
 

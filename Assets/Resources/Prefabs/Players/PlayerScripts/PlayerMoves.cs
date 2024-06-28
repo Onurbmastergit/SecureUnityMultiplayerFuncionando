@@ -10,7 +10,7 @@ public class PlayerMoves : NetworkBehaviour
     #region Variables
 
     float moveSpeed; // Velocidade de movimento do jogador
-    float walkSpeed = 8f;
+    float walkSpeed = 10f;
     float runSpeed = 12f;
 
     public float rotationSpeed = 10f; // Velocidade de rotação do jogador
@@ -61,7 +61,7 @@ public class PlayerMoves : NetworkBehaviour
         movement.y = 0; // Não queremos mover no eixo Y
         movement.Normalize();
 
-        moveSpeed = (inputController.Run) ? runSpeed : walkSpeed;
+        moveSpeed = (!inputController.Attack) ? runSpeed : walkSpeed;
         movement *= moveSpeed * Time.deltaTime;
         controller.Move(movement);
     }

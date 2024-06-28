@@ -5,35 +5,49 @@ using UnityEngine;
 
 public class SirenScript : MonoBehaviour
 {
-    public float velocityRotation;
+    float velocityRotation = 100f;
     public static bool alert;
     private float currentRotationY = 0f;
     public GameObject EffectsSiren;
-    public GameObject LightSiren;
+    float lastLabHealth;
+
+    void Start()
+    {
+        lastLabHealth = LevelManager.instance.labHealth.Value;
+    }
 
     void Update()
     {
-        if (!alert) return;
-
-        if (LevelManager.instance.currentHour.Value >= 6)
+        if (LevelManager.instance.isDay)
         {
-            DisableAlert();
+            EffectsSiren.SetActive(false);
             return;
         }
 
-        EffectsSiren.SetActive(true);
+        if (LevelManager.instance.labHealth.Value < lastLabHealth)
+        {
+            lastLabHealth = LevelManager.instance.labHealth.Value;
+            SirenAlert();
+        }
+
+        if (!alert)
+        {
+            EffectsSiren.SetActive(false);
+        }
+
         currentRotationY += velocityRotation * Time.deltaTime;
         EffectsSiren.transform.rotation = Quaternion.Euler(0, currentRotationY, 0);
     }
 
     public void SirenAlert()
     {
+        EffectsSiren.SetActive(true);
         alert = true;
+        Invoke("DisableAlert", 5f);
     }
 
     public void DisableAlert()
     {
-        EffectsSiren.SetActive(false);
         alert = false;
     }
 }

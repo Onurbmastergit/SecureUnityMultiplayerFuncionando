@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class LabStatus : NetworkBehaviour
 {
-    public float vidaAtual = 1;
     public float vidaBase;
     public Image lifeBaseStatus;
     public Image bgIconLifeStatus;
@@ -18,19 +17,31 @@ public class LabStatus : NetworkBehaviour
 
     public GameObject[] sirenArray;
 
-    void Awake()
-    {
-       vidaAtual = vidaBase;     
-    }
     public override void OnStartServer()
     {
         base.OnStartServer();
-        if(base.ClientManager.Clients.Count == 0)return;
+        LevelManager.instance.SetLabHealth(vidaBase);
+        HudUpdate();
     }
-    void Update()
+
+    public void ReceberDano(int damage)
     {
-        float fillAmount = vidaAtual/vidaBase;
-        float transparencia = vidaAtual / vidaBase;
+        LevelManager.instance.SetLabHealth(LevelManager.instance.labHealth.Value - damage);
+
+        HudUpdate();
+
+        labIcon.GetComponent<Animator>().SetTrigger("Dano");
+
+        foreach (GameObject siren in sirenArray)
+        {
+            siren.GetComponent<SirenScript>().SirenAlert();
+        }
+    }
+
+    void HudUpdate()
+    {
+        float fillAmount = LevelManager.instance.labHealth.Value / vidaBase;
+        float transparencia = LevelManager.instance.labHealth.Value / vidaBase;
         lifeBaseStatus.fillAmount = fillAmount;
         Color cor = imageRachaduras.color;
         Color corz = handsZombies.color;
@@ -39,20 +50,5 @@ public class LabStatus : NetworkBehaviour
         imageRachaduras.color = cor;
         handsZombies.color = corz;
         color.ChangeColor();
-        
-        if(vidaAtual <= 0)
-        {
-            LevelManager.instance.scientistsHealth = 0;
-        }
-    }
-    public void ReceberDano(int damage)
-    {
-        vidaAtual -= damage;
-        labIcon.GetComponent<Animator>().SetTrigger("Dano");
-
-        foreach (GameObject siren in sirenArray)
-        {
-            siren.GetComponent<SirenScript>().SirenAlert();
-        }
     }
 }

@@ -1157,11 +1157,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4393252309867130426, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4393252310051871674, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4393252310584637057, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_IsActive
@@ -3842,30 +3842,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SirenPrefab (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6534,9 +6510,9 @@ GameObject:
   m_Component:
   - component: {fileID: 572628396}
   - component: {fileID: 572628397}
+  - component: {fileID: 572628400}
   - component: {fileID: 572628399}
   - component: {fileID: 572628398}
-  - component: {fileID: 572628400}
   m_Layer: 0
   m_Name: BaseLaboraty
   m_TagString: HouseDefender
@@ -6578,7 +6554,6 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 1938092063}
   _networkObjectCache: {fileID: 1938092063}
-  vidaAtual: 0
   vidaBase: 1000
   lifeBaseStatus: {fileID: 1954491837}
   bgIconLifeStatus: {fileID: 1122559252}
@@ -6614,8 +6589,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -6638,7 +6613,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 10, z: 20}
+  m_Size: {x: 27.5, y: 10, z: 27.5}
   m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &572628400
 MonoBehaviour:
@@ -9826,7 +9801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &811517042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10567,30 +10542,6 @@ PrefabInstance:
     - target: {fileID: 5959921261739025463, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
       propertyPath: m_Name
       value: SirenPrefab (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13063,10 +13014,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1110881381}
     m_Modifications:
-    - target: {fileID: 1565726465799808197, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3606747905124482012, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13110,30 +13057,6 @@ PrefabInstance:
     - target: {fileID: 5959921261739025463, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
       propertyPath: m_Name
       value: SirenPrefab (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13719,7 +13642,6 @@ MonoBehaviour:
   stoneTotal: 10
   metalTotal: 5
   tecnologyTotal: 0
-  scientistsHealth: 10
   selectedLocation: {fileID: 0}
   selectedCraft: {fileID: 0}
   researchButton: {fileID: 7338384244537374067}
@@ -19704,10 +19626,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1110881381}
     m_Modifications:
-    - target: {fileID: 1565726465799808197, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3606747905124482012, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.5
@@ -19751,34 +19669,6 @@ PrefabInstance:
     - target: {fileID: 5959921261739025463, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
       propertyPath: m_Name
       value: SirenPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6230862751406287810, guid: ecb770a665921e94b819b4f9c57dec79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

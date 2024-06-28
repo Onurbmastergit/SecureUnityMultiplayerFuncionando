@@ -13,6 +13,7 @@ public class EnemyStatus : NetworkBehaviour
     public int vidaBase = 100;
 
     public Image LifeBar;
+    public GameObject lifeBarObject;
     private Animator animator;
     private NavMeshAgent agent;
     public bool tomouDano;
@@ -63,15 +64,15 @@ public class EnemyStatus : NetworkBehaviour
         VerificarMorte();
     }
 
-    [ServerRpc]
+    [ObserversRpc(BufferLast = true)]
     void VerificarMorte()
     {
         if (vidaAtual <= 0)
         {
             vidaAtual = 0;
-            Destroy(rb);
             agent.enabled = false;
             transform.GetComponent<BoxCollider>().enabled = false;
+            lifeBarObject.SetActive(false);
         }
     }
 
