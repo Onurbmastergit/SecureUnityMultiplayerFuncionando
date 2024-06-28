@@ -10,9 +10,11 @@ public class SpawnSelection : NetworkBehaviour
 
     public static SpawnSelection instacia;
     public static int spawn;
-    public bool enableRandom;
     public string spawnDirecao;
     public List<GameObject> spawns;
+
+    bool spawnSelected;
+    int ultimoSpawn;
 
     #endregion
 
@@ -32,14 +34,16 @@ public class SpawnSelection : NetworkBehaviour
     [Server]
     void Update_Server()
     {
-        if (LevelManager.instance.currentHour.Value == 8)
+        if (LevelManager.instance.currentHour.Value == 8 && !spawnSelected)
         {
-            RandomizarNumero();
+            SelectionSpawn();
         }
+
         if (LevelManager.instance.currentHour.Value == 6)
         {
             spawnDirecao = null;
-            enableRandom = true;
+            spawnSelected = false;
+
             for (int i = 0; i < spawns.Count; i++)
             {
                 spawns[i].SetActive(false);
@@ -55,6 +59,11 @@ public class SpawnSelection : NetworkBehaviour
     [Server]
     void SelectionSpawn()
     {
+        while (spawn == ultimoSpawn)
+        {
+            RandomizarNumero();
+        }
+
         for (int i = 0; i < spawns.Count; i++)
         {
             if (i == spawn)
@@ -69,18 +78,15 @@ public class SpawnSelection : NetworkBehaviour
                 spawns[i].GetComponent<SpawnSystem>().enableSpawn = false;
             }
         }
-        enableRandom = false;
+
+        ultimoSpawn = spawn;
+        spawnSelected = true;
     }
 
     [Server]
     public void RandomizarNumero()
     {
-        if (enableRandom == true)
-        {
-            spawn = Random.Range(0, 4);
-        }
-
-        SelectionSpawn();
+        spawn = Random.Range(0, 4);
     }
 
     #endregion
