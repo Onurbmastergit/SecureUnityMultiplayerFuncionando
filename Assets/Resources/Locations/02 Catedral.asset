@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 02 Catedral
   m_EditorClassIdentifier: 
   title: Catedral
+  artigo: a
   Wood: 2
   Stone: 5
   Metal: 1

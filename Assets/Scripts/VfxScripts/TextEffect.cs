@@ -13,7 +13,7 @@ public class TextEffect : MonoBehaviour
     public int selectionNumber;
     public string nameNpcShow;
     public TextMeshProUGUI[] viewerAlert;
-    
+
     public TextMeshProUGUI nameNpc;
     void Awake()
     {
@@ -25,22 +25,23 @@ public class TextEffect : MonoBehaviour
         nameNpc.text = nameNpcShow;
     }
 
-   public IEnumerator ShowText(string text)
-   {
-     viewerAlert[selectionNumber].text = null;
-     ctr = null;  
-     ctr = text.ToCharArray();
-     int count = 0;
-     while(count < ctr.Length)
-     {
-        yield return new WaitForSeconds(duration);
-        viewerAlert[selectionNumber].text += ctr[count];
-        count++;
-     }
-     Invoke("DisbleAlert", 2.5f);  
-   }
-   void DisbleAlert()
-   {
-    NpcManager.instacia.npcAlert.SetActive(false);
-   }
+    public IEnumerator ShowText(string text)
+    {
+        viewerAlert[selectionNumber].text = null;
+        ctr = null;
+        ctr = text.ToCharArray();
+        int count = 0;
+        while (count < ctr.Length)
+        {
+            yield return new WaitForSeconds(duration);
+            viewerAlert[selectionNumber].text += ctr[count];
+            count++;
+        }
+        Invoke("DisbleAlert", 3.5f);
+    }
+
+    void DisbleAlert()
+    {
+        NpcManager.instacia.npcAlert.SetActive(false);
+    }
 }

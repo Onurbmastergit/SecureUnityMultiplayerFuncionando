@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 04 Senac
   m_EditorClassIdentifier: 
   title: Senac
+  artigo: o
   Wood: 2
   Stone: 1
   Metal: 3

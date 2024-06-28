@@ -14,6 +14,12 @@ public class Location : ScriptableObject
     [SerializeField] string title;
 
     /// <summary>
+    /// Artigo of the location.
+    /// </summary>
+    public string Artigo => artigo;
+    [SerializeField] string artigo;
+
+    /// <summary>
     /// Amount of wood at the location.
     /// </summary>
     public int Wood;

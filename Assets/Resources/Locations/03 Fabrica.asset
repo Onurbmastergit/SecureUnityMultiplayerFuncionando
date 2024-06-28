@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 03 Fabrica
   m_EditorClassIdentifier: 
   title: Fabrica
+  artigo: a
   Wood: 2
   Stone: 2
   Metal: 3

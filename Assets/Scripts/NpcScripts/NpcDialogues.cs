@@ -4,28 +4,45 @@ using UnityEngine;
 
 public class NpcDialogues : MonoBehaviour
 {
+    #region Variables
+
     public static NpcDialogues instacia;
-    public string dialogueAlert;
+
+    #endregion
+
+    #region Initialization
 
     void Awake()
     {
         instacia = this;
     }
 
+    #endregion
+
+    #region Functions
+
     public void ShowTextAlert()
     {
-        dialogueAlert = $"Ei sobrevivente, uma horda esta se aproximando ao {SpawnSelection.instacia.spawnDirecao}. Durante a noite, fique atento a esta direção";
-        StartCoroutine(TextEffect.instacia.ShowText(dialogueAlert));
+        string dialogueAlert = $"Avistamos uma horda se aproximando ao {SpawnSelection.instacia.spawnDirecao.ToUpper()}. Fiquem atentos a esta direção";
+        StartFunctions(dialogueAlert);
     }
 
-    public  void ShowTextOutsinal()
+    public void ShowTextOutsinal()
     {
-    
-        string dialogueOutsinal = $"Olá sobrevivente aqui está o relatório da coleta \n{LevelManager.instance.selectedLocation.Title}\nMadeira: +{LevelManager.instance.selectedLocation.Wood}\nPedra: +{LevelManager.instance.selectedLocation.Stone}\nMetal: +{LevelManager.instance.selectedLocation.Metal}";
+        string dialogueOutsinal = $"Olá sobrevivente, aqui está o relatório da coleta d{LevelManager.instance.selectedLocation.Artigo} {LevelManager.instance.selectedLocation.Title.ToUpper()}\n+{LevelManager.instance.selectedLocation.Wood} Madeira\n+{LevelManager.instance.selectedLocation.Stone} Pedra\n+{LevelManager.instance.selectedLocation.Metal} Metais";
         StartFunctions(dialogueOutsinal);
     }
+
+    public void ShowTextMap()
+    {
+        string dialogueMap = $"Coletaremos recursos n{LevelManager.instance.selectedLocation.Artigo} {LevelManager.instance.selectedLocation.Title.ToUpper()}";
+        StartFunctions(dialogueMap);
+    }
+
     public void StartFunctions(string dialogueOutsinal)
     {
         StartCoroutine(TextEffect.instacia.ShowText(dialogueOutsinal));
     }
+
+    #endregion
 }

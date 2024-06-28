@@ -31,7 +31,7 @@ public class GatherPopup : MonoBehaviour
     {
         foreach (var location in locationList)
         {
-            GatherCard.Add(locationsContainer, location);
+            //GatherCard.Add(locationsContainer, location);
         }
     }
 

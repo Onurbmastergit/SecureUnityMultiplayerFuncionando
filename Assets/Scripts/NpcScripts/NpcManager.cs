@@ -16,7 +16,7 @@ public class NpcManager : NetworkBehaviour
     public GameObject npcAlert;
     public GameObject outSinalTexture;
     public bool showDirectionInMap;
-    public bool enableAlertRecursos = true;
+    public bool enableAlertRecursos;
     public GameObject radioButton;
 
     bool ligarBotao;
@@ -39,8 +39,9 @@ public class NpcManager : NetworkBehaviour
     {
         if(LevelManager.instance.currentHour.Value == 6 && LevelManager.instance.selectedLocation != null)
         {
-            if(enableAlertRecursos)RecursosColetados();
+            if (enableAlertRecursos && LevelManager.instance.currentDay != 1) RecursosColetados();
         }
+
         if (LevelManager.instance.currentHour.Value >= 8 && ligarBotao)
         {
             radioButton.SetActive(true);
@@ -80,6 +81,13 @@ public class NpcManager : NetworkBehaviour
         npcAlert.SetActive(true);
         RandomizarNome();
         NpcDialogues.instacia.ShowTextOutsinal();
+    }
+
+    public void MapaSelecionado()
+    {
+        npcAlert.SetActive(true);
+        RandomizarNome();
+        NpcDialogues.instacia.ShowTextMap();
     }
 
     void SelecionarNome()

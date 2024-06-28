@@ -7,12 +7,26 @@ public class GatherCard : MonoBehaviour
 {
     #region Variables
 
-    Location location;
+    [SerializeField] Location location;
 
     [SerializeField] TextMeshProUGUI locationName;
     [SerializeField] TextMeshProUGUI woodAmount;
     [SerializeField] TextMeshProUGUI stoneAmount;
     [SerializeField] TextMeshProUGUI metalAmount;
+
+    [SerializeField] GameObject map;
+
+    #endregion
+
+    #region Initialization
+
+    void Start()
+    {
+        locationName.text = location.Title;
+        woodAmount.text = location.Wood.ToString();
+        stoneAmount.text = location.Stone.ToString();
+        metalAmount.text = location.Metal.ToString();
+    }
 
     #endregion
 
@@ -31,29 +45,7 @@ public class GatherCard : MonoBehaviour
     /// </summary>
     public void Close()
     {
-        Destroy(GameObject.Find("GatherPopup(Clone)"));
-    }
-
-    #endregion
-
-    #region Instatiation
-
-    /// <summary>
-    /// Add collection card inside parent.
-    /// </summary>
-    public static GatherCard Add(Transform _parent, Location _location)
-    {
-        GatherCard reference = Resources.Load<GatherCard>("Prefabs/Popups/GatherCard");
-        GatherCard instance = Instantiate(reference, _parent);
-
-        instance.location = _location;
-
-        instance.locationName.text = _location.Title;
-        instance.woodAmount.text = _location.Wood.ToString();
-        instance.stoneAmount.text = _location.Stone.ToString();
-        instance.metalAmount.text = _location.Metal.ToString();
-
-        return instance;
+        map.SetActive(false);
     }
 
     #endregion

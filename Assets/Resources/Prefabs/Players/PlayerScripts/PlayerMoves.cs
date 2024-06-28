@@ -10,7 +10,7 @@ public class PlayerMoves : NetworkBehaviour
     #region Variables
 
     float moveSpeed; // Velocidade de movimento do jogador
-    float walkSpeed = 10f;
+    float walkSpeed = 9f;
     float runSpeed = 12f;
 
     public float rotationSpeed = 10f; // Velocidade de rotação do jogador

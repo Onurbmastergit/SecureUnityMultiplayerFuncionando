@@ -14,11 +14,12 @@ public class EnemyStatus : NetworkBehaviour
 
     public Image LifeBar;
     public GameObject lifeBarObject;
-    private Animator animator;
-    private NavMeshAgent agent;
+    Animator animator;
+    NavMeshAgent agent;
     public bool tomouDano;
     public VfxColor color;
-    private Rigidbody rb;
+    Rigidbody rb;
+    [SerializeField] GameObject minimapIcon;
 
     #endregion
 
@@ -73,6 +74,7 @@ public class EnemyStatus : NetworkBehaviour
             agent.enabled = false;
             transform.GetComponent<BoxCollider>().enabled = false;
             lifeBarObject.SetActive(false);
+            minimapIcon.SetActive(false);
         }
     }
 

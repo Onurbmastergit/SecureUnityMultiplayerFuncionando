@@ -220,9 +220,8 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7697583095625193624}
   _networkObjectCache: {fileID: 7697583095625193624}
-  projectileSpeed: 40
+  projectileSpeed: 60
   maxProjectileDistance: 50
-  flash: {fileID: 972919149051644431}
 --- !u!114 &-5203970383356791475
 MonoBehaviour:
   m_ObjectHideFlags: 0

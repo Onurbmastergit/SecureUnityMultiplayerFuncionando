@@ -5,7 +5,6 @@ using FishNet.Transporting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEngine.GraphicsBuffer;
 
 public class LevelManager : NetworkBehaviour
 {
@@ -112,8 +111,6 @@ public class LevelManager : NetworkBehaviour
         EndgameSystem();
     }
 
-
-
     #endregion
 
     #region TimePassing System
@@ -205,7 +202,7 @@ public class LevelManager : NetworkBehaviour
             researchButton.SetActive(true);
             gatherButton.SetActive(true);
 
-            AddMaterials();
+            if (currentDay != 1) AddMaterials();
         }
 
         if(cureResearch == true) CureProgression();    

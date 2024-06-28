@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 01 Parque
   m_EditorClassIdentifier: 
   title: Parque
+  artigo: o
   Wood: 5
   Stone: 2
   Metal: 1
