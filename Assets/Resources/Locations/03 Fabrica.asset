@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bf9c24ced2c0d479ff7b6a12a53eb3, type: 3}
   m_Name: 03 Fabrica
   m_EditorClassIdentifier: 
-  title: Fabrica
+  title: "F\xE1brica"
   artigo: a
   Wood: 2
   Stone: 2

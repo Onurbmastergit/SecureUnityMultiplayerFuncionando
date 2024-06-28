@@ -58,9 +58,12 @@ public class EnemyStatus : NetworkBehaviour
     {
         if (vidaAtual > 0)
         {
-            animator.SetBool("Hit", true);
-            agent.enabled = false;
-            tomouDano = true;
+            if (!isBulker)
+            {
+                animator.SetBool("Hit", true);
+                agent.enabled = false;
+                tomouDano = true;
+            }
             vidaAtual -= dano;
         }
         color.ChangeColor();

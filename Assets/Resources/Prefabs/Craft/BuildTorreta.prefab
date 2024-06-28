@@ -294,10 +294,9 @@ MonoBehaviour:
   _componentIndexCache: 3
   _addedNetworkObject: {fileID: 4953285277697471681}
   _networkObjectCache: {fileID: 4953285277697471681}
-  targetZombie: {fileID: 0}
   lightGun: {fileID: 2984723510848889789}
   Gun: {fileID: 213010622771068634}
-  colldownBullets: 0.1
+  colldownBullets: 0.2
   firingPoint: {fileID: 4687579932660586614}
   projectilePrefab: {fileID: 1167688343123486047, guid: 85f13ca0525f0c848829bfb675d8d285, type: 3}
   velocity: 30
