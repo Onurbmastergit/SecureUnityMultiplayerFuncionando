@@ -29,13 +29,13 @@ public class NpcDialogues : MonoBehaviour
 
     public void ShowTextOutsinal()
     {
-        string dialogueOutsinal = $"Olá sobrevivente, aqui está o relatório da coleta d{LevelManager.instance.selectedLocation.Artigo} {LevelManager.instance.selectedLocation.Title.ToUpper()}\n+{LevelManager.instance.selectedLocation.Wood} Madeira   +{LevelManager.instance.selectedLocation.Stone} Pedra   +{LevelManager.instance.selectedLocation.Metal} Metais";
+        string dialogueOutsinal = $"Olá sobrevivente, aqui está o relatório da coleta d{LevelManager.instance.selectedLocation.Value.Artigo} {LevelManager.instance.selectedLocation.Value.Title.ToUpper()}\n+{LevelManager.instance.selectedLocation.Value.Wood} Madeira   +{LevelManager.instance.selectedLocation.Value.Stone} Pedra   +{LevelManager.instance.selectedLocation.Value.Metal} Metais";
         StartFunctions(dialogueOutsinal);
     }
 
     public void ShowTextMap()
     {
-        string dialogueMap = $"Coletaremos recursos n{LevelManager.instance.selectedLocation.Artigo} {LevelManager.instance.selectedLocation.Title.ToUpper()}";
+        string dialogueMap = $"Coletaremos recursos n{LevelManager.instance.selectedLocation.Value.Artigo} {LevelManager.instance.selectedLocation.Value.Title.ToUpper()}";
         StartFunctions(dialogueMap);
     }
 

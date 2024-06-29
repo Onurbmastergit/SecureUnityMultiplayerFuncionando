@@ -53,7 +53,7 @@ public class SpawnSystem : NetworkBehaviour
                     Vector3 randomPosition = GetRandomSpawnPositionWithinBounds(spawnPoint.position, spawnPoint.localScale);
 
                     // Seleciona diferentes zumbis para spawnar dependendo da dificuldade.
-                    if (LevelManager.instance.cureMeter > 70 && bulkerEnable)
+                    if (LevelManager.instance.cureMeter.Value > 70 && bulkerEnable)
                     {
                         SpawnEnemy(bulkerPrefab, randomPosition);
                         bulkerEnable = false;

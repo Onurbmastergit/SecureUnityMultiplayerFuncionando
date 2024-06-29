@@ -11,26 +11,41 @@ public class LevelManager : NetworkBehaviour
     #region Variables
 
     // Contadores de Materiais no Menu.
-    public float cureMeter = 0;
-    public int woodTotal = 10;
-    public int stoneTotal = 5;
-    public int metalTotal = 0;
-    public int tecnologyTotal = 0;
+    public void SetCureMeter(float value) => cureMeter.Value = value;
+    public readonly SyncVar<float> cureMeter = new SyncVar<float>();
 
-    public readonly SyncVar<float> labHealth = new SyncVar<float>();
+    public void SetTecnologyMeter(float value) => tecnologyMeter.Value = value;
+    public readonly SyncVar<float> tecnologyMeter = new SyncVar<float>();
+
+    public void SetWoodTotal(int value) => woodTotal.Value = value;
+    public readonly SyncVar<int> woodTotal = new SyncVar<int>();
+
+    public void SetStoneTotal(int value) => stoneTotal.Value = value;
+    public readonly SyncVar<int> stoneTotal = new SyncVar<int>();
+
+    public void SetMetalTotal(int value) => metalTotal.Value = value;
+    public readonly SyncVar<int> metalTotal = new SyncVar<int>();
+
+    public void SetTecnologyTotal(int value) => tecnologyTotal.Value = value;
+    public readonly SyncVar<int> tecnologyTotal = new SyncVar<int>();
+
     public void SetLabHealth(float value) => labHealth.Value = value;
+    public readonly SyncVar<float> labHealth = new SyncVar<float>();
 
-    float tecno;
 
     // Materiais coletados pelo GatherPopup.
-    public Location selectedLocation;
+    public void SetSelectedLocation(Location location) => selectedLocation.Value = location;
+    public readonly SyncVar<Location> selectedLocation = new SyncVar<Location>();
+
 
     // Construcao selecionada pelo CraftPopup.
     public Craft selectedCraft;
 
+
     // Botoes da HUD do jogo.
     [SerializeField] GameObject researchButton;
-    [SerializeField] GameObject gatherButton;
+    [SerializeField] GameObject mapButton;
+
 
     // Sistema de passagem de dias e horas dentro do jogo.
     public int currentDay = 1;
@@ -43,7 +58,10 @@ public class LevelManager : NetworkBehaviour
     public bool isDay = true;
     public bool dayStart;
     public bool nightStart;
-    public bool cureResearch = true;
+
+    public void SetCureResearch(bool value) => cureResearch.Value = value;
+    public readonly SyncVar<bool> cureResearch = new SyncVar<bool>();
+
     float hourDurationDay = 3f; // Duracao de cada hora do dia em segundos.
     float hourDurationNight = 15f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
@@ -96,6 +114,15 @@ public class LevelManager : NetworkBehaviour
         base.OnStartServer();
 
         SetHour(6);
+
+        SetWoodTotal(10);
+        SetStoneTotal(10);
+        SetMetalTotal(5);
+        SetTecnologyTotal(0);
+
+        SetCureResearch(true);
+
+        SetSelectedLocation(Resources.Load<Location>("Locations/01 Parque"));
     }
 
     void Update()
@@ -199,13 +226,13 @@ public class LevelManager : NetworkBehaviour
             hudActionsBase.SetActive(true);
             hudLifeBase.SetActive(false);
 
-            if (tecnologyTotal < 3) researchButton.SetActive(true);
-            gatherButton.SetActive(true);
+            if (tecnologyTotal.Value < 3) researchButton.SetActive(true);
+            mapButton.SetActive(true);
 
             if (currentDay != 1) AddMaterials();
         }
 
-        if(cureResearch == true) CureProgression();    
+        if(cureResearch.Value == true) CureProgression();    
         else TecnoProgression();
     }
 
@@ -224,7 +251,7 @@ public class LevelManager : NetworkBehaviour
             hudLifeBase.SetActive(true);
 
             researchButton.SetActive(false);
-            gatherButton.SetActive(false);
+            mapButton.SetActive(false);
         }
     }
 
@@ -237,49 +264,50 @@ public class LevelManager : NetworkBehaviour
     /// </summary>
     void CureProgression()
     {
-        cureMeter += 1.25f;
+        SetCureMeter(cureMeter.Value + 1.25f);
 
         // Impede o medidor de cura ultrapassar 100%
-        if (cureMeter > 100) cureMeter = 100;
+        if (cureMeter.Value > 100) SetCureMeter(100);
     }
 
     [ObserversRpc(BufferLast = true)]
     void TecnoProgression()
     {
-        tecno += 10f;
+        SetTecnologyMeter(tecnologyMeter.Value + 10f);
 
-        if (tecno >= 100f)
+        if (tecnologyMeter.Value >= 100f)
         {
-            tecnologyTotal++;
-            tecno = 0;
+            SetTecnologyTotal(tecnologyTotal.Value + 1);
+            SetTecnologyMeter(0f);
         }
 
-        if (tecnologyTotal >= 3)
+        if (tecnologyTotal.Value >= 3)
         {
             researchButton.SetActive(false);
-            cureResearch = true;
+            SetCureResearch(true);
         }
     }
 
     [ObserversRpc(BufferLast = true)]
     public void MudarPesquisa()
     {
-        cureResearch = !cureResearch;
+        SetCureResearch(!cureResearch.Value);
     }
 
+    [ObserversRpc(BufferLast = true)]
     void UpdateHUD()
     {
         // Atualiza HUD % Cura
-        float preenchimentoNormalizado = cureMeter / 100f;
-        porcentagemCure.text = ((int)cureMeter) + "%".ToString();
+        float preenchimentoNormalizado = cureMeter.Value / 100f;
+        porcentagemCure.text = ((int)cureMeter.Value) + "%".ToString();
         cureMeterHud.fillAmount = preenchimentoNormalizado;
 
         // Atualiza HUD % Tecnologia
-        float fillAmount = tecno / 100f;
-        porcentagemTecno.text = ((int)tecnologyTotal).ToString();
+        float fillAmount = tecnologyMeter.Value / 100f;
+        porcentagemTecno.text = ((int)tecnologyTotal.Value).ToString();
         tecnoCureMeterHud.fillAmount = fillAmount;
 
-        if (cureResearch)
+        if (cureResearch.Value)
         {
             // Atualiza HUD Cura
             blackOutCure.SetActive(false);
@@ -306,11 +334,9 @@ public class LevelManager : NetworkBehaviour
     /// </summary>
     void AddMaterials()
     {
-        if (selectedLocation == null) return;
-
-        woodTotal += selectedLocation.Wood;
-        stoneTotal += selectedLocation.Stone;
-        metalTotal += selectedLocation.Metal;
+        SetWoodTotal(woodTotal.Value + selectedLocation.Value.Wood);
+        SetStoneTotal(stoneTotal.Value + selectedLocation.Value.Stone);
+        SetMetalTotal(metalTotal.Value + selectedLocation.Value.Metal);
     }
 
     #endregion
@@ -322,7 +348,7 @@ public class LevelManager : NetworkBehaviour
     /// </summary>
     void EndgameSystem()
     {
-        if (cureMeter >= 100)
+        if (cureMeter.Value >= 100)
         {
             Endgame();
             EndgamePopup.GetComponent<EndgamePopup>().UpdateEndgamePopup(true);

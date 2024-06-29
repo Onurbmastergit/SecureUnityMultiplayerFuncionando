@@ -73,9 +73,9 @@ public class PlaceBuild : NetworkBehaviour
             InstantiateBuilds();
 
             // Atualiza nova quantidade de Recursos apos instancia
-            LevelManager.instance.woodTotal -= craft.WoodCost;
-            LevelManager.instance.stoneTotal -= craft.StoneCost;
-            LevelManager.instance.metalTotal -= craft.MetalCost;
+            LevelManager.instance.SetWoodTotal(LevelManager.instance.woodTotal.Value - craft.WoodCost);
+            LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - craft.StoneCost);
+            LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - craft.MetalCost);
 
             Destroy(gameObject);
         }

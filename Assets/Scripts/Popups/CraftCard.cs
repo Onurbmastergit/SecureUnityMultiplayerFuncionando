@@ -41,10 +41,10 @@ public class CraftCard : NetworkBehaviour
 
     void Update()
     {
-        if (LevelManager.instance.woodTotal < craft.WoodCost ||
-            LevelManager.instance.stoneTotal < craft.StoneCost ||
-            LevelManager.instance.metalTotal < craft.MetalCost ||
-            LevelManager.instance.tecnologyTotal < craft.TecnologyCost)
+        if (LevelManager.instance.woodTotal.Value < craft.WoodCost ||
+            LevelManager.instance.stoneTotal.Value < craft.StoneCost ||
+            LevelManager.instance.metalTotal.Value < craft.MetalCost ||
+            LevelManager.instance.tecnologyTotal.Value < craft.TecnologyCost)
         {
             background.color = Color.gray;
         }
@@ -75,10 +75,10 @@ public class CraftCard : NetworkBehaviour
     public void CheckMateral()
     {
         // Confere se o player tem materiais suficientes para construicao da Build
-        if (LevelManager.instance.woodTotal >= craft.WoodCost
-            && LevelManager.instance.stoneTotal >= craft.StoneCost
-            && LevelManager.instance.metalTotal >= craft.MetalCost
-            && LevelManager.instance.tecnologyTotal >= craft.TecnologyCost)
+        if (LevelManager.instance.woodTotal.Value >= craft.WoodCost
+            && LevelManager.instance.stoneTotal.Value >= craft.StoneCost
+            && LevelManager.instance.metalTotal.Value >= craft.MetalCost
+            && LevelManager.instance.tecnologyTotal.Value >= craft.TecnologyCost)
         {
 
             // Fecha Menu Build apos selecionar uma Build para construir
@@ -90,9 +90,9 @@ public class CraftCard : NetworkBehaviour
             else
             {
                 // Atualiza nova quantidade de Recursos apos instancia
-                LevelManager.instance.woodTotal -= craft.WoodCost;
-                LevelManager.instance.stoneTotal -= craft.StoneCost;
-                LevelManager.instance.metalTotal -= craft.MetalCost;
+                LevelManager.instance.SetWoodTotal(LevelManager.instance.woodTotal.Value - craft.WoodCost);
+                LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - craft.StoneCost);
+                LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - craft.MetalCost);
 
                 UpdateCraftPopup();
             }

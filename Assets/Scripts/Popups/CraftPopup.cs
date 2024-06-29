@@ -30,10 +30,10 @@ public class CraftPopup : MonoBehaviour
     /// </summary>
     public void UpdateMaterials()
     {
-        wood.text = LevelManager.instance.woodTotal.ToString();
-        stone.text = LevelManager.instance.stoneTotal.ToString();
-        metal.text = LevelManager.instance.metalTotal.ToString();
-        tecnology.text = LevelManager.instance.tecnologyTotal.ToString();
+        wood.text = LevelManager.instance.woodTotal.Value.ToString();
+        stone.text = LevelManager.instance.stoneTotal.Value.ToString();
+        metal.text = LevelManager.instance.metalTotal.Value.ToString();
+        tecnology.text = LevelManager.instance.tecnologyTotal.Value.ToString();
     }
 
     /// <summary>

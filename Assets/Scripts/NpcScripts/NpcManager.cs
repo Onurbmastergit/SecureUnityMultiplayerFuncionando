@@ -37,7 +37,7 @@ public class NpcManager : NetworkBehaviour
 
     void Update()
     {
-        if(LevelManager.instance.currentHour.Value == 6 && LevelManager.instance.selectedLocation != null)
+        if (LevelManager.instance.currentHour.Value == 6)
         {
             if (enableAlertRecursos && LevelManager.instance.currentDay != 1) RecursosColetados();
         }

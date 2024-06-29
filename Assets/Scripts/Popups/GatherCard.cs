@@ -37,7 +37,7 @@ public class GatherCard : MonoBehaviour
     /// </summary>
     public void SelectLocation()
     {
-        LevelManager.instance.selectedLocation = location;
+        LevelManager.instance.SetSelectedLocation(location);
     }
 
     /// <summary>

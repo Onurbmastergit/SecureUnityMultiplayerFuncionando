@@ -22,7 +22,7 @@ public class RadioAction : MonoBehaviour
             }
         }
 
-        LevelManager.instance.selectedLocation = location;
+        LevelManager.instance.SetSelectedLocation(location);
         map.SetActive(false);
     }
 }

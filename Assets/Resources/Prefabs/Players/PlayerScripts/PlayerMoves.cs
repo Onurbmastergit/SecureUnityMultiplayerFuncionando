@@ -19,8 +19,8 @@ public class PlayerMoves : NetworkBehaviour
     public bool acessibilidade;
     public GameObject rotacao;
 
-    private CharacterController controller; // Componente CharacterController do jogador
-    private InputControllers inputController;
+    CharacterController controller; // Componente CharacterController do jogador
+    InputControllers inputController;
 
     #endregion
 
@@ -31,7 +31,7 @@ public class PlayerMoves : NetworkBehaviour
         base.OnStartClient();
         if (base.IsOwner == false) return;
         transform.GetComponent<PlayerStatus>().vidaAtual = transform.GetComponent<PlayerStatus>().vidaTotal;
-        GameObject.Find("RadomCamera").SetActive(false);
+        GameObject.Find("RandomCamera").SetActive(false);
         controller = GetComponent<CharacterController>();
         inputController = GetComponent<InputControllers>();
     }
@@ -57,13 +57,15 @@ public class PlayerMoves : NetworkBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-        movement.y = 0; // Não queremos mover no eixo Y
-        movement.Normalize();
-
         moveSpeed = (!inputController.Attack) ? runSpeed : walkSpeed;
+
+        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        movement.Normalize();
         movement *= moveSpeed * Time.deltaTime;
         controller.Move(movement);
+
+        // Sempre mantem o y do Player em zero.
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     void RunPlayer()
