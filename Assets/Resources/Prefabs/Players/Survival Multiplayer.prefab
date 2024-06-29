@@ -369,6 +369,7 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
+  moveSpeed: 8
   rotationSpeed: 0
   rotationCorrection: -9.5
   acessibilidade: 0

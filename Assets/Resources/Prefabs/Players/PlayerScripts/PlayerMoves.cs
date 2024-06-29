@@ -9,14 +9,20 @@ public class PlayerMoves : NetworkBehaviour
 {
     #region Variables
 
-    float moveSpeed; // Velocidade de movimento do jogador
+    [Header("Player Velocity")]
+    public float moveSpeed; // Velocidade de movimento do jogador
     float walkSpeed = 9f;
     float runSpeed = 12f;
 
-    public float rotationSpeed = 10f; // Velocidade de rotação do jogador
+    [Header("Corrections")]
+    public float rotationSpeed = 0f; // Velocidade de rotação do jogador
     public float rotationCorrection = 0f;
     Vector3 movement;
+
+    [Header("Player Options")]
     public bool acessibilidade;
+
+    [Header("Player Rotation")]
     public GameObject rotacao;
 
     CharacterController controller; // Componente CharacterController do jogador
@@ -42,8 +48,6 @@ public class PlayerMoves : NetworkBehaviour
 
         MovePlayer(transform.GetComponent<PlayerMoves>().Owner); // Movimentar o jogador
         RotatePlayer(transform.GetComponent<PlayerMoves>().Owner); // Rotacionar o jogador em direção ao cursor
-
-        //MoveAcess();
     }
 
     #endregion
@@ -57,20 +61,24 @@ public class PlayerMoves : NetworkBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        moveSpeed = (!inputController.Attack) ? runSpeed : walkSpeed;
+       //moveSpeed = (!inputController.Attack) ? runSpeed : walkSpeed;
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical * moveSpeed );
+        
+        movement *= Time.deltaTime;
+
         movement.Normalize();
-        movement *= moveSpeed * Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.LeftShift)) RunPlayer();
         controller.Move(movement);
+        
 
         // Sempre mantem o y do Player em zero.
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+       
     }
 
     void RunPlayer()
     {
-        if (base.IsOwner == false) return;
         moveSpeed = runSpeed;
     }
 
@@ -91,36 +99,7 @@ public class PlayerMoves : NetworkBehaviour
 
         // Aplicar a correção de rotação
         Quaternion correctionRotation = Quaternion.Euler(0f, rotationCorrection, 0f);
-        rotacao.transform.rotation = targetRotation * correctionRotation;
-    }
-
-    void MoveAcess()
-    {
-        // Obter entrada do teclado para movimento
-        float moveHorizontal = inputController.movimentoHorizontal;
-        float moveVertical = inputController.movimentoVertical;
-
-        // Calcular a direção de movimento
-        movement = new Vector3(moveHorizontal, 0f, moveVertical).normalized;
-        movement = transform.TransformDirection(movement); // Converter para coordenadas locais
-        movement *= moveSpeed * Time.deltaTime;
-
-        // Mover o jogador usando o CharacterController
-        controller.Move(movement);
-
-        if (movement != Vector3.zero)
-        {
-            // Calcular a direção para a qual o jogador deve se orientar com base no vetor de movimento
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-
-            // Suavizar a rotação usando Slerp
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-
-        if (inputController.Run)
-        {
-            RunPlayer();
-        }
+        transform.rotation = targetRotation * correctionRotation;
     }
 
     #endregion
