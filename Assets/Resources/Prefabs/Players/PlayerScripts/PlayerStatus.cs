@@ -11,6 +11,9 @@ public class PlayerStatus : MonoBehaviour
     public int vidaAtual;
     
     public Image BarLifeStatus;
+    public Image veias;
+    public Image blood;
+    public DamageScript damageScript;
     public float fillAmount;
     public VfxColor color;
     
@@ -25,12 +28,14 @@ public class PlayerStatus : MonoBehaviour
         fillAmount = (float)vidaAtual/vidaTotal;
         if (BarLifeStatus == null) return;
         BarLifeStatus.fillAmount = fillAmount;
-
+        Infection();
         Respawn();
     }
     
     public void ReceberDano(int valor, NetworkConnection connection)
     {
+        Infection();
+        damageScript.SpawnRandomBite();
         vidaAtual -= valor;
         color.ChangeColor();
         VerificarMorte();
@@ -57,5 +62,15 @@ public class PlayerStatus : MonoBehaviour
             transform.GetComponent<PlayerAttacks>().enabled = true;
             transform.GetComponent<BoxCollider>().enabled = true;
         }
+    }
+    void Infection()
+    {
+        float transparencia = fillAmount;
+        Color cor = veias.color;
+        Color corz = blood.color;
+        cor.a = 1f - transparencia;
+        corz.a = 1f - transparencia;
+        veias.color = cor;
+        blood.color = corz;
     }
 }

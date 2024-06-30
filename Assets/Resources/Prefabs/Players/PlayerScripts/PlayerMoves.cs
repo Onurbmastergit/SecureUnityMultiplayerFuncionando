@@ -61,20 +61,23 @@ public class PlayerMoves : NetworkBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-       //moveSpeed = (!inputController.Attack) ? runSpeed : walkSpeed;
+        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical * moveSpeed );
-        
-        movement *= Time.deltaTime;
-
-        movement.Normalize();
-        if(Input.GetKeyDown(KeyCode.LeftShift)) RunPlayer();
+        if (movement.magnitude > 1)
+        {
+            movement.Normalize();
+        }
+          if (inputController.Run)
+        {
+            RunPlayer();
+        }else
+        {
+            moveSpeed = walkSpeed;
+        }
+        movement *= moveSpeed * Time.deltaTime;// Não queremos mover no eixo Y
+       
         controller.Move(movement);
         
-
-        // Sempre mantem o y do Player em zero.
-        //transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-       
     }
 
     void RunPlayer()

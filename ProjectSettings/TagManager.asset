@@ -21,6 +21,8 @@ TagManager:
   - Red
   - Environment
   - LevelManager
+  - SF_Door
+  - HudZombie
   layers:
   - Default
   - TransparentFX
