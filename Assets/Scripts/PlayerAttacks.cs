@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 
@@ -25,31 +26,45 @@ public class PlayerAttacks : NetworkBehaviour
     {
         if (!base.IsOwner) return;
 
-        ShowGun();
-        InputManager();
+        Server_ShowGun( base.Owner );
+        Server_InputManager( base.Owner );
     }
 
     #endregion
 
     #region Functions
 
-    void ShowGun()
+    [ServerRpc] // Mostrar a arma agora é processada no servidor, pois a variável isDay só é computada lá
+    void Server_ShowGun( NetworkConnection conn )
     {
         if (LevelManager.instance.isDay)
         {
-            InputControllers.pistol = false;
+            Target_ShowGun(conn, false);
             return;
         }
-        InputControllers.pistol = true;
-       
+
+        Target_ShowGun(conn, true);
+
+    }
+    // O servidor transfere a variável de lá para cada um dos clients
+    [TargetRpc]
+    void Target_ShowGun( NetworkConnection conn, bool draw )
+    {
+        InputControllers.pistol = draw;
     }
 
-    void InputManager()
+    [ServerRpc]
+    void Server_InputManager(NetworkConnection conn)
     {
-        if (LevelManager.instance.isDay) return;
+        if (LevelManager.instance.isDay == false)
+            Target_InputManager(conn);
+    }
 
+    [TargetRpc]
+    void Target_InputManager(NetworkConnection conn)
+    {
         // Shoot Input.
-        if (Input.GetButton("Fire1")||Input.GetKey(KeyCode.JoystickButton5))
+        if (Input.GetButton("Fire1") || Input.GetKey(KeyCode.JoystickButton5))
         {
             if (lastTimeShot + fireRate <= Time.time)
             {

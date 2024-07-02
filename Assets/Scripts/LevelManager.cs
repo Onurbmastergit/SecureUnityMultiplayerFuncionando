@@ -145,7 +145,8 @@ public class LevelManager : NetworkBehaviour
     /// <summary>
     /// Comanda toda a passagem de Tempo dentro do jogo.
     /// </summary>
-    [ObserversRpc(BufferLast = true)]
+    //[ObserversRpc(BufferLast = true)]
+    [Server]
     void TimeSystem()
     {
         // Conta os Segundos em float.
@@ -192,7 +193,8 @@ public class LevelManager : NetworkBehaviour
     /// <summary>
     /// Trigga a cada hora.
     /// </summary>
-    [ObserversRpc(BufferLast = true)]
+    //[ObserversRpc(BufferLast = true)]
+    [Server]
     void HourTick()
     {
         SetHour(++currentHour.Value);
@@ -201,16 +203,33 @@ public class LevelManager : NetworkBehaviour
         if (currentHour.Value == 24)
         {
             ++currentDay;
-            calendar.text = $"Day {currentDay}";
+            //calendar.text = $"Day {currentDay}";
+            ShowSyncCalendar(currentDay); // Atualiza através do Observer, para todos
             SetHour(0);
-            isDay = false;
+            //isDay = false;
+            SyncDay(isDay);
         }
         // Atualiza o horario na HUD.
-        hourText.text = $"{currentHour.Value}:00";
+        //hourText.text = $"{currentHour.Value}:00";
+        ShowSyncHour(currentHour.Value); // Atualiza através do Observer, para todos
 
         if (isDay) DayHourTick();
         else NightHourTick();
     }
+
+    // Como o client não tem acesso às informações do que aconteceu no server, é necessário passar a
+    // referência do server para o server, vai toma no cu Bruno.
+    [ObserversRpc(BufferLast = true)]
+    void ShowSyncCalendar( int currentDay ) => calendar.text = $"Day {currentDay}";
+
+    [ObserversRpc(BufferLast = true)]
+    void ShowSyncHour( int currentHour) => hourText.text = $"{currentHour}:00";
+
+    [ObserversRpc(BufferLast = true)]
+    void SyncDay(bool isDay) => this.isDay = isDay;
+
+
+
 
     /// <summary>
     /// Trigga a cada hora se for dia.
