@@ -1,6 +1,9 @@
+using FishNet.Connection;
 using FishNet.Object;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
 public class CraftCard : NetworkBehaviour
@@ -37,6 +40,7 @@ public class CraftCard : NetworkBehaviour
         buildsContainer = GameObject.FindWithTag("PlaceBuild").transform;
         UpdateCard();
         popup.SetActive(false);
+
     }
 
     void Update()
@@ -72,8 +76,10 @@ public class CraftCard : NetworkBehaviour
     /// <summary>
     /// Checks if there is enough material for the craft.
     /// </summary>
-    public void CheckMateral()
+    [ServerRpc(RequireOwnership = false)]
+    public void Server_CheckMaterial( NetworkConnection conn )
     {
+        
         // Confere se o player tem materiais suficientes para construicao da Build
         if (LevelManager.instance.woodTotal.Value >= craft.WoodCost
             && LevelManager.instance.stoneTotal.Value >= craft.StoneCost
@@ -84,8 +90,14 @@ public class CraftCard : NetworkBehaviour
             // Fecha Menu Build apos selecionar uma Build para construir
             if (craft.Title != "Armamento Faca" && craft.Title != "Armamento Rifle")
             {
-                CreatePlaceBuild();
-                CloseCraftPopup();
+                GameObject placeBuild = Instantiate(placeBuildPrefab, buildsContainer);
+                base.Spawn(placeBuild, conn);
+                placeBuild.GetComponent<PlaceBuild>().craft = craft;
+                // A antiga função CreatePlaceBuild não era funcional, pois ela instanciava o craft apenas no client,
+                // mas é necessário tê-la no servidor para que o server possa instanciar o craft do próprio client
+                // CreatePlaceBuild(conn); 
+
+                CloseCraftPopup(conn);
             }
             else
             {
@@ -94,27 +106,21 @@ public class CraftCard : NetworkBehaviour
                 LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - craft.StoneCost);
                 LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - craft.MetalCost);
 
-                UpdateCraftPopup();
+                UpdateCraftPopup(conn);
             }
         }
         else Debug.Log("Not enought Materials for this Craft.");
     }
 
-    //[ObserversRpc(BufferLast = true)]
-    public void CreatePlaceBuild()
-    {
-        GameObject placeBuild = Instantiate(placeBuildPrefab, buildsContainer);
-        placeBuild.GetComponent<PlaceBuild>().craft = craft;
-        base.Spawn(placeBuild);
-    }
-
-    void UpdateCraftPopup()
+    [TargetRpc]
+    void UpdateCraftPopup(NetworkConnection conn)
     {
         craftPopup = GameObject.FindWithTag("CraftPopup").transform;
         craftPopup.GetComponent<CraftPopup>().UpdateMaterials();
     }
 
-    void CloseCraftPopup()
+    [TargetRpc]
+    void CloseCraftPopup(NetworkConnection conn)
     {
         craftPopup = GameObject.FindWithTag("CraftPopup").transform;
         craftPopup.gameObject.SetActive(false);

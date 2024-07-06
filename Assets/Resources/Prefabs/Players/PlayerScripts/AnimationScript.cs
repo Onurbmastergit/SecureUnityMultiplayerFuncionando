@@ -42,6 +42,7 @@ public class AnimationScript : NetworkBehaviour
         walk = inputControllers.movimentoHorizontal > 0 || inputControllers.movimentoVertical > 0;    
         attack = inputControllers.Attack;
         //animator.SetBool("Attack" , attack);
+        
         if(walk == false && inputControllers.build == true)
         {
              animator.SetBool("Build",true);

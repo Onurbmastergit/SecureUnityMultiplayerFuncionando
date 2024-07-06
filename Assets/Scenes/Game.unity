@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311462, g: 0.38073692, b: 0.3587346, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311456, g: 0.38073683, b: 0.3587345, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -1236,19 +1233,19 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
-      propertyPath: Spawns.Array.data[0]
+      propertyPath: 'Spawns.Array.data[0]'
       value: 
       objectReference: {fileID: 1895804888}
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
-      propertyPath: Spawns.Array.data[1]
+      propertyPath: 'Spawns.Array.data[1]'
       value: 
       objectReference: {fileID: 1037936590}
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
-      propertyPath: Spawns.Array.data[2]
+      propertyPath: 'Spawns.Array.data[2]'
       value: 
       objectReference: {fileID: 1000233276}
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
-      propertyPath: Spawns.Array.data[3]
+      propertyPath: 'Spawns.Array.data[3]'
       value: 
       objectReference: {fileID: 824065121}
     m_RemovedComponents: []
@@ -6446,7 +6443,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &482828468
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6460,6 +6457,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -7826,7 +7824,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &624763281
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7840,6 +7838,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -10751,6 +10750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2035045075}
     m_Modifications:
+    - target: {fileID: 412726865922842257, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_Name
+      value: CraftCard5
+      objectReference: {fileID: 0}
     - target: {fileID: 559059202017821380, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -10774,6 +10777,14 @@ PrefabInstance:
     - target: {fileID: 559059202017821380, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -485
+      objectReference: {fileID: 0}
+    - target: {fileID: 615825552747028773, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_Name
+      value: CraftCard4
+      objectReference: {fileID: 0}
+    - target: {fileID: 673327130948608088, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_Name
+      value: CraftCard1
       objectReference: {fileID: 0}
     - target: {fileID: 674863137569393913, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10846,6 +10857,10 @@ PrefabInstance:
     - target: {fileID: 801714337766702093, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -165
+      objectReference: {fileID: 0}
+    - target: {fileID: 803322946514620588, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_Name
+      value: CraftCard2
       objectReference: {fileID: 0}
     - target: {fileID: 1193893432806297056, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: <SceneId>k__BackingField
@@ -10943,6 +10958,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2306170641027107768, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306170641027107768, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234506379144164721, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234506379144164721, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256312591841244172, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256312591841244172, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359294900156810629, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359294900156810629, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4646400169639206687, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -10967,6 +11014,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -165
       objectReference: {fileID: 0}
+    - target: {fileID: 4756704808223638346, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_Name
+      value: CraftCard0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434990555845443978, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434990555845443978, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6492325897702420367, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: <SceneId>k__BackingField
       value: 3327164029069363409
@@ -10975,6 +11034,14 @@ PrefabInstance:
       propertyPath: <SceneId>k__BackingField
       value: 3327164030197255648
       objectReference: {fileID: 0}
+    - target: {fileID: 7473812424275809891, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473812424275809891, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8969953719492856868, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_Name
       value: CraftPopup
@@ -10982,6 +11049,10 @@ PrefabInstance:
     - target: {fileID: 8969953719492856868, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004605293797381283, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
+      propertyPath: m_Name
+      value: CraftCard3
       objectReference: {fileID: 0}
     - target: {fileID: 9119412432498706678, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11445,7 +11516,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &834114980
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11459,6 +11530,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -12154,7 +12226,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &954478095
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -12168,6 +12240,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -14490,7 +14563,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3988816488652175158, guid: b27a3df655528e5499ea8b56774d149d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 35c2733b86d90f042bf9dd3393dc6f9e, type: 2}
     - target: {fileID: -2917800569658421844, guid: b27a3df655528e5499ea8b56774d149d, type: 3}
@@ -14793,7 +14866,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &1296242100
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14807,6 +14880,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -15235,11 +15309,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 1938092062}
     m_Modifications:
     - target: {fileID: -9137284874893114689, guid: 96fa6d35c9f88934191e69ab7eb9e194, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 5fff25f82f04b4d469ba034c5a0a6cfd, type: 2}
     - target: {fileID: -8736892302932005987, guid: 96fa6d35c9f88934191e69ab7eb9e194, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39e41e4a224f1ad47bb57ab71bf69c0d, type: 2}
     - target: {fileID: -8679921383154817045, guid: 96fa6d35c9f88934191e69ab7eb9e194, type: 3}
@@ -15295,7 +15369,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1688332489226565101, guid: 96fa6d35c9f88934191e69ab7eb9e194, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: aa96ade7928372b4a9971bea872e62c7, type: 2}
     - target: {fileID: 2207153937601459334, guid: 96fa6d35c9f88934191e69ab7eb9e194, type: 3}
@@ -15307,7 +15381,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4868988021124507454, guid: 96fa6d35c9f88934191e69ab7eb9e194, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c17ba2c83f808d8428eee40ba04f31b7, type: 2}
     - target: {fileID: 5791035905998029210, guid: 96fa6d35c9f88934191e69ab7eb9e194, type: 3}
@@ -15761,7 +15835,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &1455688144
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15775,6 +15849,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -16217,7 +16292,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1536461268
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -16231,6 +16306,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -18033,7 +18109,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2982417877391835261, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b322189cd03d3f54a8f4c763da69f651, type: 2}
     - target: {fileID: 919132149155446097, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
@@ -18053,7 +18129,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3616489278019926549, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: aa96ade7928372b4a9971bea872e62c7, type: 2}
     - target: {fileID: 4957816497034321640, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
@@ -18065,11 +18141,11 @@ PrefabInstance:
       value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 5152587658234505808, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b322189cd03d3f54a8f4c763da69f651, type: 2}
     - target: {fileID: 5302712530156483839, guid: a8e32ebe26c8b5343a0597fb8d73ac91, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: aa96ade7928372b4a9971bea872e62c7, type: 2}
     m_RemovedComponents: []
@@ -18896,7 +18972,7 @@ LightingSettings:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  serializedVersion: 6
+  serializedVersion: 7
   m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
@@ -18907,6 +18983,7 @@ LightingSettings:
   m_UsingShadowmask: 1
   m_BakeBackend: 1
   m_LightmapMaxSize: 1024
+  m_LightmapSizeFixed: 0
   m_BakeResolution: 40
   m_Padding: 2
   m_LightmapCompression: 3
@@ -18924,9 +19001,6 @@ LightingSettings:
   m_RealtimeResolution: 2
   m_ForceWhiteAlbedo: 0
   m_ForceUpdates: 0
-  m_FinalGather: 0
-  m_FinalGatherRayCount: 256
-  m_FinalGatherFiltering: 1
   m_PVRCulling: 1
   m_PVRSampling: 1
   m_PVRDirectSampleCount: 32
@@ -18951,7 +19025,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_PVRTiledBaking: 0
-  m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
 --- !u!114 &1893609653 stripped
 MonoBehaviour:
@@ -20455,7 +20528,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2054744232
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -20469,6 +20542,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

@@ -115,10 +115,10 @@ public class LevelManager : NetworkBehaviour
 
         SetHour(6);
 
-        SetWoodTotal(10);
-        SetStoneTotal(10);
-        SetMetalTotal(5);
-        SetTecnologyTotal(0);
+        SetWoodTotal(99);
+        SetStoneTotal(99);
+        SetMetalTotal(99);
+        SetTecnologyTotal(3);
 
         SetCureResearch(true);
 

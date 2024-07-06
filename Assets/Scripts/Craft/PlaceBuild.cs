@@ -20,6 +20,8 @@ public class PlaceBuild : NetworkBehaviour
     [SerializeField] GameObject minaPrefab;
     [SerializeField] GameObject torretaPrefab;
 
+    Vector3 mouseInWorld = Vector3.zero;
+
     Transform placeContainer;
 
     #endregion
@@ -30,12 +32,18 @@ public class PlaceBuild : NetworkBehaviour
     {
         base.OnStartClient();
 
+        // Pode ser que não seja o client HOST não esteja craftando, sendo assim, o client puro pode continuar a ação
+        // o craft acontece no servidor, mas o HOST (que é o server) não vê o craft acontecendo. O mesmo serve pro client
+        if (base.IsOwner == false) return;
+
         placeContainer = GameObject.FindWithTag("PlaceBuild").transform;
         UpdatePlaceBuild();
     }
 
     void Update()
     {
+        if (base.IsOwner == false) return;
+
         CraftBuild();
     }
 
@@ -48,17 +56,19 @@ public class PlaceBuild : NetworkBehaviour
     /// </summary>
     public void UpdatePlaceBuild()
     {
+        if (!craft) return;
+        // Aqui está o problema de não aparecer o holograma no client. Tentei diversas formas, mas não deu...
+        // Apenas o server tem a referência do que é para ser craftado, mas o client não tem
+        // Faça o teste: barricadaHologram.SetActive(true);
         barricadaHologram.SetActive(craft.Id == 1);
         arameHologram.SetActive(craft.Id == 2);
         minaHologram.SetActive(craft.Id == 3);
         torretaHologram.SetActive(craft.Id == 4);
     }
-
     void CraftBuild()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Vector3 mouseInWorld = Vector3.zero;
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -69,57 +79,53 @@ public class PlaceBuild : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            // Instancia a Build selecionada no mouseInWorld position.
-            InstantiateBuilds();
-
-            // Atualiza nova quantidade de Recursos apos instancia
-            LevelManager.instance.SetWoodTotal(LevelManager.instance.woodTotal.Value - craft.WoodCost);
-            LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - craft.StoneCost);
-            LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - craft.MetalCost);
-
-            Destroy(gameObject);
+            // Adicionado uma função nova aqui, pois ela precisa ser rodada no server, e este update é no client
+            Server_ActionCraft();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            base.ServerManager.Despawn(gameObject);
         }
+    }
+
+    [ServerRpc]
+    void Server_ActionCraft()
+    {
+        // Instancia a Build selecionada no mouseInWorld position.
+        InstantiateBuilds();
+
+        // Atualiza nova quantidade de Recursos apos instancia
+        LevelManager.instance.SetWoodTotal(LevelManager.instance.woodTotal.Value - craft.WoodCost);
+        LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - craft.StoneCost);
+        LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - craft.MetalCost);
+
+        base.ServerManager.Despawn(gameObject); // Lembrar sempre de despawnar no server invés de Destroy(gameObject)
     }
 
     /// <summary>
     /// Instantiate Build in Mouse Position.
     /// </summary>
-    //[ObserversRpc(BufferLast = true)]
     void InstantiateBuilds()
     {
+
+        GameObject instance;
+
         if (craft.Id == 1)
         {
-            GameObject barricadaInstance = Instantiate(barricadaPrefab, placeContainer);
-            base.Spawn(barricadaInstance);
-
-            barricadaInstance.transform.position = transform.position;
+            instance = Instantiate(barricadaPrefab, placeContainer);
+        }else if (craft.Id == 2){
+            instance = Instantiate(aramePrefab, placeContainer);
+        }else if (craft.Id == 3){
+            instance = Instantiate(minaPrefab, placeContainer);
+        }else{
+            instance = Instantiate(torretaPrefab, placeContainer);
         }
-        if (craft.Id == 2)
-        {
-            GameObject arameInstance = Instantiate(aramePrefab, placeContainer);
-            base.Spawn(arameInstance);
 
-            arameInstance.transform.position = transform.position;
-        }
-        if (craft.Id == 3)
-        {
-            GameObject minaInstance = Instantiate(minaPrefab, placeContainer);
-            base.Spawn(minaInstance);
+        base.Spawn(instance);
+        instance.transform.position = transform.position;
 
-            minaInstance.transform.position = transform.position;
-        }
-        if (craft.Id == 4)
-        {
-            GameObject torretaInstance = Instantiate(torretaPrefab, placeContainer);
-            base.Spawn(torretaInstance);
-
-            torretaInstance.transform.position = transform.position;
-        }
     }
 
     #endregion

@@ -16,6 +16,7 @@ public class ButtonsUI : MonoBehaviour
     public void OpenCraftPopup()
     {
         craftPopup.SetActive(true);
+
     }
 
     public void OpenGatherPopup()

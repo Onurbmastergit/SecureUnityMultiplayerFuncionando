@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: -3517283853821610259}
   - component: {fileID: 7807954905209604357}
   - component: {fileID: -4993553876715157321}
+  - component: {fileID: 3476817621474329209}
   m_Layer: 0
   m_Name: Survival Multiplayer
   m_TagString: Player
@@ -264,7 +265,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5493921117251320343
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -278,6 +279,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
     are already bound by a Humanoid avatar. These transforms can only be changed
     by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:Spine'\n\tFrom
@@ -548,11 +550,12 @@ MonoBehaviour:
   - {fileID: 8052742240168083030}
   - {fileID: 388991352381228454}
   - {fileID: -3517283853821610259}
+  - {fileID: 3476817621474329209}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: -0, y: -0, z: -0, w: 1}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isSpawnable: 1
@@ -570,7 +573,7 @@ MonoBehaviour:
   _teleportThreshold: 1
   <PrefabId>k__BackingField: 10
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 774665742
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 9925800865987610426
 --- !u!114 &388991352381228454
@@ -641,6 +644,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bite: {fileID: 6989785266447260785, guid: 37913454d93bfd14385061e98d9510b3, type: 3}
   transformSpawn: {fileID: 0}
+--- !u!114 &3476817621474329209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267103991687658199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb84803d5c8e2af4caacb2487e5b107c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 7
+  _addedNetworkObject: {fileID: 256025884089164188}
+  _networkObjectCache: {fileID: 256025884089164188}
+  craftsPrefabs:
+  - {fileID: 11400000, guid: 6afbc863da2fd07468a7f23ca0ae0de7, type: 2}
+  - {fileID: 11400000, guid: ea7edbaa4dba5654c85d3f57ddbb0577, type: 2}
+  - {fileID: 11400000, guid: 7832439095ca765499abb2e20c23a222, type: 2}
+  - {fileID: 11400000, guid: bb62b3f0f8067514aa009f0215a65172, type: 2}
+  - {fileID: 11400000, guid: a87b57de42b74aa49be52ecf57d91121, type: 2}
+  - {fileID: 11400000, guid: 70eb6c3fda1c51d4d80427ff26e66010, type: 2}
 --- !u!1 &1320048443118606732
 GameObject:
   m_ObjectHideFlags: 0
@@ -5696,15 +5721,13 @@ ParticleSystemRenderer:
   m_RenderAlignment: 2
   m_Pivot: {x: 0, y: 0, z: 0.46}
   m_Flip: {x: 1, y: 0, z: 1}
+  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_UseCustomTrailVertexStreams: 0
-  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: -2345003662338211230, guid: 81e4c8ed8f15e534ca80865eb5e7a332, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -7645,7 +7668,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -551900029063132766, guid: 9fbb0d5c6c7b2ef4c8b8c9cac53ab1f0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f1fa9a9348adc9f438125fa1feb1fdff, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fbb0d5c6c7b2ef4c8b8c9cac53ab1f0, type: 3}
@@ -7653,7 +7676,7 @@ PrefabInstance:
       value: comunicador
       objectReference: {fileID: 0}
     - target: {fileID: 5943062991487089522, guid: 9fbb0d5c6c7b2ef4c8b8c9cac53ab1f0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4f39fe81daccc5d48b9180078ad44824, type: 2}
     m_RemovedComponents: []
