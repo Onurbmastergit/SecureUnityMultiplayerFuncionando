@@ -29,7 +29,7 @@ public class InputControllers : NetworkBehaviour
 
         build = Input.GetKeyDown(KeyCode.B);
 
-        Attack = (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.JoystickButton5)) && !LevelManager.instance.isDay;
+        Attack = (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.JoystickButton5)) && !LevelManager.instance.isDay.Value;
 
         Run = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton9);
     }

@@ -6,34 +6,42 @@ using UnityEngine;
 
 public class HudManager : MonoBehaviour
 {
-   public static HudManager instance;
+    public static HudManager instance;
 
     public GameObject hudAlerta;
     public GameObject loginHud;
     public bool active = true;
-   void Awake()
-   {
-    instance = this;
-   }
 
-   void Update()
-   {
-    if(LevelManager.instance.currentHour.Value == 23 && active == true)
+    void Awake()
+    {
+        instance = this;
+    }
+
+    void Update()
+    {
+        if (LevelManager.instance.currentHour.Value == 23 && active == true)
+        {
+            Invoke("AtivarAlerta", 1);
+            active = false;
+        }
+        if (LevelManager.instance.currentHour.Value == 6)
+        {
+            active = true;
+        }
+    }
+
+    void AtivarAlerta()
     {
         hudAlerta.SetActive(true);
-        active = false;
     }
-    if(LevelManager.instance.currentHour.Value == 6)
+
+    public void DesativarAlerta()
     {
-        active = true;
+        hudAlerta.SetActive(false);
     }
-   }
-   public void DesativarAlerta()
-   {
-    hudAlerta.SetActive(false);
-   }
-   public void DesativarLogin()
-   {
-    loginHud.SetActive(false);
-   }
+
+    public void DesativarLogin()
+    {
+        loginHud.SetActive(false);
+    }
 }

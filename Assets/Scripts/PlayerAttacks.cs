@@ -37,7 +37,7 @@ public class PlayerAttacks : NetworkBehaviour
     [ServerRpc] // Mostrar a arma agora é processada no servidor, pois a variável isDay só é computada lá
     void Server_ShowGun( NetworkConnection conn )
     {
-        if (LevelManager.instance.isDay)
+        if (LevelManager.instance.isDay.Value)
         {
             Target_ShowGun(conn, false);
             return;
@@ -56,7 +56,7 @@ public class PlayerAttacks : NetworkBehaviour
     [ServerRpc]
     void Server_InputManager(NetworkConnection conn)
     {
-        if (LevelManager.instance.isDay == false)
+        if (LevelManager.instance.isDay.Value == false)
             Target_InputManager(conn);
     }
 

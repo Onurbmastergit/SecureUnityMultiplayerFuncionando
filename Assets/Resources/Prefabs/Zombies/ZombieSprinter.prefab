@@ -455,7 +455,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -6, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4458367872125431532}
@@ -541,8 +541,8 @@ Transform:
   m_GameObject: {fileID: 7142279538040535079}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.9997037, z: -0, w: 0.024344198}
-  m_LocalPosition: {x: -0.5471, y: 2.8632, z: 2.1597}
-  m_LocalScale: {x: 8.048066, y: 5.587737, z: 6.264979}
+  m_LocalPosition: {x: 0, y: 2.8632, z: 2.1597}
+  m_LocalScale: {x: 3, y: 5.587737, z: 6.264979}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4458367872125431532}
@@ -2024,6 +2024,7 @@ MonoBehaviour:
   tomouDano: 0
   color: {fileID: -623912231982328323}
   minimapIcon: {fileID: 6510389789985363893}
+  isBulker: 0
 --- !u!54 &4453722863154593883
 Rigidbody:
   m_ObjectHideFlags: 0

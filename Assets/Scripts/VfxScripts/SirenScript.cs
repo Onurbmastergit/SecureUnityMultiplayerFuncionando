@@ -18,7 +18,7 @@ public class SirenScript : MonoBehaviour
 
     void Update()
     {
-        if (LevelManager.instance.isDay)
+        if (LevelManager.instance.isDay.Value)
         {
             EffectsSiren.SetActive(false);
             return;

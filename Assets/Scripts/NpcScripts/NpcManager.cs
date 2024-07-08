@@ -47,7 +47,7 @@ public class NpcManager : NetworkBehaviour
             radioButton.SetActive(true);
             ligarBotao = false;
         }
-        else if (LevelManager.instance.isDay == false)
+        else if (LevelManager.instance.isDay.Value == false)
         {
             radioButton.SetActive(false);
             ligarBotao = true;

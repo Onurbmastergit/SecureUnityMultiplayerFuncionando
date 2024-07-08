@@ -12,7 +12,7 @@ public class DoorSystem : MonoBehaviour
     void Update()
     {
         if (player) return;
-        animator.SetBool("isOpen",LevelManager.instance.isDay);
+        animator.SetBool("isOpen",LevelManager.instance.isDay.Value);
     }
 
     void OnTriggerEnter(Collider collider)

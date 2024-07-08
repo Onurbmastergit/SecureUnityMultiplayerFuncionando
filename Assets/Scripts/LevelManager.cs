@@ -55,7 +55,9 @@ public class LevelManager : NetworkBehaviour
 
     public TextMeshProUGUI calendar;
     public TextMeshProUGUI hourText;
-    public bool isDay = true;
+    public void SetIsDay(bool value) => isDay.Value = value;
+    public readonly SyncVar<bool> isDay = new SyncVar<bool>();
+
     public bool dayStart;
     public bool nightStart;
 
@@ -120,6 +122,8 @@ public class LevelManager : NetworkBehaviour
         SetMetalTotal(99);
         SetTecnologyTotal(3);
 
+        SetIsDay(true);
+
         SetCureResearch(true);
 
         SetSelectedLocation(Resources.Load<Location>("Locations/01 Parque"));
@@ -152,9 +156,8 @@ public class LevelManager : NetworkBehaviour
         // Conta os Segundos em float.
         timer += Time.deltaTime;
 
-        isDay = (currentHour.Value >= 6) ? true : false;
         // Caso seja dia, o tempo passa mais rapido.
-        if (isDay)
+        if (isDay.Value)
         {
             if (timer >= hourDurationDay)
             {
@@ -207,13 +210,15 @@ public class LevelManager : NetworkBehaviour
             ShowSyncCalendar(currentDay); // Atualiza através do Observer, para todos
             SetHour(0);
             //isDay = false;
-            SyncDay(isDay);
+            //SyncDay(isDay);
         }
         // Atualiza o horario na HUD.
         //hourText.text = $"{currentHour.Value}:00";
         ShowSyncHour(currentHour.Value); // Atualiza através do Observer, para todos
 
-        if (isDay) DayHourTick();
+        SetIsDay(currentHour.Value >= 6);
+
+        if (isDay.Value) DayHourTick();
         else NightHourTick();
     }
 
@@ -225,11 +230,8 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     void ShowSyncHour( int currentHour) => hourText.text = $"{currentHour}:00";
 
-    [ObserversRpc(BufferLast = true)]
-    void SyncDay(bool isDay) => this.isDay = isDay;
-
-
-
+    //[ObserversRpc(BufferLast = true)]
+    //void SyncDay(bool isDay) => this.isDay = isDay;
 
     /// <summary>
     /// Trigga a cada hora se for dia.
