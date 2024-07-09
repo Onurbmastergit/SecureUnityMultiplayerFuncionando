@@ -23,6 +23,7 @@ TagManager:
   - LevelManager
   - SF_Door
   - HudZombie
+  - Ground
   layers:
   - Default
   - TransparentFX
