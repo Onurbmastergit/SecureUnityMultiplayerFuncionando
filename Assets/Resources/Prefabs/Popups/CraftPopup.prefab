@@ -675,9 +675,13 @@ PrefabInstance:
       propertyPath: popup
       value: 
       objectReference: {fileID: 8969953719492856868}
+    - target: {fileID: 3381172763768670499, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: craftPopup
+      value: 
+      objectReference: {fileID: 8969953719492856868}
     - target: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Name
-      value: CraftCard
+      value: CraftCard0
       objectReference: {fileID: 0}
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Pivot.x
@@ -758,6 +762,14 @@ PrefabInstance:
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -805,9 +817,13 @@ PrefabInstance:
       propertyPath: popup
       value: 
       objectReference: {fileID: 8969953719492856868}
+    - target: {fileID: 3381172763768670499, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: craftPopup
+      value: 
+      objectReference: {fileID: 8969953719492856868}
     - target: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Name
-      value: CraftCard (3)
+      value: CraftCard3
       objectReference: {fileID: 0}
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Pivot.x
@@ -888,6 +904,14 @@ PrefabInstance:
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1197,9 +1221,13 @@ PrefabInstance:
       propertyPath: popup
       value: 
       objectReference: {fileID: 8969953719492856868}
+    - target: {fileID: 3381172763768670499, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: craftPopup
+      value: 
+      objectReference: {fileID: 8969953719492856868}
     - target: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Name
-      value: CraftCard (5)
+      value: CraftCard5
       objectReference: {fileID: 0}
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Pivot.x
@@ -1293,6 +1321,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1335,9 +1371,13 @@ PrefabInstance:
       propertyPath: popup
       value: 
       objectReference: {fileID: 8969953719492856868}
+    - target: {fileID: 3381172763768670499, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: craftPopup
+      value: 
+      objectReference: {fileID: 8969953719492856868}
     - target: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Name
-      value: CraftCard (4)
+      value: CraftCard4
       objectReference: {fileID: 0}
     - target: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_IsActive
@@ -1425,15 +1465,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8249696793318278279, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Color.b
-      value: 0.25
+      value: 0.8352942
       objectReference: {fileID: 0}
     - target: {fileID: 8249696793318278279, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Color.g
-      value: 0.25
+      value: 0.8352942
       objectReference: {fileID: 0}
     - target: {fileID: 8249696793318278279, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Color.r
-      value: 0.25
+      value: 0.8352942
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1783,9 +1831,13 @@ PrefabInstance:
       propertyPath: popup
       value: 
       objectReference: {fileID: 8969953719492856868}
+    - target: {fileID: 3381172763768670499, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: craftPopup
+      value: 
+      objectReference: {fileID: 8969953719492856868}
     - target: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Name
-      value: CraftCard (1)
+      value: CraftCard1
       objectReference: {fileID: 0}
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Pivot.x
@@ -1866,6 +1918,14 @@ PrefabInstance:
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1913,9 +1973,13 @@ PrefabInstance:
       propertyPath: popup
       value: 
       objectReference: {fileID: 8969953719492856868}
+    - target: {fileID: 3381172763768670499, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: craftPopup
+      value: 
+      objectReference: {fileID: 8969953719492856868}
     - target: {fileID: 5820809402677684276, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Name
-      value: CraftCard (2)
+      value: CraftCard2
       objectReference: {fileID: 0}
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_Pivot.x
@@ -1996,6 +2060,14 @@ PrefabInstance:
     - target: {fileID: 5962707408376804449, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465868245471542557, guid: cf96820496ad6e8449d847c1d5366cff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

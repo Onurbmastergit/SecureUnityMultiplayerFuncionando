@@ -28,6 +28,11 @@ public class CraftCard : NetworkBehaviour
 
     Transform buildsContainer;
 
+    int woodCostMod;
+    int stoneCostMod;
+    int metalCostMod;
+    int tecnologyCostMod;
+
     #endregion
 
     #region Initialization
@@ -39,15 +44,14 @@ public class CraftCard : NetworkBehaviour
         buildsContainer = GameObject.FindWithTag("PlaceBuild").transform;
         UpdateCard();
         craftPopup.SetActive(false);
-
     }
 
     void Update()
     {
-        if (LevelManager.instance.woodTotal.Value < craft.WoodCost ||
-            LevelManager.instance.stoneTotal.Value < craft.StoneCost ||
-            LevelManager.instance.metalTotal.Value < craft.MetalCost ||
-            LevelManager.instance.tecnologyTotal.Value < craft.TecnologyCost)
+        if (LevelManager.instance.woodTotal.Value < craft.WoodCost + woodCostMod ||
+            LevelManager.instance.stoneTotal.Value < craft.StoneCost + stoneCostMod ||
+            LevelManager.instance.metalTotal.Value < craft.MetalCost + metalCostMod ||
+            LevelManager.instance.tecnologyTotal.Value < craft.TecnologyCost + tecnologyCostMod)
         {
             background.color = Color.gray;
             return;
@@ -72,10 +76,10 @@ public class CraftCard : NetworkBehaviour
     {
         craftName.text = craft.Title;
         description.text = craft.Description;
-        woodCost.text = craft.WoodCost.ToString();
-        stoneCost.text = craft.StoneCost.ToString();
-        metalCost.text = craft.MetalCost.ToString();
-        tecnologyCost.text = craft.TecnologyCost.ToString();
+        woodCost.text = (craft.WoodCost + woodCostMod).ToString();
+        stoneCost.text = (craft.StoneCost + stoneCostMod).ToString();
+        metalCost.text = (craft.MetalCost + metalCostMod).ToString();
+        tecnologyCost.text = (craft.TecnologyCost + tecnologyCostMod).ToString();
         image.sprite = craft.Image;
     }
 
@@ -87,10 +91,10 @@ public class CraftCard : NetworkBehaviour
     {
         
         // Confere se o player tem materiais suficientes para construicao da Build
-        if (LevelManager.instance.woodTotal.Value >= craft.WoodCost
-            && LevelManager.instance.stoneTotal.Value >= craft.StoneCost
-            && LevelManager.instance.metalTotal.Value >= craft.MetalCost
-            && LevelManager.instance.tecnologyTotal.Value >= craft.TecnologyCost)
+        if (LevelManager.instance.woodTotal.Value >= craft.WoodCost + woodCostMod
+            && LevelManager.instance.stoneTotal.Value >= craft.StoneCost + stoneCostMod
+            && LevelManager.instance.metalTotal.Value >= craft.MetalCost + metalCostMod
+            && LevelManager.instance.tecnologyTotal.Value >= craft.TecnologyCost + tecnologyCostMod)
         {
 
             // Fecha Menu Build apos selecionar uma Build para construir
@@ -107,12 +111,12 @@ public class CraftCard : NetworkBehaviour
             }
             else
             {
-                if (LevelManager.instance.playerDamage.Value >= 25) return;
+                if (LevelManager.instance.tecnologyTotal.Value >= 5) return;
 
                 // Atualiza nova quantidade de Recursos apos instancia
-                LevelManager.instance.SetWoodTotal(LevelManager.instance.woodTotal.Value - craft.WoodCost);
-                LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - craft.StoneCost);
-                LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - craft.MetalCost);
+                LevelManager.instance.SetWoodTotal(LevelManager.instance.woodTotal.Value - (craft.WoodCost + woodCostMod));
+                LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - (craft.StoneCost + stoneCostMod));
+                LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - (craft.MetalCost + metalCostMod));
 
                 UpdateCraftPopup(conn);
                 if (craft.Id == 5) UpgradePistol();
@@ -126,10 +130,12 @@ public class CraftCard : NetworkBehaviour
     {
         LevelManager.instance.SetPlayerDamage(LevelManager.instance.playerDamage.Value + 5);
 
-        craft.WoodCost += 1;
-        craft.StoneCost += 1;
-        craft.MetalCost += 1;
-        craft.TecnologyCost += 1;
+        woodCostMod += 1;
+        stoneCostMod += 1;
+        metalCostMod += 1;
+        tecnologyCostMod += 1;
+
+        if (LevelManager.instance.tecnologyTotal.Value >= 5) tecnologyCostMod = 10;
 
         UpdateCard();
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   title: Armamento Pistola
-  description: Melhora seus ataques utilizando a pistola
+  description: Melhora o dano dos seus ataques.
   image: {fileID: 21300000, guid: bba704762f71192428cf2038e8786f60, type: 3}
   WoodCost: 0
   StoneCost: 0

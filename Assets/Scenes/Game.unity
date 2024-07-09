@@ -12700,14 +12700,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2035045075}
     m_Modifications:
-    - target: {fileID: 206379669544908212, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: craftPopup
-      value: 
-      objectReference: {fileID: 797631711}
-    - target: {fileID: 412726865922842257, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_Name
-      value: CraftCard5
-      objectReference: {fileID: 0}
     - target: {fileID: 559059202017821380, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -12731,14 +12723,6 @@ PrefabInstance:
     - target: {fileID: 559059202017821380, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -485
-      objectReference: {fileID: 0}
-    - target: {fileID: 615825552747028773, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_Name
-      value: CraftCard4
-      objectReference: {fileID: 0}
-    - target: {fileID: 673327130948608088, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_Name
-      value: CraftCard1
       objectReference: {fileID: 0}
     - target: {fileID: 674863137569393913, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12811,10 +12795,6 @@ PrefabInstance:
     - target: {fileID: 801714337766702093, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -165
-      objectReference: {fileID: 0}
-    - target: {fileID: 803322946514620588, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_Name
-      value: CraftCard2
       objectReference: {fileID: 0}
     - target: {fileID: 1193893432806297056, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: <SceneId>k__BackingField
@@ -12912,42 +12892,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2306170641027107768, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2306170641027107768, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3234506379144164721, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3234506379144164721, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3256312591841244172, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3256312591841244172, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3359294900156810629, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3359294900156810629, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4334934728368136797, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: craftPopup
-      value: 
-      objectReference: {fileID: 797631711}
     - target: {fileID: 4646400169639206687, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -12972,18 +12916,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -165
       objectReference: {fileID: 0}
-    - target: {fileID: 4756704808223638346, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_Name
-      value: CraftCard0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6434990555845443978, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6434990555845443978, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6492325897702420367, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: <SceneId>k__BackingField
       value: 3327164029069363409
@@ -12992,30 +12924,6 @@ PrefabInstance:
       propertyPath: <SceneId>k__BackingField
       value: 3327164030197255648
       objectReference: {fileID: 0}
-    - target: {fileID: 7473812424275809891, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7473812424275809891, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8434683617159918011, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: craftPopup
-      value: 
-      objectReference: {fileID: 797631711}
-    - target: {fileID: 8547875982892810290, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: craftPopup
-      value: 
-      objectReference: {fileID: 797631711}
-    - target: {fileID: 8607468007366590799, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: craftPopup
-      value: 
-      objectReference: {fileID: 797631711}
-    - target: {fileID: 8904092676197220230, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: craftPopup
-      value: 
-      objectReference: {fileID: 797631711}
     - target: {fileID: 8969953719492856868, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_Name
       value: CraftPopup
@@ -13023,10 +12931,6 @@ PrefabInstance:
     - target: {fileID: 8969953719492856868, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9004605293797381283, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
-      propertyPath: m_Name
-      value: CraftCard3
       objectReference: {fileID: 0}
     - target: {fileID: 9119412432498706678, guid: 621f5a0540cd4e548b63b158b88fe193, type: 3}
       propertyPath: m_AnchorMax.y
