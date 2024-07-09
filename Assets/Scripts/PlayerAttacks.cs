@@ -89,6 +89,7 @@ public class PlayerAttacks : NetworkBehaviour
     {
         GameObject bulletInstance = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
         base.Spawn(bulletInstance);
+        bulletInstance.GetComponent<Projectile>().isPlayer = true;
 
         muzzleFlash.Play();
     }

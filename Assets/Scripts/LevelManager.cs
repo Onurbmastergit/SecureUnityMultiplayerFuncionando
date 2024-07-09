@@ -5,6 +5,7 @@ using FishNet.Transporting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class LevelManager : NetworkBehaviour
 {
@@ -29,9 +30,15 @@ public class LevelManager : NetworkBehaviour
     public void SetTecnologyTotal(int value) => tecnologyTotal.Value = value;
     public readonly SyncVar<int> tecnologyTotal = new SyncVar<int>();
 
+    public void SetTecnologyCap(int value) => tecnologyCap.Value = value;
+    public readonly SyncVar<int> tecnologyCap = new SyncVar<int>();
+
     public void SetLabHealth(float value) => labHealth.Value = value;
     public readonly SyncVar<float> labHealth = new SyncVar<float>();
 
+    // Atributos do Player.
+    public void SetPlayerDamage(int value) => playerDamage.Value = value;
+    public readonly SyncVar<int> playerDamage = new SyncVar<int>();
 
     // Materiais coletados pelo GatherPopup.
     public void SetSelectedLocation(Location location) => selectedLocation.Value = location;
@@ -117,10 +124,12 @@ public class LevelManager : NetworkBehaviour
 
         SetHour(6);
 
-        SetWoodTotal(99);
-        SetStoneTotal(99);
-        SetMetalTotal(99);
-        SetTecnologyTotal(3);
+        SetWoodTotal(10);
+        SetStoneTotal(10);
+        SetMetalTotal(5);
+        SetTecnologyTotal(0);
+
+        SetPlayerDamage(10);
 
         SetIsDay(true);
 
@@ -133,7 +142,7 @@ public class LevelManager : NetworkBehaviour
     {
         if (!base.IsServerInitialized) return;
 
-        if(base.ClientManager.Clients.Count == 0) return;
+        if (base.ClientManager.Clients.Count == 0) return;
 
         if (endgame) return;
 
@@ -247,8 +256,8 @@ public class LevelManager : NetworkBehaviour
             hudActionsBase.SetActive(true);
             hudLifeBase.SetActive(false);
 
-            if (tecnologyTotal.Value < 3) researchButton.SetActive(true);
             mapButton.SetActive(true);
+            if (tecnologyTotal.Value < 5) researchButton.SetActive(true);
 
             if (currentDay != 1) AddMaterials();
         }
@@ -287,6 +296,10 @@ public class LevelManager : NetworkBehaviour
     {
         SetCureMeter(cureMeter.Value + 1.25f);
 
+        // O Valor maximo de Tecnology do Player sempre será 1/10 do CureMeter -
+        // - fazendo com que seja necessário upar um pouco de Cura pra assim poder subir a tecnologia.
+        SetTecnologyCap( Mathf.FloorToInt( cureMeter.Value / 10 ));
+
         // Impede o medidor de cura ultrapassar 100%
         if (cureMeter.Value > 100) SetCureMeter(100);
     }
@@ -300,11 +313,12 @@ public class LevelManager : NetworkBehaviour
         {
             SetTecnologyTotal(tecnologyTotal.Value + 1);
             SetTecnologyMeter(0f);
+
+            if (tecnologyTotal.Value >= 5) researchButton.SetActive(false);
         }
 
-        if (tecnologyTotal.Value >= 3)
+        if (tecnologyTotal.Value == tecnologyCap.Value)
         {
-            researchButton.SetActive(false);
             SetCureResearch(true);
         }
     }
@@ -312,6 +326,7 @@ public class LevelManager : NetworkBehaviour
     [ObserversRpc(BufferLast = true)]
     public void MudarPesquisa()
     {
+        if (tecnologyTotal.Value == tecnologyCap.Value) return;
         SetCureResearch(!cureResearch.Value);
     }
 

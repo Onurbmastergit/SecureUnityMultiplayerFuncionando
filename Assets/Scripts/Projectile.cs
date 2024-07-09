@@ -9,6 +9,8 @@ public class Projectile : NetworkBehaviour
     [SerializeField] float projectileSpeed;
     [SerializeField] float maxProjectileDistance;
 
+    public bool isPlayer;
+
     void Start()
     {
         firingPoint = transform.position;
@@ -37,7 +39,8 @@ public class Projectile : NetworkBehaviour
             BoxCollider boxCollider = GetComponent<BoxCollider>();
             boxCollider.size *= 2.0f;
 
-            collider.GetComponent<EnemyStatus>().ReceberDano(10);
+            if (isPlayer) collider.GetComponent<EnemyStatus>().ReceberDano(LevelManager.instance.playerDamage.Value);
+            else collider.GetComponent<EnemyStatus>().ReceberDano(10);
 
             Destroy(gameObject);
             base.Despawn(gameObject);

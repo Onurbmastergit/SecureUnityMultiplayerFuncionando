@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   title: Armamento Rifle
-  description: Melhora seus ataques a distancia
+  description: Melhora seus ataques utilizando o Rifle
   image: {fileID: 21300000, guid: 9422b4d931bee4c4480e57da240f4a72, type: 3}
   WoodCost: 99
   StoneCost: 99
