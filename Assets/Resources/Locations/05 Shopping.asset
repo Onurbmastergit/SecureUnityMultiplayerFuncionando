@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Shopping
   artigo: o
-  Wood: 0
-  Stone: 0
-  Metal: 5
+  Wood: 1
+  Stone: 1
+  Metal: 6

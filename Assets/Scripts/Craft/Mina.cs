@@ -14,15 +14,20 @@ public class Mina : NetworkBehaviour
 
     #region Functions
 
-    void OnTriggerEnter(Collider collider)
-     {
-        if(collider.CompareTag("Zombie")) explosioArea.SetActive(true);
-     }
+    void ActivateExplosion()
+    {
+        explosioArea.SetActive(true);
+    }
 
-     public void DestroyMine()
-     {
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Zombie")) Invoke("ActivateExplosion", 0.5f);
+    }
+
+    public void DestroyMine()
+    {
         Destroy(gameObject);
-     }
+    }
 
     #endregion
 }

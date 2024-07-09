@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5291724102354201909}
   m_Layer: 0
   m_Name: AreaDetectao
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7261900020442624670}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 1002953852128923329}
   m_Layer: 6
   m_Name: Minimap Icon
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 640829470533270876}
   m_Layer: 0
   m_Name: AreaAttack
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 3990936687930300053}
   m_Layer: 0
   m_Name: AreaVisao
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -943,6 +943,10 @@ PrefabInstance:
     - target: {fileID: -3746190272939815206, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.854628
+      objectReference: {fileID: 0}
+    - target: {fileID: -3512694939507126633, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
+      propertyPath: m_TagString
+      value: TriggerIgnore
       objectReference: {fileID: 0}
     - target: {fileID: -3480699329000672020, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1351,6 +1355,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
       propertyPath: m_TagString
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082271958561512970, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
+      propertyPath: m_TagString
+      value: TriggerIgnore
       objectReference: {fileID: 0}
     - target: {fileID: 1330755669629619180, guid: 69cbab564e214984ebfaed5d42fb20ce, type: 3}
       propertyPath: m_LocalPosition.x

@@ -85,8 +85,9 @@ public class PlaceBuild : NetworkBehaviour
             transform.position = mouseInWorld;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isColliding)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if (isColliding) return;
             // Adicionado uma função nova aqui, pois ela precisa ser rodada no server, e este update é no client
             Server_ActionCraft();
         }
@@ -130,13 +131,15 @@ public class PlaceBuild : NetworkBehaviour
 
     void OnTriggerStay(Collider collider)
     {
-        if (!collider.CompareTag("Environment")) return;
+        Debug.Log(isColliding);
+        if (collider.CompareTag("TriggerIgnore")) return;
         isColliding = true;
     }
 
-    private void OnTriggerExit(Collider collider)
+    void OnTriggerExit(Collider collider)
     {
-        if (!collider.CompareTag("Environment")) return;
+        Debug.Log(isColliding);
+        if (collider.CompareTag("TriggerIgnore")) return;
         isColliding = false;
     }
 

@@ -10,15 +10,17 @@ public class Menu : MonoBehaviour
 
     public static Menu instance;
 
-    public GameObject menuMain;
-    public GameObject menuPause;
-    public GameObject menuSettings;
-    public GameObject menuCredits;
-    public GameObject menuBuild;
-    public InputControllers inputControllers;
+    [Header("Menus")]
+    [SerializeField] GameObject menuMain;
+    [SerializeField] GameObject menuPause;
+    [SerializeField] GameObject menuSettings;
+    [SerializeField] GameObject menuCredits;
+    [SerializeField] GameObject menuBuild;
+    [SerializeField] GameObject menuMap;
+    InputControllers inputControllers;
 
-    public bool mainMenu;
-    public bool isPaused;
+    bool mainMenu;
+    bool isPaused;
 
     GameObject networkManager;
 
@@ -62,6 +64,12 @@ public class Menu : MonoBehaviour
             if (menuBuild.activeSelf)
             {
                 menuBuild.SetActive(false);
+                return;
+            }
+
+            if (menuMap.activeSelf)
+            {
+                menuMap.SetActive(false);
                 return;
             }
 

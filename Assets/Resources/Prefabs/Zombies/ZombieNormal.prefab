@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5291724102354201909}
   m_Layer: 0
   m_Name: AreaDetectao
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 1105855062406576284}
   m_Layer: 0
   m_Name: ZombieNoDMG
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 7261900020442624670}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 1002953852128923329}
   m_Layer: 6
   m_Name: Minimap Icon
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1212,7 +1212,7 @@ GameObject:
   - component: {fileID: 2293044690635320098}
   m_Layer: 0
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 888924375710102574}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 640829470533270876}
   m_Layer: 0
   m_Name: AreaAttack
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1627,7 +1627,7 @@ GameObject:
   - component: {fileID: 3990936687930300053}
   m_Layer: 0
   m_Name: AreaVisao
-  m_TagString: Untagged
+  m_TagString: TriggerIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
