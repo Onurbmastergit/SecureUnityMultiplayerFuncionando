@@ -12,6 +12,8 @@ public class TutorialScript : MonoBehaviour
    public GameObject dKey;
    public GameObject shiftKey;
 
+   public HabilitarTutorial habilitarTutorial;
+
    public RectTransform mouseRectTransform;
     Color32 corVermelho = new Color32(249, 6, 0, 255);
     Color32 corBranca = new Color32(255, 255, 255, 255); 
@@ -48,5 +50,14 @@ public class TutorialScript : MonoBehaviour
             out localPoint
         );
         mouseRectTransform.localPosition = localPoint;    
+    }
+
+    public void DesabilitarTuto()
+    {
+        habilitarTutorial.DesabilitarTuto();
+    }
+    public void DesativarAviso()
+    {
+        habilitarTutorial.CloseWarning();
     }
 }
