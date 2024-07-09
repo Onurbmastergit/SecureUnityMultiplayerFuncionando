@@ -6,6 +6,10 @@ using TMPro;
 
 public class Menu : MonoBehaviour
 {
+    #region Variables
+
+    public static Menu instance;
+
     public GameObject menuMain;
     public GameObject menuPause;
     public GameObject menuSettings;
@@ -17,7 +21,12 @@ public class Menu : MonoBehaviour
     public bool mainMenu;
     public bool isPaused;
 
-    public static Menu instance;
+    GameObject networkManager;
+
+    #endregion
+
+    #region Initialization
+
     void Awake()
     {
         if (instance == null)
@@ -27,6 +36,13 @@ public class Menu : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        // Destroi o NetworkManager caso a cena seja MainMenu.
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            networkManager = GameObject.Find("NetworkManager");
+            Destroy(networkManager);
         }
     }
 
@@ -71,12 +87,23 @@ public class Menu : MonoBehaviour
             menuCredits.SetActive(false);
         }
     }
+
+    #endregion
+
+    #region Functions
+
+    /// <summary>
+    /// Calls the Game Scene.
+    /// </summary>
     public void ButtonPlay()
     {
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
     }
 
+    /// <summary>
+    /// Closes the Menu Panel.
+    /// </summary>
     public void ButtonResume()
     {
         isPaused = false;
@@ -84,11 +111,17 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    /// <summary>
+    /// Calls the MainMenu Scene.
+    /// </summary>
     public void ButtonMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
+    /// <summary>
+    /// Opens the Settings Panel.
+    /// </summary>
     public void ButtonSettings()
     {
         if (menuMain != null) menuMain.SetActive(false);
@@ -96,12 +129,18 @@ public class Menu : MonoBehaviour
         menuSettings.SetActive(true);
     }
 
+    /// <summary>
+    /// Opens the Credits Panel.
+    /// </summary>
     public void ButtonCredits()
     {
         menuSettings.SetActive(false);
         menuCredits.SetActive(true);
     }
 
+    /// <summary>
+    /// Closes Settings Panel.
+    /// </summary>
     public void ButtonBack()
     {
         if (menuMain != null) menuMain.SetActive(true);
@@ -109,6 +148,9 @@ public class Menu : MonoBehaviour
         menuSettings.SetActive(false);
     }
 
+    /// <summary>
+    /// Opens or Closes Build Panel.
+    /// </summary>
     public void ButtonBuild()
     {
         inputControllers.build = true; 
@@ -116,8 +158,13 @@ public class Menu : MonoBehaviour
         else menuBuild.SetActive(false);   
     }
 
+    /// <summary>
+    /// Quits from Application.
+    /// </summary>
     public void ButtonQuit()
     {
         Application.Quit();
     }
+
+    #endregion
 }
