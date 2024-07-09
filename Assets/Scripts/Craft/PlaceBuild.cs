@@ -9,16 +9,23 @@ public class PlaceBuild : NetworkBehaviour
     #region Variables
 
     public Craft craft;
+    bool isColliding;
 
+    [Header("Holograms")]
     [SerializeField] GameObject barricadaHologram;
     [SerializeField] GameObject arameHologram;
     [SerializeField] GameObject minaHologram;
     [SerializeField] GameObject torretaHologram;
 
+    [Header("Crafts")]
     [SerializeField] GameObject barricadaPrefab;
     [SerializeField] GameObject aramePrefab;
     [SerializeField] GameObject minaPrefab;
     [SerializeField] GameObject torretaPrefab;
+
+    [Header("Materials")]
+    [SerializeField] Material validPlace;
+    [SerializeField] Material unvalidPlace;
 
     Vector3 mouseInWorld = Vector3.zero;
 
@@ -65,6 +72,7 @@ public class PlaceBuild : NetworkBehaviour
         minaHologram.SetActive(craft.Id == 3);
         torretaHologram.SetActive(craft.Id == 4);
     }
+
     void CraftBuild()
     {
         RaycastHit hit;
@@ -72,12 +80,12 @@ public class PlaceBuild : NetworkBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // Arredonda a posicao X e Z do ponto de colisao para o multiplo de 4 mais proximo
-            mouseInWorld = new Vector3(Mathf.Round(hit.point.x / 4) * 4, 0, Mathf.Round(hit.point.z / 4) * 4);
+            // Arredonda a posição X e Z do ponto de colisão para o múltiplo de 4 mais próximo
+            Vector3 mouseInWorld = new Vector3(Mathf.Round(hit.point.x / 4) * 4, 0, Mathf.Round(hit.point.z / 4) * 4);
             transform.position = mouseInWorld;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isColliding)
         {
             // Adicionado uma função nova aqui, pois ela precisa ser rodada no server, e este update é no client
             Server_ActionCraft();
@@ -109,23 +117,27 @@ public class PlaceBuild : NetworkBehaviour
     /// </summary>
     void InstantiateBuilds()
     {
-
         GameObject instance;
 
-        if (craft.Id == 1)
-        {
-            instance = Instantiate(barricadaPrefab, placeContainer);
-        }else if (craft.Id == 2){
-            instance = Instantiate(aramePrefab, placeContainer);
-        }else if (craft.Id == 3){
-            instance = Instantiate(minaPrefab, placeContainer);
-        }else{
-            instance = Instantiate(torretaPrefab, placeContainer);
-        }
+        if (craft.Id == 1) instance = Instantiate(barricadaPrefab, placeContainer);
+        else if (craft.Id == 2) instance = Instantiate(aramePrefab, placeContainer);
+        else if (craft.Id == 3) instance = Instantiate(minaPrefab, placeContainer);
+        else instance = Instantiate(torretaPrefab, placeContainer);
 
         base.Spawn(instance);
         instance.transform.position = transform.position;
+    }
 
+    void OnTriggerStay(Collider collider)
+    {
+        if (!collider.CompareTag("Environment")) return;
+        isColliding = true;
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (!collider.CompareTag("Environment")) return;
+        isColliding = false;
     }
 
     #endregion

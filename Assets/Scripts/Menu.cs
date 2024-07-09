@@ -16,7 +16,6 @@ public class Menu : MonoBehaviour
     public GameObject menuCredits;
     public GameObject menuBuild;
     public InputControllers inputControllers;
-    public GameObject menuRadio;
 
     public bool mainMenu;
     public bool isPaused;
@@ -54,7 +53,6 @@ public class Menu : MonoBehaviour
         menuSettings.SetActive(false);
         menuCredits.SetActive(false);
         if (menuBuild != null) menuBuild.SetActive(true);
-        if (menuRadio != null) menuRadio.SetActive(false);
     }
 
     private void Update()
@@ -69,6 +67,8 @@ public class Menu : MonoBehaviour
 
             if (!isPaused)
             {
+                if (GameObject.Find("PlaceBuild") != null) return;
+
                 isPaused = true;
                 menuPause.SetActive(true);
                 Time.timeScale = 0f;
