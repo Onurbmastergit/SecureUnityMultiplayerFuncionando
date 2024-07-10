@@ -36,12 +36,17 @@ public class LabStatus : NetworkBehaviour
 
     void Update()
     {
+        // No momento do Endgame o codigo segue.
         if (!LevelManager.instance.endgame.Value) return;
 
-        foreach (GameObject doctor in doctorArray)
+        // Caso o laboratorio esteja ainda vivo.
+        if (LevelManager.instance.labHealth.Value > 0)
         {
-            doctor.GetComponent<Animator>().SetTrigger("Victory");
-            particles.SetActive(true);
+            foreach (GameObject doctor in doctorArray)
+            {
+                doctor.GetComponent<Animator>().SetTrigger("Victory");
+                particles.SetActive(true);
+            }
         }
     }
 
