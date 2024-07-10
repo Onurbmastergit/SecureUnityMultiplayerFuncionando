@@ -21,6 +21,7 @@ public class TutorialScript : MonoBehaviour
    {
         PressedButton();
         MoveMouse();
+        if(Input.GetKeyDown(KeyCode.Mouse0)) RetornarAnim();
    }
 
     void PressedButton()
@@ -59,5 +60,13 @@ public class TutorialScript : MonoBehaviour
     public void DesativarAviso()
     {
         habilitarTutorial.CloseWarning();
+    }
+    public void PausarAnim()
+    {
+        transform.GetComponent<Animator>().speed = 0;
+    }
+    public void RetornarAnim()
+    {
+        transform.GetComponent<Animator>().speed = 0.5f;
     }
 }
