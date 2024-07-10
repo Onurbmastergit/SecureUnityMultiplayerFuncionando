@@ -11,6 +11,7 @@ public class TutorialScript : MonoBehaviour
    public GameObject aKey;
    public GameObject dKey;
    public GameObject shiftKey;
+   public GameObject mouseContinue;
 
    public HabilitarTutorial habilitarTutorial;
 
@@ -63,10 +64,12 @@ public class TutorialScript : MonoBehaviour
     }
     public void PausarAnim()
     {
+        mouseContinue.SetActive(true);
         transform.GetComponent<Animator>().speed = 0;
     }
     public void RetornarAnim()
     {
-        transform.GetComponent<Animator>().speed = 0.5f;
+        mouseContinue.SetActive(false);
+        transform.GetComponent<Animator>().speed = 1f;
     }
 }
