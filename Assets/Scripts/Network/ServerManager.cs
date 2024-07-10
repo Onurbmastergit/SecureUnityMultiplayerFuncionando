@@ -76,6 +76,10 @@ public class ServerManager : MonoBehaviour
 
     public void DesativarLogin()
     {
+        Invoke("Desativar", 0.5f);
+    }
+    void Desativar()
+    {
         painelGeral.SetActive(false);
     }
 
