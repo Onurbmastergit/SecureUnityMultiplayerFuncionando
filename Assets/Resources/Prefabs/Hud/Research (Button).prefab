@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 4035603529583886683}
   - component: {fileID: 6541188713140724281}
   - component: {fileID: 7313715706703871874}
+  - component: {fileID: 513392660887743828}
   m_Layer: 5
   m_Name: Cure
   m_TagString: Untagged
@@ -528,6 +529,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &513392660887743828
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298517745937673757}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 339525a475d12a146bde11c946839188, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7441510511821232171
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Mina : NetworkBehaviour 
 {
@@ -21,7 +22,11 @@ public class Mina : NetworkBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Zombie")) Invoke("ActivateExplosion", 0.5f);
+        if (collider.CompareTag("Zombie"))
+        {
+            Invoke("ActivateExplosion", 0.5f);
+            collider.GetComponent<NavMeshAgent>().speed *= 0.5f;
+        }
     }
 
     public void DestroyMine()
