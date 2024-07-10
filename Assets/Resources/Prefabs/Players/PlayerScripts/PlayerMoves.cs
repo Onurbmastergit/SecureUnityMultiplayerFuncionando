@@ -60,24 +60,26 @@ public class PlayerMoves : NetworkBehaviour
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        float moveY = (transform.position.y > 0.14) ? -0.1f : 0;
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        Vector3 movement = new Vector3(moveHorizontal, moveY, moveVertical);
 
         if (movement.magnitude > 1)
         {
             movement.Normalize();
         }
-          if (inputController.Run)
+        if (inputController.Run)
         {
             RunPlayer();
-        }else
+        }
+        else
         {
             moveSpeed = walkSpeed;
         }
         movement *= moveSpeed * Time.deltaTime;// Não queremos mover no eixo Y
-       
+
         controller.Move(movement);
-        
+
     }
 
     void RunPlayer()

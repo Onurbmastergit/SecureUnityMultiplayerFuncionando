@@ -11,6 +11,9 @@ public class DoorSystem : MonoBehaviour
 
     void Update()
     {
+        // No caso de Endgame as portas se abrem.
+        if (LevelManager.instance.endgame.Value) animator.SetBool("isOpen", true);
+
         if (player) return;
         animator.SetBool("isOpen",LevelManager.instance.isDay.Value);
     }

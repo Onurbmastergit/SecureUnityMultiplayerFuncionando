@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class LabStatus : NetworkBehaviour
 {
+    [Header("Stats")]
     public float vidaBase;
+
+    [Header("Hud")]
     public Image lifeBaseStatus;
     public Image bgIconLifeStatus;
     public Image imageRachaduras;
@@ -15,13 +18,31 @@ public class LabStatus : NetworkBehaviour
     public VfxColor color;
     public GameObject labIcon;
 
-    public GameObject[] sirenArray;
+    [Header("Scientists")]
+    [SerializeField] GameObject[] doctorArray;
+
+    [Header("Sirens")]
+    [SerializeField] GameObject[] sirenArray;
+
+    [Header("Particles")]
+    [SerializeField] GameObject particles;
 
     public override void OnStartServer()
     {
         base.OnStartServer();
         LevelManager.instance.SetLabHealth(vidaBase);
         HudUpdate();
+    }
+
+    void Update()
+    {
+        if (!LevelManager.instance.endgame.Value) return;
+
+        foreach (GameObject doctor in doctorArray)
+        {
+            doctor.GetComponent<Animator>().SetTrigger("Victory");
+            particles.SetActive(true);
+        }
     }
 
     public void ReceberDano(int damage)
@@ -35,6 +56,16 @@ public class LabStatus : NetworkBehaviour
         foreach (GameObject siren in sirenArray)
         {
             siren.GetComponent<SirenScript>().SirenAlert();
+        }
+
+        if (LevelManager.instance.labHealth.Value <= 0)
+        {
+            transform.GetComponent<BoxCollider>().size = new Vector3(2,10,2);
+
+            foreach (GameObject doctor in doctorArray)
+            {
+                doctor.GetComponent<Animator>().SetTrigger("Zombies");
+            }
         }
     }
 

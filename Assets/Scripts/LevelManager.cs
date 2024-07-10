@@ -103,7 +103,9 @@ public class LevelManager : NetworkBehaviour
     public static LevelManager instance;
 
     // Endgame
-    bool endgame;
+    public void SetEndgame(bool value) => endgame.Value = value;
+    public readonly SyncVar<bool> endgame = new SyncVar<bool>();
+
     [SerializeField] GameObject EndgamePopup;
 
     #endregion
@@ -123,6 +125,8 @@ public class LevelManager : NetworkBehaviour
         base.OnStartServer();
 
         SetHour(6);
+
+        SetCureMeter(0);
 
         SetWoodTotal(10);
         SetStoneTotal(10);
@@ -144,7 +148,7 @@ public class LevelManager : NetworkBehaviour
 
         if (base.ClientManager.Clients.Count == 0) return;
 
-        if (endgame) return;
+        if (endgame.Value) return;
 
         TimeSystem();
         UpdateHUD();
@@ -402,7 +406,7 @@ public class LevelManager : NetworkBehaviour
     /// </summary>
     void Endgame()
     {
-        endgame = true;
+        SetEndgame(true);
         EndgamePopup.SetActive(true);
     }
 
