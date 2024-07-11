@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ExplosionScript : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class ExplosionScript : MonoBehaviour
         if (collider.CompareTag("Zombie"))
         {
             collider.GetComponent<EnemyStatus>().ReceberDano(danoExplosao);
+            collider.GetComponent<NavMeshAgent>().speed *= 4f;
         }
     }
 

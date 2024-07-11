@@ -30,28 +30,41 @@ public class ResearchButton : MonoBehaviour
 
     void ChangeColor()
     {
-        if (LevelManager.instance.tecnologyTotal.Value == LevelManager.instance.tecnologyCap.Value)
+        if (LevelManager.instance.tecnologyTotal.Value >= 3)
         {
-            cure.SetActive(false);
-            tecnology.SetActive(false);
-            locked.SetActive(true);
+            if ((LevelManager.instance.cureMeter.Value / 10) < (LevelManager.instance.tecnologyTotal.Value + 1))
+            {
+                locked.SetActive(true);
 
-            meter.SetActive(true);
-            fill.fillAmount = (LevelManager.instance.cureMeter.Value % 10) / 10;
+                cure.SetActive(false);
+                tecnology.SetActive(false);
 
-            return;
+                meter.SetActive(true);
+                if (LevelManager.instance.cureMeter.Value < 40)
+                {
+                    fill.fillAmount = LevelManager.instance.cureMeter.Value / 40;
+                }
+                else
+                {
+                    fill.fillAmount = (LevelManager.instance.cureMeter.Value % 10) / 10;
+                }
+
+                return;
+            }
         }
         
         if (LevelManager.instance.cureResearch.Value)
         {
             cure.SetActive(true);
+
             tecnology.SetActive(false);
             locked.SetActive(false);
         }
         else
         {
-            cure.SetActive(false);
             tecnology.SetActive(true);
+
+            cure.SetActive(false);
             locked.SetActive(false);
         }
 

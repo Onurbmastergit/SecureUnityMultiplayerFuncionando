@@ -24,8 +24,8 @@ public class Mina : NetworkBehaviour
     {
         if (collider.CompareTag("Zombie"))
         {
-            Invoke("ActivateExplosion", 0.5f);
-            collider.GetComponent<NavMeshAgent>().speed *= 0.5f;
+            Invoke("ActivateExplosion", 1f);
+            collider.GetComponent<NavMeshAgent>().speed *= 0.25f;
         }
     }
 

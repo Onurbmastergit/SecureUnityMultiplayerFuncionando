@@ -30,9 +30,6 @@ public class LevelManager : NetworkBehaviour
     public void SetTecnologyTotal(int value) => tecnologyTotal.Value = value;
     public readonly SyncVar<int> tecnologyTotal = new SyncVar<int>();
 
-    public void SetTecnologyCap(int value) => tecnologyCap.Value = value;
-    public readonly SyncVar<int> tecnologyCap = new SyncVar<int>();
-
     public void SetLabHealth(float value) => labHealth.Value = value;
     public readonly SyncVar<float> labHealth = new SyncVar<float>();
 
@@ -266,7 +263,7 @@ public class LevelManager : NetworkBehaviour
             if (currentDay != 1) AddMaterials();
         }
 
-        if(cureResearch.Value == true) CureProgression();    
+        if (cureResearch.Value) CureProgression();    
         else TecnoProgression();
     }
 
@@ -300,10 +297,6 @@ public class LevelManager : NetworkBehaviour
     {
         SetCureMeter(cureMeter.Value + 1.25f);
 
-        // O Valor maximo de Tecnology do Player sempre será 1/10 do CureMeter -
-        // - fazendo com que seja necessário upar um pouco de Cura pra assim poder subir a tecnologia.
-        SetTecnologyCap( Mathf.FloorToInt( cureMeter.Value / 10 ));
-
         // Impede o medidor de cura ultrapassar 100%
         if (cureMeter.Value > 100) SetCureMeter(100);
     }
@@ -318,19 +311,25 @@ public class LevelManager : NetworkBehaviour
             SetTecnologyTotal(tecnologyTotal.Value + 1);
             SetTecnologyMeter(0f);
 
-            if (tecnologyTotal.Value >= 5) researchButton.SetActive(false);
-        }
+            if ((LevelManager.instance.cureMeter.Value / 10) < (LevelManager.instance.tecnologyTotal.Value + 1))
+            {
+                SetCureResearch(true);
+            }
 
-        if (tecnologyTotal.Value == tecnologyCap.Value)
-        {
-            SetCureResearch(true);
+            if (tecnologyTotal.Value >= 5)
+            {
+                SetCureResearch(true);
+                researchButton.SetActive(false);
+            }
         }
     }
 
     [ObserversRpc(BufferLast = true)]
     public void MudarPesquisa()
     {
-        if (tecnologyTotal.Value == tecnologyCap.Value) return;
+        if (tecnologyTotal.Value == 3 && cureMeter.Value < 40) return;
+        else if (tecnologyTotal.Value == 4 && cureMeter.Value < 50) return;
+
         SetCureResearch(!cureResearch.Value);
     }
 
