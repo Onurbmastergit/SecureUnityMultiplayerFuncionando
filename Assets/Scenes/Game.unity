@@ -2221,8 +2221,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Cliclando em cima do local voc\xEA mandar\xE1 uma patrulha de busca que
-    retornar\xE1 somente no dia seguinte as 6:00."
+  m_text: "Clicando em cima do local, voc\xEA enviar\xE1 uma patrulha de busca que
+    retornar\xE1 apenas no dia seguinte \xE0s 6:00."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -25703,8 +25703,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 118182429983161189, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_text
-      value: "Este bot\xE3o alterna a pesquisa entre cura e tecnologia; a pesquisa
+      value: "Este bot\xE3o alterna a pesquisa entre cura e tecnologia. A pesquisa
         selecionada estar\xE1 destacada."
+      objectReference: {fileID: 0}
+    - target: {fileID: 256059644368602355, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_text
+      value: "Secure \xE9 um jogo em que, durante o dia, voc\xEA adquire recursos
+        e prepara a base, e \xE0 noite a defende. Neste canto, voc\xEA encontra o
+        marcador de dias e horas."
       objectReference: {fileID: 0}
     - target: {fileID: 280114225460523966, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_Pivot.x
@@ -25786,13 +25792,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1441194041657047991, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902746706200642015, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_text
+      value: "Este c\xEDrculo, abaixo do da cura, indica o n\xEDvel de tecnologia,
+        usado para fabricar melhores defesas para sua base."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024748113706433272, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062574509349498033, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2122983899199444970, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_Name
       value: RadioEx
       objectReference: {fileID: 0}
+    - target: {fileID: 2122983899199444970, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519598280893617302, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2587310414270072054, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_text
-      value: "Este bot\xE3o habilitar\xE1 o mapa para coleta de recursos."
+      value: "Este bot\xE3o habilita o mapa para a coleta de recursos."
       objectReference: {fileID: 0}
     - target: {fileID: 2587310414270072054, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_fontSize
@@ -25810,6 +25841,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RecursosEx
       objectReference: {fileID: 0}
+    - target: {fileID: 3733210630901849554, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791253561695700484, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_text
+      value: Use WASD para se mover e Shift esquerdo para correr.
+      objectReference: {fileID: 0}
     - target: {fileID: 3827068912952814698, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_Name
       value: VidaBaseEx
@@ -25820,13 +25859,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4097305894397869206, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_text
-      value: "Este circulo no canto inferior esquerdo encontrar\xE1 a vida da base
-        que voc\xEA tem que defender , ele s\xF3 aparecer\xE1 a noite."
+      value: "Este c\xEDrculo no canto inferior esquerdo mostra a vida da base que
+        voc\xEA deve defender; ele s\xF3 aparecer\xE1 \xE0 noite."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845996430590689909, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879850574588082289, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4956959885625463088, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_text
-      value: "Use o Mouse para controlar a dire\xE7\xE3o aonde o personagem est\xE1
-        olhado, sua vida se encotra embaixo do personagem."
+      value: "Use o mouse para controlar a dire\xE7\xE3o para onde o personagem est\xE1
+        olhando. Sua vida se encontra abaixo do personagem."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356602397450690200, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6362569318411094514, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_Name
@@ -25839,7 +25890,8 @@ PrefabInstance:
     - target: {fileID: 6934360530805929552, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_text
       value: "Neste canto, voc\xEA encontrar\xE1 o mapa que mostrar\xE1 o jogador,
-        os inimigos, defesas e, dire\xE7\xF5es de onde v\xEAm os ataques de zumbis."
+        os inimigos, as defesas e as dire\xE7\xF5es de onde v\xEAm os ataques dos
+        zumbis."
       objectReference: {fileID: 0}
     - target: {fileID: 7025606613926166036, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_IsActive
@@ -25851,8 +25903,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8326773565120110774, guid: f7aa16ad925239a4ab603e3f9d4c9159, type: 3}
       propertyPath: m_text
-      value: "Clicando neste radio voc\xEA obter\xE1 informa\xE7\xF5es da dire\xE7\xE3o
-        da horda zumbi."
+      value: "Clicando neste r\xE1dio, voc\xEA obter\xE1 informa\xE7\xF5es sobre
+        a dire\xE7\xE3o da horda zumbi."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32976,7 +33028,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Clicando neste bot\xE3o voc\xEA abrirar\xE1 um menu para fabricar as defesas."
+  m_text: "Clicando neste bot\xE3o, voc\xEA abrir\xE1 um menu para fabricar as defesas."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -35414,6 +35466,7 @@ MonoBehaviour:
   tutorial: {fileID: 885171990}
   manager: {fileID: 590861956}
   warningTuto: {fileID: 1574508702}
+  graphicRaycaster: {fileID: 1627389109}
 --- !u!4 &1536417577
 Transform:
   m_ObjectHideFlags: 0
@@ -41486,7 +41539,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bem isso \xE9 tudo boa gameplay :D"
+  m_text: "Bom, isso \xE9 tudo! Boa jogatina!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -43621,7 +43674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Abrindo o mapa voc\xEA encontrar\xE1 informa\xE7\xF5es \nsobre os locais
+  m_text: "Ao abrir o mapa, voc\xEA encontrar\xE1 informa\xE7\xF5es sobre os locais
     e a quantidade de recursos em cada um deles."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
