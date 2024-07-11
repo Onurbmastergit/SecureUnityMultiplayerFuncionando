@@ -131,14 +131,12 @@ public class PlaceBuild : NetworkBehaviour
 
     void OnTriggerStay(Collider collider)
     {
-        Debug.Log(isColliding);
         if (collider.CompareTag("TriggerIgnore")) return;
         isColliding = true;
     }
 
     void OnTriggerExit(Collider collider)
     {
-        Debug.Log(isColliding);
         if (collider.CompareTag("TriggerIgnore")) return;
         isColliding = false;
     }

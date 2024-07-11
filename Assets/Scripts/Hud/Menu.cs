@@ -42,6 +42,7 @@ public class Menu : MonoBehaviour
         // Destroi o NetworkManager caso a cena seja MainMenu.
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
+            mainMenu = true;
             networkManager = GameObject.Find("NetworkManager");
             Destroy(networkManager);
         }
@@ -57,7 +58,7 @@ public class Menu : MonoBehaviour
         if (menuBuild != null) menuBuild.SetActive(true);
     }
 
-    private void Update()
+    void Update()
     {
         if (!mainMenu && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -93,6 +94,12 @@ public class Menu : MonoBehaviour
         {
             menuSettings.SetActive(true);
             menuCredits.SetActive(false);
+        }
+
+        if (!mainMenu && LevelManager.instance.endgame.Value)
+        {
+            menuBuild.SetActive(false);
+            menuMap.SetActive(false);
         }
     }
 

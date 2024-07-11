@@ -43,7 +43,7 @@ public class PlayerStatus : MonoBehaviour
 
     void VerificarMorte()
     {
-        if(vidaAtual == 0)
+        if(vidaAtual <= 0)
         {
             transform.GetComponent<PlayerMoves>().enabled = false;
             transform.GetComponent<PlayerAttacks>().enabled = false;

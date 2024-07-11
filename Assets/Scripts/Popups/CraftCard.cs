@@ -111,8 +111,6 @@ public class CraftCard : NetworkBehaviour
             }
             else
             {
-                if (LevelManager.instance.tecnologyTotal.Value >= 5) return;
-
                 // Atualiza nova quantidade de Recursos apos instancia
                 LevelManager.instance.SetWoodTotal(LevelManager.instance.woodTotal.Value - (craft.WoodCost + woodCostMod));
                 LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - (craft.StoneCost + stoneCostMod));
@@ -135,7 +133,7 @@ public class CraftCard : NetworkBehaviour
         metalCostMod += 1;
         tecnologyCostMod += 1;
 
-        if (LevelManager.instance.tecnologyTotal.Value >= 5) tecnologyCostMod = 10;
+        if (tecnologyCostMod == 3) tecnologyCostMod = 7;
 
         UpdateCard();
     }
