@@ -9,7 +9,7 @@ public class PlayerStatus : MonoBehaviour
 {
     public int vidaTotal = 100;
     public int vidaAtual;
-    
+    public ParticleSystem particle;
     public Image BarLifeStatus;
     public Image veias;
     public Image blood;
@@ -36,6 +36,7 @@ public class PlayerStatus : MonoBehaviour
     {
         Infection();
         damageScript.SpawnRandomBite();
+        particle.Play();
         vidaAtual -= valor;
         color.ChangeColor();
         VerificarMorte();

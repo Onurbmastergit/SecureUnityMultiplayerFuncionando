@@ -16,6 +16,7 @@ public class EnemyStatus : NetworkBehaviour
     public GameObject lifeBarObject;
     Animator animator;
     NavMeshAgent agent;
+    public ParticleSystem particles;
     public bool tomouDano;
     public VfxColor color;
     Rigidbody rb;
@@ -66,6 +67,7 @@ public class EnemyStatus : NetworkBehaviour
             }
             vidaAtual -= dano;
         }
+        particles.Play();
         color.ChangeColor();
         VerificarMorte();
     }

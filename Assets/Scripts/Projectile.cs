@@ -6,6 +6,7 @@ using UnityEngine;
 public class Projectile : NetworkBehaviour
 {
     Vector3 firingPoint;
+    
     [SerializeField] float projectileSpeed;
     [SerializeField] float maxProjectileDistance;
 
@@ -36,6 +37,7 @@ public class Projectile : NetworkBehaviour
     {
         if(collider.CompareTag("Zombie"))
         {
+            
             BoxCollider boxCollider = GetComponent<BoxCollider>();
             boxCollider.size *= 2.0f;
 
@@ -43,6 +45,7 @@ public class Projectile : NetworkBehaviour
             else collider.GetComponent<EnemyStatus>().ReceberDano(10);
 
             Destroy(gameObject);
+            
             base.Despawn(gameObject);
         }
 
