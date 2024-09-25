@@ -87,6 +87,7 @@ public class LevelManager : NetworkBehaviour
     //Hud da base
     public GameObject hudLifeBase;
     public GameObject hudActionsBase;
+    public GameObject buttonResearch;
 
     // Selection Effects
     public Canvas hudCure;
@@ -146,6 +147,7 @@ public class LevelManager : NetworkBehaviour
         if (base.ClientManager.Clients.Count == 0) return;
 
         if (endgame.Value) return;
+
 
         TimeSystem();
         UpdateHUD();
@@ -217,14 +219,14 @@ public class LevelManager : NetworkBehaviour
         {
             ++currentDay;
             //calendar.text = $"Day {currentDay}";
-            ShowSyncCalendar(currentDay); // Atualiza através do Observer, para todos
+            ShowSyncCalendar(currentDay); // Atualiza atravï¿½s do Observer, para todos
             SetHour(0);
             //isDay = false;
             //SyncDay(isDay);
         }
         // Atualiza o horario na HUD.
         //hourText.text = $"{currentHour.Value}:00";
-        ShowSyncHour(currentHour.Value); // Atualiza através do Observer, para todos
+        ShowSyncHour(currentHour.Value); // Atualiza atravï¿½s do Observer, para todos
 
         SetIsDay(currentHour.Value >= 6);
 
@@ -232,8 +234,8 @@ public class LevelManager : NetworkBehaviour
         else NightHourTick();
     }
 
-    // Como o client não tem acesso às informações do que aconteceu no server, é necessário passar a
-    // referência do server para o server, vai toma no cu Bruno.
+    // Como o client nï¿½o tem acesso ï¿½s informaï¿½ï¿½es do que aconteceu no server, ï¿½ necessï¿½rio passar a
+    // referï¿½ncia do server para o server, vai toma no cu Bruno.
     [ObserversRpc(BufferLast = true)]
     void ShowSyncCalendar( int currentDay ) => calendar.text = $"Day {currentDay}";
 
@@ -332,7 +334,6 @@ public class LevelManager : NetworkBehaviour
 
         SetCureResearch(!cureResearch.Value);
     }
-
     [ObserversRpc(BufferLast = true)]
     void UpdateHUD()
     {
