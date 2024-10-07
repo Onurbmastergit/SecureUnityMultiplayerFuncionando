@@ -376,8 +376,10 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 256025884089164188}
   _networkObjectCache: {fileID: 256025884089164188}
   moveSpeed: 8
+  gamepadController: 1
+  mouseUi: {fileID: 0}
   rotationSpeed: 0
-  rotationCorrection: -10
+  rotationCorrection: 47.5
   acessibilidade: 0
   rotacao: {fileID: 3416684417182032394}
 --- !u!114 &248205076845335741
@@ -6187,7 +6189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3416684417182032394}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.49726477, z: -0, w: 0.8675989}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6196,7 +6198,7 @@ Transform:
   - {fileID: 8386541835512657103}
   - {fileID: 5937882585435558658}
   m_Father: {fileID: 1936117868122202221}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -59.638, z: 0}
 --- !u!1 &3421911509638329743
 GameObject:
   m_ObjectHideFlags: 0

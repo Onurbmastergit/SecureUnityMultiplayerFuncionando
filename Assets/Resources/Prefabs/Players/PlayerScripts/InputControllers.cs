@@ -26,7 +26,7 @@ public class InputControllers : NetworkBehaviour
         movimentoHorizontal = Input.GetAxis("Horizontal");
 
         movimentoVertical = Input.GetAxis("Vertical");
-
+        
         build = Input.GetKeyDown(KeyCode.B);
 
         Attack = (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.JoystickButton5)) && !LevelManager.instance.isDay.Value;

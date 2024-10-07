@@ -37,6 +37,7 @@ public class AnimationScript : NetworkBehaviour
 
         animator.SetFloat("Life", status.vidaAtual);
         animator.SetBool("Pistol", InputControllers.pistol);
+        animator.SetBool("Build", inputControllers.movimentoHorizontal > 0 || inputControllers.movimentoVertical > 0 );
         animator.SetFloat("InputX", inputControllers.movimentoHorizontal);
         animator.SetFloat("InputY", inputControllers.movimentoVertical);
         walk = inputControllers.movimentoHorizontal > 0 || inputControllers.movimentoVertical > 0;
@@ -51,7 +52,7 @@ public class AnimationScript : NetworkBehaviour
         {
             animator.SetBool("Talk", true);
         }
-        if (walk == true)
+        if (walk == true )
         {
             animator.SetBool("Build", false);
             animator.SetBool("Talk", false);

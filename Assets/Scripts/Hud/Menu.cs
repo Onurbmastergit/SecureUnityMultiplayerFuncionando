@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Menu : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        if (!mainMenu && Input.GetKeyDown(KeyCode.Escape))
+        if (!mainMenu && Input.GetKeyDown(KeyCode.Escape) || Gamepad.current != null && Gamepad.current.selectButton.wasPressedThisFrame)
         {
             if (menuBuild.activeSelf)
             {
@@ -74,7 +75,7 @@ public class Menu : MonoBehaviour
                 return;
             }
 
-            if (!isPaused)
+            if (!isPaused )
             {
                 if (GameObject.Find("PlaceBuild") != null) return;
 

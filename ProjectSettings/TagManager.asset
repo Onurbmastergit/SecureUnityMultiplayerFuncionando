@@ -25,6 +25,7 @@ TagManager:
   - HudZombie
   - Ground
   - TriggerIgnore
+  - MouseUI
   layers:
   - Default
   - TransparentFX

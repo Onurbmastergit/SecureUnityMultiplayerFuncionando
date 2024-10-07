@@ -68,7 +68,7 @@ public class LevelManager : NetworkBehaviour
     public void SetCureResearch(bool value) => cureResearch.Value = value;
     public readonly SyncVar<bool> cureResearch = new SyncVar<bool>();
 
-    float hourDurationDay = 3f; // Duracao de cada hora do dia em segundos.
+    float hourDurationDay = 5f; // Duracao de cada hora do dia em segundos.
     float hourDurationNight = 15f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
     float sunTimer;

@@ -30,6 +30,7 @@ public class PlaceBuild : NetworkBehaviour
     Vector3 mouseInWorld = Vector3.zero;
 
     Transform placeContainer;
+    public PlayerMoves player;
 
     #endregion
 
@@ -39,8 +40,8 @@ public class PlaceBuild : NetworkBehaviour
     {
         base.OnStartClient();
 
-        // Pode ser que não seja o client HOST não esteja craftando, sendo assim, o client puro pode continuar a ação
-        // o craft acontece no servidor, mas o HOST (que é o server) não vê o craft acontecendo. O mesmo serve pro client
+        // Pode ser que nï¿½o seja o client HOST nï¿½o esteja craftando, sendo assim, o client puro pode continuar a aï¿½ï¿½o
+        // o craft acontece no servidor, mas o HOST (que ï¿½ o server) nï¿½o vï¿½ o craft acontecendo. O mesmo serve pro client
         if (base.IsOwner == false) return;
 
         placeContainer = GameObject.FindWithTag("PlaceBuild").transform;
@@ -50,6 +51,7 @@ public class PlaceBuild : NetworkBehaviour
     void Update()
     {
         if (base.IsOwner == false) return;
+         player = GameObject.FindWithTag("Player").GetComponent<PlayerMoves>();
 
         CraftBuild();
     }
@@ -64,9 +66,9 @@ public class PlaceBuild : NetworkBehaviour
     public void UpdatePlaceBuild()
     {
         if (!craft) return;
-        // Aqui está o problema de não aparecer o holograma no client. Tentei diversas formas, mas não deu...
-        // Apenas o server tem a referência do que é para ser craftado, mas o client não tem
-        // Faça o teste: barricadaHologram.SetActive(true);
+        // Aqui estï¿½ o problema de nï¿½o aparecer o holograma no client. Tentei diversas formas, mas nï¿½o deu...
+        // Apenas o server tem a referï¿½ncia do que ï¿½ para ser craftado, mas o client nï¿½o tem
+        // Faï¿½a o teste: barricadaHologram.SetActive(true);
         barricadaHologram.SetActive(craft.Id == 1);
         arameHologram.SetActive(craft.Id == 2);
         minaHologram.SetActive(craft.Id == 3);
@@ -76,23 +78,52 @@ public class PlaceBuild : NetworkBehaviour
     void CraftBuild()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray;
+        bool gamepadController = player.gamepadController;
+        RectTransform mouseUi = player.mouseUi;
+       if (gamepadController)
+    {
+        // Se o gamepadController estiver ativo, pegamos a posiÃ§Ã£o do mouseUi e criamos um Ray a partir dela
+        Canvas canvas = mouseUi.GetComponentInParent<Canvas>();
+        Vector3 mouseUiPosition = Vector3.zero;
 
-        if (Physics.Raycast(ray, out hit))
+        if (canvas.renderMode == RenderMode.ScreenSpaceOverlay)
         {
-            // Arredonda a posição X e Z do ponto de colisão para o múltiplo de 4 mais próximo
-            Vector3 mouseInWorld = new Vector3(Mathf.Round(hit.point.x / 4) * 4, 0, Mathf.Round(hit.point.z / 4) * 4);
-            transform.position = mouseInWorld;
+            // Caso o Canvas esteja no modo Screen Space Overlay, pegamos a posiÃ§Ã£o diretamente
+            mouseUiPosition = mouseUi.position;
+        }
+        else if (canvas.renderMode == RenderMode.ScreenSpaceCamera || canvas.renderMode == RenderMode.WorldSpace)
+        {
+            // Para Screen Space Camera ou World Space, usamos RectTransformUtility para converter
+            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, mouseUi.position);
+            mouseUiPosition = new Vector3(screenPoint.x, screenPoint.y, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        // Criamos o Ray a partir da posiÃ§Ã£o do mouseUi
+        ray = Camera.main.ScreenPointToRay(mouseUiPosition);
+    }
+    else
+    {
+        // Criamos o Ray a partir da posiÃ§Ã£o normal do mouse
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    }
+
+    // LanÃ§amos o Ray para detectar colisÃµes no mundo
+    if (Physics.Raycast(ray, out hit))
+    {
+        // Arredonda a posiÃ§Ã£o X e Z do ponto de colisÃ£o para o mÃºltiplo de 4 mais prÃ³ximo
+        Vector3 hitPosition = new Vector3(Mathf.Round(hit.point.x / 4) * 4, 0, Mathf.Round(hit.point.z / 4) * 4);
+        transform.position = hitPosition;
+    }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0)|| Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             if (isColliding) return;
-            // Adicionado uma função nova aqui, pois ela precisa ser rodada no server, e este update é no client
+            // Adicionado uma funï¿½ï¿½o nova aqui, pois ela precisa ser rodada no server, e este update ï¿½ no client
             Server_ActionCraft();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse1)|| Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             //Destroy(gameObject);
             base.ServerManager.Despawn(gameObject);
@@ -110,7 +141,7 @@ public class PlaceBuild : NetworkBehaviour
         LevelManager.instance.SetStoneTotal(LevelManager.instance.stoneTotal.Value - craft.StoneCost);
         LevelManager.instance.SetMetalTotal(LevelManager.instance.metalTotal.Value - craft.MetalCost);
 
-        base.ServerManager.Despawn(gameObject); // Lembrar sempre de despawnar no server invés de Destroy(gameObject)
+        base.ServerManager.Despawn(gameObject); // Lembrar sempre de despawnar no server invï¿½s de Destroy(gameObject)
     }
 
     /// <summary>
