@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 1156469299158170977}
   - component: {fileID: 6137794126273251421}
   - component: {fileID: 8994483347069232317}
-  - component: {fileID: 3726142363181560183}
   m_Layer: 5
   m_Name: MouseUi
-  m_TagString: MouseUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,29 +91,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!223 &3726142363181560183
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698905344534656964}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 10
-  m_TargetDisplay: 0
 --- !u!1 &5811111380368880300
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +103,6 @@ GameObject:
   - component: {fileID: 8296265655884994034}
   - component: {fileID: 5276886489929752372}
   - component: {fileID: 1232912725291047811}
-  - component: {fileID: 8467367785633753112}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -176,7 +151,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &5276886489929752372
 MonoBehaviour:
@@ -218,47 +193,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8467367785633753112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5811111380368880300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <IsNested>k__BackingField: 0
-  <ComponentIndex>k__BackingField: 0
-  <PredictedSpawn>k__BackingField: {fileID: 0}
-  _networkBehaviours: []
-  <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
-  <NestedRootNetworkBehaviours>k__BackingField: []
-  SerializedTransformProperties:
-    Position: {x: 960, y: 540, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _isSpawnable: 1
-  _isGlobal: 0
-  _initializeOrder: 0
-  _defaultDespawnType: 0
-  NetworkObserver: {fileID: 0}
-  _enablePrediction: 0
-  _predictionType: 0
-  _graphicalObject: {fileID: 0}
-  _enableStateForwarding: 1
-  _networkTransform: {fileID: 0}
-  _ownerInterpolation: 1
-  _enableTeleport: 0
-  _teleportThreshold: 1
-  <PrefabId>k__BackingField: 10
-  <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 774665742
-  <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 17742788648272702708
 --- !u!1 &7303094434133640858
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2872372933757063933}
   - component: {fileID: 5770866391155633958}
+  - component: {fileID: 9011360872352293235}
   m_Layer: 5
   m_Name: VirtualMouseUI
   m_TagString: Untagged
@@ -311,7 +246,7 @@ MonoBehaviour:
   m_CursorMode: 0
   m_CursorGraphic: {fileID: 6137794126273251421}
   m_CursorTransform: {fileID: 6415581918535583387}
-  m_CursorSpeed: 2000
+  m_CursorSpeed: 2500
   m_ScrollSpeed: 45
   m_StickAction:
     m_UseReference: 0
@@ -351,22 +286,6 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Left Button
         m_Flags: 0
-      - m_Name: 
-        m_Id: 71d29457-35c6-467e-9db1-a0dfd1cc089b
-        m_Path: <XInputController>/rightTrigger
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Left Button
-        m_Flags: 0
-      - m_Name: 
-        m_Id: ed8dea08-8c33-4559-b07e-7467f19eeffa
-        m_Path: <Gamepad>/buttonSouth
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Left Button
-        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_MiddleButtonAction:
@@ -394,14 +313,6 @@ MonoBehaviour:
       - m_Name: 
         m_Id: 8b7bc24f-781c-433a-91c0-acb501e1bb18
         m_Path: <XInputController>/buttonEast
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Right Button
-        m_Flags: 0
-      - m_Name: 
-        m_Id: 5c00f40c-a997-433e-ac21-0151267bc2e4
-        m_Path: <Gamepad>/buttonEast
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -445,3 +356,16 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -3904495759969218529, guid: c2da68a33934478429331becc93eca32, type: 3}
+--- !u!114 &9011360872352293235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303094434133640858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5480eb70d8e3b745a5221cd1389ff83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasRectTransform: {fileID: 3345709148578144988}

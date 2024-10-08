@@ -49,6 +49,8 @@ public class LevelManager : NetworkBehaviour
     // Botoes da HUD do jogo.
     [SerializeField] GameObject researchButton;
     [SerializeField] GameObject mapButton;
+    [SerializeField] GameObject rainFall;
+    public GameObject instructions;
 
 
     // Sistema de passagem de dias e horas dentro do jogo.
@@ -68,7 +70,7 @@ public class LevelManager : NetworkBehaviour
     public void SetCureResearch(bool value) => cureResearch.Value = value;
     public readonly SyncVar<bool> cureResearch = new SyncVar<bool>();
 
-    float hourDurationDay = 5f; // Duracao de cada hora do dia em segundos.
+    float hourDurationDay = 3.5f; // Duracao de cada hora do dia em segundos.
     float hourDurationNight = 15f; // Duracao de cada hora da noite em segundos.
     float timer; // Tempo decorrido.
     float sunTimer;
@@ -147,6 +149,22 @@ public class LevelManager : NetworkBehaviour
         if (base.ClientManager.Clients.Count == 0) return;
 
         if (endgame.Value) return;
+        if(nightStart == true && cureMeter.Value > 50)
+        {
+            rainFall.SetActive(true);
+        }
+        else if (dayStart == true)
+        {
+            rainFall.SetActive(false);
+        }
+        if(currentDay == 1 && currentHour.Value == 13)
+        {
+            instructions.SetActive(false);
+        }
+        if(currentDay == 1 && currentHour.Value == 7)
+        {
+            instructions.SetActive(true);
+        }
 
 
         TimeSystem();

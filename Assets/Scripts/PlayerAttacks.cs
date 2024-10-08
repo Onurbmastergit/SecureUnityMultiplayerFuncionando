@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttacks : NetworkBehaviour
 {
@@ -34,7 +35,7 @@ public class PlayerAttacks : NetworkBehaviour
 
     #region Functions
 
-    [ServerRpc] // Mostrar a arma agora é processada no servidor, pois a variável isDay só é computada lá
+    [ServerRpc] // Mostrar a arma agora ï¿½ processada no servidor, pois a variï¿½vel isDay sï¿½ ï¿½ computada lï¿½
     void Server_ShowGun( NetworkConnection conn )
     {
         if (LevelManager.instance.isDay.Value)
@@ -46,7 +47,7 @@ public class PlayerAttacks : NetworkBehaviour
         Target_ShowGun(conn, true);
 
     }
-    // O servidor transfere a variável de lá para cada um dos clients
+    // O servidor transfere a variï¿½vel de lï¿½ para cada um dos clients
     [TargetRpc]
     void Target_ShowGun( NetworkConnection conn, bool draw )
     {
@@ -64,7 +65,7 @@ public class PlayerAttacks : NetworkBehaviour
     void Target_InputManager(NetworkConnection conn)
     {
         // Shoot Input.
-        if (Input.GetButton("Fire1") || Input.GetKey(KeyCode.JoystickButton5))
+        if (Input.GetButton("Fire1") || Gamepad.current != null && Gamepad.current.rightTrigger.isPressed)
         {
             if (lastTimeShot + fireRate <= Time.time)
             {

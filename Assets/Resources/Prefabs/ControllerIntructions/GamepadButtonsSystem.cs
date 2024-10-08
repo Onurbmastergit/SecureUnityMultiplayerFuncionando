@@ -12,9 +12,12 @@ public class GamepadButtonsSystem : MonoBehaviour
    public UnityEngine.UI.Button curaButton;
    public UnityEngine.UI.Button radioButton;
    public UnityEngine.UI.Button Startbutton;
+   public UnityEngine.UI.Button Backbutton;
    public UnityEngine.UI.Button Solobutton;
    public GameObject radioHUD;
    public GameObject mapHUD;
+   public GameObject curaHUD;
+   public GameObject mapHUD2;
    public GameObject craftHud;
    public GameObject canvasLogin;
    public UnityEngine.UI.Button craftButton;
@@ -25,11 +28,11 @@ public class GamepadButtonsSystem : MonoBehaviour
     void Update()
     {
         // Verifica se o controle foi detectado e se o LB foi pressionado
-        if (Gamepad.current != null && Gamepad.current.leftShoulder.wasPressedThisFrame)
+        if (Gamepad.current != null && Gamepad.current.leftShoulder.wasPressedThisFrame && mapHUD2.activeSelf == true)
         {
             mapButton.onClick.Invoke();
         }
-        if(Gamepad.current != null && Gamepad.current.rightShoulder.wasPressedThisFrame)
+        if(Gamepad.current != null && Gamepad.current.rightShoulder.wasPressedThisFrame && curaHUD.activeSelf == true)
         {
             curaButton.onClick.Invoke();
         }
@@ -45,7 +48,7 @@ public class GamepadButtonsSystem : MonoBehaviour
         {
             closeCraftButton.onClick.Invoke();
         }
-         if(Gamepad.current != null && Gamepad.current.bButton.wasPressedThisFrame && mapHUD.activeSelf == true)
+         if(Gamepad.current != null && Gamepad.current.bButton.wasPressedThisFrame && mapHUD.activeSelf == true )
         {
             closeMapButton.onClick.Invoke();
         }
@@ -56,6 +59,10 @@ public class GamepadButtonsSystem : MonoBehaviour
          if(Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame && canvasLogin.activeSelf == true)
         {
             Startbutton.onClick.Invoke();
+        }
+         if(Gamepad.current != null && Gamepad.current.bButton.wasPressedThisFrame && canvasLogin.activeSelf == true)
+        {
+            Backbutton.onClick.Invoke();
         }
 
 

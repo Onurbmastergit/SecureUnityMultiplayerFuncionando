@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputControllers : NetworkBehaviour
 {
@@ -31,6 +32,6 @@ public class InputControllers : NetworkBehaviour
 
         Attack = (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.JoystickButton5)) && !LevelManager.instance.isDay.Value;
 
-        Run = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton9);
+        Run = Input.GetKey(KeyCode.LeftShift) ||  Gamepad.current.leftStickButton.isPressed;
     }
 }
