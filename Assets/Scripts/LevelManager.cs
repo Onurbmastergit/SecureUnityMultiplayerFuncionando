@@ -157,7 +157,7 @@ public class LevelManager : NetworkBehaviour
         {
             rainFall.SetActive(false);
         }
-        if(currentDay == 1 && currentHour.Value == 13)
+        if(currentDay == 1 && currentHour.Value == 18)
         {
             instructions.SetActive(false);
         }

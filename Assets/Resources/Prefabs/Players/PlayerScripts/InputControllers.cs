@@ -32,6 +32,6 @@ public class InputControllers : NetworkBehaviour
 
         Attack = (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.JoystickButton5)) && !LevelManager.instance.isDay.Value;
 
-        Run = Input.GetKey(KeyCode.LeftShift) ||  Gamepad.current.leftStickButton.isPressed;
+        Run = Input.GetKey(KeyCode.LeftShift) || Gamepad.current != null && Gamepad.current.leftStickButton.isPressed;
     }
 }

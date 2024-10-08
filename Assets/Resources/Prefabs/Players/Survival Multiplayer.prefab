@@ -462,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaTotal: 100
   vidaAtual: 0
+  vibrationDuration: 0.5
   particle: {fileID: 6556800239566239632}
   BarLifeStatus: {fileID: 4538205517417076554}
   veias: {fileID: 6409987834212737069}
